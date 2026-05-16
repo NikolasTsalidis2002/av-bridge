@@ -1,0 +1,4 @@
+method,exp_a_agg,exp_a_hel,exp_b_agg,exp_b_hel,exp_c_direct_agg,exp_c_direct_hel
+elbow@a=0.5,0.998 / 9/10,nan / 0/10,0.713 / 15/20,nan / 0/20,0.960 / 11/15,nan / 0/15
+K=300@a=0.5,0.945 / 8/10,0.780 / 7/10,0.635 / 14/20,0.340 / 7/20,0.790 / 13/15,0.320 / 5/15
+C-transitive,—,—,—,—,0.175 / 6/15 (transitive),0.067 / 5/15

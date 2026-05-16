@@ -1,0 +1,4 @@
+method,exp_a_agg,exp_a_hel,exp_b_agg,exp_b_hel,exp_c_direct_agg,exp_c_direct_hel
+elbow@a=0.5,NMI=0.286 knn=0.144 r=0.558,NMI=nan knn=nan r=nan,NMI=0.449 knn=0.120 r=0.593,NMI=nan knn=nan r=nan,NMI=0.245 knn=0.059 r=0.273,NMI=nan knn=nan r=nan
+K=300@a=0.5,NMI=0.300 knn=0.147 r=0.587,NMI=0.406 knn=0.086 r=0.617,NMI=0.446 knn=0.111 r=0.596,NMI=0.562 knn=0.076 r=0.570,NMI=0.248 knn=0.066 r=0.306,NMI=0.396 knn=0.032 r=0.346
+C-transitive,—,—,—,—,NMI=0.302 knn=0.045 r=0.484,NMI=0.776 knn=0.027 r=0.555

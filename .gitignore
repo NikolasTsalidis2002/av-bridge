@@ -1,0 +1,9 @@
+.claude
+data
+embeddings
+test_videos
+val_videos
+METH*
+meth*
+RESULTS.md
+*/__pycache__
