@@ -1,0 +1,143 @@
+#!/bin/bash
+#SBATCH --job-name=avb-qual-best
+#SBATCH --output=logs/qual_best_%j.out
+#SBATCH --error=logs/qual_best_%j.err
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --time=01:30:00
+#SBATCH --partition=scavenge
+#SBATCH --mail-user=edlu@itu.dk
+#SBATCH --mail-type=FAIL
+
+set -e
+set -x
+
+# --- 1. Environment & Path Definitions ---
+PROJECT_DIR="$HOME/av-bridge"
+ENV_PATH="/home/edlu/miniconda3-25-5-1-1/envs/gwot"
+
+# --- 2. Load System Modules ---
+# CPU-only: matplotlib + librosa + numpy + a few FGW solves, no GPU needed.
+module load Miniconda3/25.5.1-1
+source /opt/itu/easybuild/software/Miniconda3/25.5.1-1/etc/profile.d/conda.sh
+conda activate "$ENV_PATH"
+cd "$PROJECT_DIR"
+mkdir -p logs results/qualitative_best results/qualitative
+
+# --- 3. Configuration via env vars ---------------------------------------
+# Number of stratified query clips; bumping this increases figure count
+# linearly (N_CLIPS × number_of_plans).
+# RANK selects which encoder pair to render per experiment:
+#   best  — only the highest-metric pair per experiment (default).
+#   worst — only the lowest-metric pair, useful for negative-control figures.
+#   both  — render both ends so the qualitative comparison spans the
+#           encoder-quality spectrum (8 plans instead of 4).
+#
+# Examples:
+#   N_CLIPS=12 BEST_METRIC=nmi RANK=best  sbatch jobs/qual_best.job
+#   N_CLIPS=8  BEST_METRIC=nmi RANK=both  sbatch jobs/qual_best.job
+N_CLIPS="${N_CLIPS:-12}"
+BEST_METRIC="${BEST_METRIC:-nmi}"
+RANK="${RANK:-best}"
+QUERY_TOP_K="${QUAL_QUERY_TOP_K:-1}"
+QUERY_TEMP="${QUAL_QUERY_TEMP:-1e-6}"
+TOP_K="${QUAL_TOP_K:-3}"
+
+# --- 4. Re-fit plans for the requested encoder pairs per experiment ------
+python code/render_best_plans.py \
+    --metric "$BEST_METRIC" \
+    --rank "$RANK" \
+    --n-clips "$N_CLIPS" \
+    --out-dir results/qualitative_best
+
+MANIFEST="results/qualitative_best/manifest.json"
+if [[ ! -f "$MANIFEST" ]]; then
+    echo "[err] $MANIFEST not produced; aborting."
+    exit 1
+fi
+
+# --- 5. Render figures: one per (clip, plan) ------------------------------
+# Use python to parse the JSON manifest, then loop in bash for transparency.
+PLANS_JSON=$(python - <<'PYEOF'
+import json
+from pathlib import Path
+m = json.loads(Path("results/qualitative_best/manifest.json").read_text())
+for p in m["plans"]:
+    print(f"{p['experiment']}|{p['rank']}|{p['image_encoder']}"
+          f"|{p['audio_encoder']}|{p['plan_path']}")
+PYEOF
+)
+
+CLIPS=$(cat results/qualitative_best/clips.txt)
+IFS=',' read -ra CLIP_ARR <<< "$CLIPS"
+
+OUT_DIR="results/qualitative_best/figures"
+mkdir -p "$OUT_DIR"
+
+while IFS='|' read -r exp rank img aud plan_path; do
+    [[ -z "$plan_path" ]] && continue
+    if [[ ! -f "$plan_path" ]]; then
+        echo "[skip] missing plan: $plan_path"
+        continue
+    fi
+    for cid in "${CLIP_ARR[@]}"; do
+        out_png="$OUT_DIR/${cid}__${exp}_${rank}__${img}__${aud}.png"
+        python code/qualitative.py \
+            --clip-id "$cid" \
+            --plan "$plan_path" \
+            --image-encoder "$img" \
+            --audio-encoder "$aud" \
+            --top-k "$TOP_K" \
+            --query-top-k "$QUERY_TOP_K" \
+            --query-temp "$QUERY_TEMP" \
+            --out "$out_png"
+    done
+done <<< "$PLANS_JSON"
+
+# --- 6. Also re-render the canonical-pair C-transitive plan for the same
+#       clip set, so all four cross-modal methods can be compared
+#       side-by-side. The grid does not include C-transitive, so its
+#       canonical plan (CLIP-L/14, CLAP-unfused) is what we report.
+CTRANS_PLAN="results/exp_c/T_transitive.npy"
+if [[ -f "$CTRANS_PLAN" ]]; then
+    for cid in "${CLIP_ARR[@]}"; do
+        out_png="$OUT_DIR/${cid}__c_transitive__clip-large__clap-unfused.png"
+        python code/qualitative.py \
+            --clip-id "$cid" \
+            --plan "$CTRANS_PLAN" \
+            --image-encoder clip-large \
+            --audio-encoder clap-unfused \
+            --top-k "$TOP_K" \
+            --query-top-k "$QUERY_TOP_K" \
+            --query-temp "$QUERY_TEMP" \
+            --out "$out_png"
+    done
+fi
+
+# --- 7. Random-baseline figures ------------------------------------------
+# One random-permutation plan rendered for every query clip, using a
+# fixed RANDOM_SEED so the *same* random permutation is shown for every
+# clip and across re-runs. This is the chance-level visual control for
+# the four learned plans above. Set RANDOM_BASELINE="" to disable.
+RANDOM_BASELINE="${RANDOM_BASELINE:-permutation}"
+RANDOM_SEED="${RANDOM_SEED:-0}"
+if [[ -n "$RANDOM_BASELINE" ]]; then
+    for cid in "${CLIP_ARR[@]}"; do
+        out_png="$OUT_DIR/${cid}__random_${RANDOM_BASELINE}_seed${RANDOM_SEED}__clip-large__clap-unfused.png"
+        python code/qualitative.py \
+            --clip-id "$cid" \
+            --random-plan "$RANDOM_BASELINE" \
+            --random-seed "$RANDOM_SEED" \
+            --image-encoder clip-large \
+            --audio-encoder clap-unfused \
+            --top-k "$TOP_K" \
+            --query-top-k "$QUERY_TOP_K" \
+            --query-temp "$QUERY_TEMP" \
+            --out "$out_png"
+    done
+fi
+
+echo "[qual-best] all figures written to $OUT_DIR"
+ls -1 "$OUT_DIR" | wc -l

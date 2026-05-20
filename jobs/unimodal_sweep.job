@@ -1,0 +1,69 @@
+#!/bin/bash
+#SBATCH --job-name=avb-unimodal-sweep
+#SBATCH --output=logs/unimodal_sweep_%j.out
+#SBATCH --error=logs/unimodal_sweep_%j.err
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=02:00:00
+#SBATCH --partition=scavenge
+#SBATCH --mail-user=edlu@itu.dk
+#SBATCH --mail-type=FAIL
+
+set -e
+set -x
+
+# --- 1. Environment & Path Definitions ---
+PROJECT_DIR="$HOME/av-bridge"
+ENV_PATH="/home/edlu/miniconda3-25-5-1-1/envs/gwot"
+
+# --- 2. Load System Modules ---
+# CPU-only: K-sweeps on n=400 are pure NumPy / sklearn / POT, no GPU needed.
+module load Miniconda3/25.5.1-1
+source /opt/itu/easybuild/software/Miniconda3/25.5.1-1/etc/profile.d/conda.sh
+conda activate "$ENV_PATH"
+cd "$PROJECT_DIR"
+mkdir -p logs results
+
+# --- 3. Encoder lists (override via env vars if needed) ----------------
+# The canonical encoders (clip-large for A, clap-unfused for B) already
+# have their sweep CSVs at results/exp_a/ and results/exp_b/. The new runs
+# below populate results/exp_a__<enc>/ and results/exp_b__<enc>/ for the
+# additional encoders, so the cross-encoder comparison plots of
+# code/plots.py --exp comparison can overlay one curve per encoder.
+#
+# Override examples:
+#   IMAGE_ENCODERS="dinov2-large clip-base"  sbatch jobs/unimodal_sweep.job
+#   AUDIO_ENCODERS="clap-larger mert-95m"     sbatch jobs/unimodal_sweep.job
+IMAGE_ENCODERS="${IMAGE_ENCODERS:-dinov2-large dinov2-base dinov2-small clip-base vit-mae-base}"
+AUDIO_ENCODERS="${AUDIO_ENCODERS:-clap-larger clap-fused mert-330m mert-95m}"
+
+# --- 4. Experiment A across image encoders ----------------------------
+for IMG in $IMAGE_ENCODERS; do
+    if [[ "$IMG" == "clip-large" ]]; then
+        echo "[skip] $IMG: canonical pair already on disk at results/exp_a/"
+        continue
+    fi
+    echo "[A] image-encoder = $IMG"
+    python ./code/run_experiments.py --exp a --image-encoder "$IMG"
+done
+
+# --- 5. Experiment B across audio encoders ----------------------------
+for AUD in $AUDIO_ENCODERS; do
+    if [[ "$AUD" == "clap-unfused" ]]; then
+        echo "[skip] $AUD: canonical pair already on disk at results/exp_b/"
+        continue
+    fi
+    echo "[B] audio-encoder = $AUD"
+    python ./code/run_experiments.py --exp b --audio-encoder "$AUD"
+done
+
+# --- 6. Regenerate the cross-encoder comparison figures ---------------
+python ./code/plots.py --exp comparison
+
+# --- 7. Sanity report -------------------------------------------------
+echo "[done] sweep CSVs:"
+ls -1 results/exp_a*/sweep.csv results/exp_b*/sweep.csv
+echo "[done] comparison plots:"
+ls -1 results/comparison_plots/

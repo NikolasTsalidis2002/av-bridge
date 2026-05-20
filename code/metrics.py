@@ -10,7 +10,15 @@ from __future__ import annotations
 import numpy as np
 from scipy.stats import pearsonr
 from sklearn.cluster import KMeans
-from sklearn.metrics import normalized_mutual_info_score, pairwise_distances
+from sklearn.metrics import (
+    adjusted_mutual_info_score,
+    adjusted_rand_score,
+    completeness_score,
+    homogeneity_score,
+    normalized_mutual_info_score,
+    pairwise_distances,
+    v_measure_score,
+)
 
 
 def recall_at_k(T: np.ndarray, gt: np.ndarray, k: int) -> float:
@@ -88,6 +96,72 @@ def pearson_pairwise(T: np.ndarray, X_src: np.ndarray, Y_tgt: np.ndarray) -> flo
     return float(pearsonr(a, b)[0])
 
 
+_AGREEMENT_NANS: dict = {
+    "nmi": float("nan"),
+    "ami": float("nan"),
+    "ari": float("nan"),
+    "v_measure": float("nan"),
+    "homogeneity": float("nan"),
+    "completeness": float("nan"),
+}
+
+
+def cluster_agreement(
+    T: np.ndarray,
+    X_src: np.ndarray,
+    Y_tgt: np.ndarray,
+    K_cl: int,
+    seed: int = 42,
+) -> dict:
+    """Cluster-agreement metrics between source clusters and partner-target
+    clusters under the plan's hard argmax assignment.
+
+    Returns a dict with six metrics:
+
+    - ``nmi`` — normalised mutual information (arithmetic-mean normalisation).
+      Not chance-corrected; expected value of independent labellings grows
+      with K_cl / n.
+    - ``ami`` — chance-corrected mutual information. ≈ 0 under independent
+      labellings; positive values have a "lift over chance" reading.
+    - ``ari`` — adjusted Rand index. Chance-corrected pairwise agreement:
+      asks, of all source pairs (i, i'), whether they end up in the same
+      target cluster iff they were in the same source cluster.
+    - ``v_measure`` — symmetric harmonic mean of homogeneity and
+      completeness; coincides with NMI under arithmetic-mean normalisation.
+    - ``homogeneity`` — each predicted cluster contains members of a single
+      source class.
+    - ``completeness`` — all members of a source class end up in the same
+      predicted cluster. Fragmentation vs impurity decomposes NMI into
+      these two complementary axes.
+    """
+    if len(X_src) < K_cl or len(Y_tgt) < K_cl:
+        return dict(_AGREEMENT_NANS)
+    src_lab = KMeans(K_cl, random_state=seed, n_init=10).fit_predict(X_src)
+    tgt_lab = KMeans(K_cl, random_state=seed, n_init=10).fit_predict(Y_tgt)
+    partners = T.argmax(axis=1)
+    mapped = tgt_lab[partners]
+    return {
+        "nmi":          float(normalized_mutual_info_score(src_lab, mapped)),
+        "ami":          float(adjusted_mutual_info_score(src_lab, mapped)),
+        "ari":          float(adjusted_rand_score(src_lab, mapped)),
+        "v_measure":    float(v_measure_score(src_lab, mapped)),
+        "homogeneity":  float(homogeneity_score(src_lab, mapped)),
+        "completeness": float(completeness_score(src_lab, mapped)),
+    }
+
+
+def cluster_nmi_ami(
+    T: np.ndarray,
+    X_src: np.ndarray,
+    Y_tgt: np.ndarray,
+    K_cl: int,
+    seed: int = 42,
+) -> tuple[float, float]:
+    """Back-compat wrapper returning (NMI, AMI) only."""
+    a = cluster_agreement(T, X_src, Y_tgt, K_cl, seed=seed)
+    return a["nmi"], a["ami"]
+
+
 def cluster_nmi(
     T: np.ndarray,
     X_src: np.ndarray,
@@ -95,13 +169,59 @@ def cluster_nmi(
     K_cl: int,
     seed: int = 42,
 ) -> float:
-    """Normalised mutual information between source clusters and target clusters of partners."""
-    if len(X_src) < K_cl or len(Y_tgt) < K_cl:
-        return float("nan")
+    """Back-compat wrapper returning NMI only."""
+    return cluster_agreement(T, X_src, Y_tgt, K_cl, seed=seed)["nmi"]
+
+
+def cluster_confusion(
+    T: np.ndarray,
+    X_src: np.ndarray,
+    Y_tgt: np.ndarray,
+    K_cl: int,
+    seed: int = 42,
+    mode: str = "soft",
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Source-cluster × target-cluster confusion matrix induced by the plan.
+
+    - ``mode="soft"`` (default): row s, col t of the K × K matrix is the
+      total mass T[i, j] aggregated over source rows i in source-cluster s
+      and target columns j in target-cluster t. Uses the full plan, not
+      argmax — informative for diffuse OT plans.
+    - ``mode="hard"``: counts of source rows whose argmax partner falls
+      into each target cluster. Equivalent to the hard-partner confusion
+      used inside ``cluster_routing``.
+
+    The returned matrix is row-normalised (each source-cluster row sums to
+    one when non-empty); a row of zeros indicates an empty source cluster.
+    Also returns the source and target K-means label vectors so callers
+    can apply a Hungarian column permutation for block-diagonal display.
+    """
     src_lab = KMeans(K_cl, random_state=seed, n_init=10).fit_predict(X_src)
     tgt_lab = KMeans(K_cl, random_state=seed, n_init=10).fit_predict(Y_tgt)
-    partners = T.argmax(axis=1)
-    return float(normalized_mutual_info_score(src_lab, tgt_lab[partners]))
+    C = np.zeros((K_cl, K_cl), dtype=np.float64)
+    if mode == "soft":
+        for s in range(K_cl):
+            src_idx = np.where(src_lab == s)[0]
+            if src_idx.size == 0:
+                continue
+            row_mass = T[src_idx].sum(axis=0)
+            for t in range(K_cl):
+                tgt_idx = np.where(tgt_lab == t)[0]
+                if tgt_idx.size == 0:
+                    continue
+                C[s, t] = row_mass[tgt_idx].sum()
+    elif mode == "hard":
+        partners = T.argmax(axis=1)
+        for s in range(K_cl):
+            src_idx = np.where(src_lab == s)[0]
+            for i in src_idx:
+                C[s, tgt_lab[partners[i]]] += 1.0
+    else:
+        raise ValueError(f"unknown confusion mode: {mode!r}")
+    row_sums = C.sum(axis=1, keepdims=True)
+    row_sums[row_sums == 0] = 1.0
+    C = C / row_sums
+    return C, src_lab, tgt_lab
 
 
 def evaluate(
@@ -120,11 +240,12 @@ def evaluate(
     r_correct, r_total = cluster_routing(T, X_src, Y_tgt, gt, K_cl, seed=seed)
     kno = knn_overlap(T, X_src, Y_tgt, k=5)
     pr = pearson_pairwise(T, X_src, Y_tgt)
-    nmi = cluster_nmi(T, X_src, Y_tgt, K_cl, seed=seed)
+    agree = cluster_agreement(T, X_src, Y_tgt, K_cl, seed=seed)
     return {
         "R@1": r1, "R@5": r5, "R@10": r10, "R@20": r20,
         "routes_correct": r_correct, "routes_total": r_total,
-        "knn_overlap": kno, "pearson_r": pr, "nmi": nmi,
+        "knn_overlap": kno, "pearson_r": pr,
+        **agree,
     }
 
 
@@ -156,7 +277,7 @@ def evaluate_heldout(
             "routes_correct": 0, "routes_total": K_cl,
             "knn_overlap": float("nan"),
             "pearson_r": float("nan"),
-            "nmi": float("nan"),
+            **_AGREEMENT_NANS,
         }
 
     # Row-masked recall.
@@ -177,7 +298,7 @@ def evaluate_heldout(
         r_correct, r_total = 0, K_cl
         kno = float("nan")
         pr = float("nan")
-        nmi = float("nan")
+        agree = dict(_AGREEMENT_NANS)
     else:
         src_lab = KMeans(Kc, random_state=seed, n_init=10).fit_predict(X_h)
         tgt_lab = KMeans(Kc, random_state=seed, n_init=10).fit_predict(Y_tgt)
@@ -221,12 +342,19 @@ def evaluate_heldout(
         else:
             pr = float(pearsonr(a, b)[0])
 
-        nmi = float(
-            normalized_mutual_info_score(src_lab, tgt_lab[partners_h])
-        )
+        mapped_h = tgt_lab[partners_h]
+        agree = {
+            "nmi":          float(normalized_mutual_info_score(src_lab, mapped_h)),
+            "ami":          float(adjusted_mutual_info_score(src_lab, mapped_h)),
+            "ari":          float(adjusted_rand_score(src_lab, mapped_h)),
+            "v_measure":    float(v_measure_score(src_lab, mapped_h)),
+            "homogeneity":  float(homogeneity_score(src_lab, mapped_h)),
+            "completeness": float(completeness_score(src_lab, mapped_h)),
+        }
 
     return {
         "R@1": r1, "R@5": r5, "R@10": r10, "R@20": r20,
         "routes_correct": r_correct, "routes_total": r_total,
-        "knn_overlap": kno, "pearson_r": pr, "nmi": nmi,
+        "knn_overlap": kno, "pearson_r": pr,
+        **agree,
     }

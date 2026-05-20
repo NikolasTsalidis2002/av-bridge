@@ -1,0 +1,2 @@
+method,plan,pearson_r_full,n_pairs,n_subsample
+Pure-GW,results/exp_unsup/T_gw.npy,0.6721245646476746,79800,40000

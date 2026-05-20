@@ -7,3 +7,8 @@ METH*
 meth*
 RESULTS.md
 */__pycache__
+results_old
+test_captions.json*
+val_captions.json*
+*tex
+*.md

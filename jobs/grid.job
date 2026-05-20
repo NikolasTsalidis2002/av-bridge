@@ -1,0 +1,42 @@
+#!/bin/bash
+#SBATCH --job-name=avb-grid
+#SBATCH --output=logs/grid_%j.out
+#SBATCH --error=logs/grid_%j.err
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=08:00:00
+#SBATCH --partition=scavenge
+#SBATCH --mail-user=edlu@itu.dk
+#SBATCH --mail-type=FAIL
+
+set -e
+set -x
+
+# --- 1. Environment & Path Definitions ---
+PROJECT_DIR="$HOME/av-bridge"
+ENV_PATH="/home/edlu/miniconda3-25-5-1-1/envs/gwot"
+
+# --- 2. Load System Modules ---
+# CPU-only: every cell is pure NumPy / sklearn / POT — no GPU needed.
+module load Miniconda3/25.5.1-1
+source /opt/itu/easybuild/software/Miniconda3/25.5.1-1/etc/profile.d/conda.sh
+conda activate "$ENV_PATH"
+cd "$PROJECT_DIR"
+mkdir -p logs results/exp_grid
+
+# --- 3. Optional encoder subsetting via env vars ---
+#  Examples (run a small subset to validate the pipeline before the full grid):
+#    GRID_IMAGES="clip-large,dinov2-large" \
+#    GRID_AUDIOS="clap-unfused,clap-fused" \
+#    sbatch jobs/grid.job
+ARGS=()
+if [[ -n "${GRID_IMAGES:-}" ]]; then ARGS+=(--grid-images "$GRID_IMAGES"); fi
+if [[ -n "${GRID_AUDIOS:-}" ]]; then ARGS+=(--grid-audios "$GRID_AUDIOS"); fi
+
+# --- 4. Run the encoder-ablation grid ---
+python ./code/run_experiments.py --exp grid "${ARGS[@]}"
+
+# --- 5. Heatmaps and bar charts ---
+python ./code/plots.py --exp grid

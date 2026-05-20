@@ -118,6 +118,89 @@ def recipe(
     return sinkhorn(M, eps=eps)
 
 
+def text_only_retrieval(ZV: np.ndarray, ZA: np.ndarray) -> np.ndarray:
+    """Naive text-caption retrieval baseline (no OT, no FGW).
+
+    Returns the n x m cosine-similarity matrix between the two caption
+    pools, to be consumed by the standard metric suite as if it were a
+    transport plan: argmax / argsort over rows yields top-k retrieval
+    by raw caption similarity, with image and audio embeddings entirely
+    bypassed. Inputs are assumed L2-normalised so dot products equal
+    cosine similarities.
+    """
+    return ZV @ ZA.T
+
+
+def pure_gw(
+    X: np.ndarray,
+    Y: np.ndarray,
+    eps: float = 0.005,
+    num_iter: int = 2000,
+) -> np.ndarray:
+    """Pure entropic Gromov-Wasserstein with uniform marginals.
+
+    No feature term, no ridge, no anchors: the plan is determined entirely
+    by the alignment of the two intra-modal distance geometries C1, C2.
+    Inputs are assumed L2-normalised row-wise.
+    """
+    n, m = X.shape[0], Y.shape[0]
+    p = np.full(n, 1.0 / n)
+    q = np.full(m, 1.0 / m)
+    C1 = _pairwise_sqdist(X, X)
+    c1_max = float(C1.max())
+    if c1_max > 0:
+        C1 = C1 / c1_max
+    C2 = _pairwise_sqdist(Y, Y)
+    c2_max = float(C2.max())
+    if c2_max > 0:
+        C2 = C2 / c2_max
+    T = ot.gromov.entropic_gromov_wasserstein(
+        C1, C2, p, q,
+        loss_fun="square_loss",
+        epsilon=eps,
+        max_iter=num_iter, tol=1e-9, log=False, verbose=False,
+    )
+    return np.asarray(T)
+
+
+def caption_cost_recipe(
+    X: np.ndarray,
+    Y: np.ndarray,
+    ZV: np.ndarray,
+    ZA: np.ndarray,
+    alpha: float = 0.7,
+    eps: float = 0.005,
+) -> np.ndarray:
+    """Caption-cost FGW recipe (Experiment D).
+
+    No ridge, no anchors, no image-audio supervision: the cross-modal
+    feature term M is built directly from caption distances.
+
+    M[i, j]  = || ZV[i] - ZA[j] ||^2  / max
+    C1[i, j] = || X[i]  - X[j]  ||^2  / max
+    C2[i, j] = || Y[i]  - Y[j]  ||^2  / max
+    T        = FGW(M, C1, C2, alpha)  (or Sinkhorn(M) when alpha == 0)
+
+    All input matrices are assumed L2-normalised row-wise.
+    """
+    M = _pairwise_sqdist(ZV, ZA)
+    m_max = float(M.max())
+    if m_max > 0:
+        M = M / m_max
+
+    if alpha > 0:
+        C1 = _pairwise_sqdist(X, X)
+        c1_max = float(C1.max())
+        if c1_max > 0:
+            C1 = C1 / c1_max
+        C2 = _pairwise_sqdist(Y, Y)
+        c2_max = float(C2.max())
+        if c2_max > 0:
+            C2 = C2 / c2_max
+        return fgw(M, C1, C2, alpha=alpha, eps=eps)
+    return sinkhorn(M, eps=eps)
+
+
 def build_bridge(
     ZV: np.ndarray,
     ZA: np.ndarray,
