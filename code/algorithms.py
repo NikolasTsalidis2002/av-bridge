@@ -118,6 +118,65 @@ def recipe(
     return sinkhorn(M, eps=eps)
 
 
+def procrustes_align(
+    X: np.ndarray,
+    Y: np.ndarray,
+    S_src: np.ndarray,
+    S_tgt: np.ndarray,
+) -> np.ndarray:
+    """Closed-form (semi-)orthogonal Procrustes alignment from X to Y.
+
+    Given paired rows (X[S_src], Y[S_tgt]) returns W with shape
+    (d_src, d_tgt) that minimises ||X[S_src] W - Y[S_tgt]||_F^2
+    subject to W being semi-orthogonal (W^T W = I when d_src >= d_tgt,
+    W W^T = I when d_src < d_tgt). Solved via the SVD of the
+    cross-covariance matrix; see Schoenemann (1966).
+
+    The semi-orthogonal generalisation lets us align embedding spaces
+    of different dimensionality (e.g. CLIP-large at 768 vs CLAP-unfused
+    at 512) without padding or PCA preprocessing.
+    """
+    X_S = X[S_src]
+    Y_S = Y[S_tgt]
+    # Thin SVD of cross-covariance. shape: (d_src, d_tgt).
+    M = X_S.T @ Y_S
+    U, _, Vt = np.linalg.svd(M, full_matrices=False)
+    W = U @ Vt
+    return W
+
+
+def procrustes_recipe(
+    X: np.ndarray,
+    Y: np.ndarray,
+    S_src: np.ndarray,
+    S_tgt: np.ndarray,
+) -> np.ndarray:
+    """Procrustes baseline: rigid (orthogonal) supervised alignment.
+
+    1. Fit a semi-orthogonal map W: source-space -> target-space from
+       the paired anchors (S_src, S_tgt).
+    2. Project all source rows X -> X W and renormalise rows to unit
+       length so the output sits on the target-space hypersphere
+       alongside Y.
+    3. Return the (n, m) similarity matrix (X W) Y^T, in the same
+       shape contract as ``text_only_retrieval``: the metric suite
+       treats it as a transport plan via row-wise argmax / argsort.
+
+    Compared to ``recipe`` (ridge + Sinkhorn/FGW), Procrustes is the
+    strict isometry restriction: any structural distortion of X under
+    the alignment is forbidden. It is the natural "supervised
+    structural" baseline -- the same constraint Pure-GW imposes
+    (preserve pairwise distances) but with identity-paired supervision
+    instead of unsupervised geometric matching.
+    """
+    W = procrustes_align(X, Y, S_src, S_tgt)
+    X_proj = X @ W
+    norms = np.linalg.norm(X_proj, axis=1, keepdims=True)
+    norms = np.where(norms > 1e-12, norms, 1.0)
+    X_proj = X_proj / norms
+    return X_proj @ Y.T
+
+
 def text_only_retrieval(ZV: np.ndarray, ZA: np.ndarray) -> np.ndarray:
     """Naive text-caption retrieval baseline (no OT, no FGW).
 

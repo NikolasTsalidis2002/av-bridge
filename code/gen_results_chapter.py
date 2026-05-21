@@ -1269,7 +1269,180 @@ information''. (iii) Reading the two figures jointly distinguishes
 $R@k$) from \emph{wrong retrievals} (both near chance); only the
 first pattern licences the ``semantically meaningful alignment''
 claim.
+
+\paragraph{External semantic agreement via caption cosine.}
+The AMI-based metrics above are structural --- they measure
+whether the plan's partner mapping respects $k$-means partitions of
+the embedding spaces being aligned. A complementary, strictly
+external measure compares the plan's argmax partner against the
+human-written caption pool encoded by a third encoder (MiniLM-L6-v2)
+that none of the cross-modal recipes consume directly. For each
+source row $i$ and the plan's argmax partner $\hat\jmath(i)$ we
+record the cosine $\cos\bigl(z_i^{\,\text{vis}}, z_{\hat\jmath(i)}^{\,\text{aud}}\bigr)$,
+average over rows, and compare it against the empirical chance
+baseline (a uniform random permutation, Monte-Carlo) and the
+empirical upper bound (the identity permutation). A positive
+\emph{lift} (argmax cosine $-$ chance cosine) is direct evidence
+that the recipe retrieves semantically related audio
+\emph{by an external standard the recipe never saw}. The metric is
+particularly informative for Pure-GW, whose plan is constructed
+without any reference to the captions.
+
 """)
+    parts.append(fig(
+        "results/exp_grid/plots/caption_agreement_bars.png",
+        caption=(
+            r"Caption-cosine quantities per recipe at the canonical "
+            r"encoder pair (CLIP-L/14 $\times$ CLAP-HTSAT-unfused). "
+            r"For each recipe we report four scalars: \emph{chance} "
+            r"(mean cosine under a uniform random permutation, the "
+            r"baseline), \emph{argmax} (mean cosine of the plan's "
+            r"argmax partner, the headline number), \emph{plan-mass} "
+            r"(plan-weighted mean cosine, accounting for the full "
+            r"transport distribution), and \emph{identity} (mean "
+            r"cosine under the ground-truth permutation, the dataset "
+            r"upper bound). The gap argmax $-$ chance is the recipe's "
+            r"external semantic-agreement lift; positive values are "
+            r"direct evidence of semantically related retrievals."
+        ),
+        label="fig:caption-agreement-bars",
+        width=r"\linewidth",
+    ))
+    parts.append(fig(
+        "results/exp_grid/plots/caption_agreement_refpairs.png",
+        caption=(
+            r"Caption-cosine lift over chance per recipe, at the two "
+            r"reference encoder pairs: the text-aligned (CLIP-L/14 "
+            r"$\times$ CLAP-HTSAT-unfused) and the text-free "
+            r"(DINOv2-large $\times$ MERT-330m). A positive lift on the "
+            r"text-free pair --- where neither encoder has been "
+            r"exposed to text during pretraining --- is the cleanest "
+            r"external-semantic-agreement signal the chapter can "
+            r"surface for Pure-GW and the other unsupervised recipes."
+        ),
+        label="fig:caption-agreement-refpairs",
+        width=r"\linewidth",
+    ))
+    parts.append(fig(
+        "results/exp_grid/plots/caption_lift_heatmap_unsup.png",
+        caption=(
+            r"Pure-GW caption-cosine lift over chance across the "
+            r"$6 \times 5$ encoder grid (same-rows scope). Positive "
+            r"cells are encoder pairs on which Pure-GW retrieves "
+            r"audio whose caption is semantically related to the "
+            r"query's caption, despite the recipe never seeing the "
+            r"captions. Companion heatmaps for the other recipes "
+            r"(\texttt{caption\_lift\_heatmap\_d.png}, "
+            r"\texttt{caption\_lift\_heatmap\_c-direct.png}, "
+            r"\texttt{caption\_lift\_heatmap\_text.png}) are available "
+            r"in the artefact directory."
+        ),
+        label="fig:caption-lift-heatmap-unsup",
+        width=r"0.85\linewidth",
+    ))
+
+    parts.append(r"""
+\paragraph{Structural vs semantic trade-off.}
+The metric families above evaluate each plan on a single axis at a
+time --- structural ($k$-NN overlap, Pearson~$r$, AMI), semantic
+(caption-cosine lift), or identity ($R@k$). The chapter's central
+methodological claim, however, is that these axes \emph{trade off};
+no single plan dominates on all of them. Two figures make the
+trade-off literal. Figure~\ref{fig:tradeoff-pareto} plots every
+(recipe, encoder-pair) cell of the empirical study on four
+two-dimensional axis pairs, with the Pareto front overlaid; each
+panel positions the recipes against one another on a single
+structural-vs-semantic or structural-vs-identity plane.
+Figure~\ref{fig:tradeoff-alpha} traces, within each recipe that
+admits an $\alpha$ sweep, how the FGW blend $\alpha$ moves the
+recipe along the same plane: at $\alpha = 0$ the cross-modal cost
+$M$ dominates (semantic-leaning); at $\alpha = 1$ the intra-modal
+structural term dominates (structural-leaning). Together they
+distinguish \emph{across-recipe} trade-offs (Pareto scatter) from
+\emph{within-recipe} trade-offs ($\alpha$ trajectories), and locate
+the methodology's recipes along the same continuous family of FGW
+plans.
+
+""")
+    parts.append(fig(
+        "results/exp_grid/plots/tradeoff_pareto_scatter.png",
+        caption=(
+            r"Structural vs semantic / identity trade-off across "
+            r"recipes and encoder pairs. Four panels, one per axis "
+            r"pair; one point per (recipe, encoder pair) cell of "
+            r"\texttt{results/exp\_grid/sweep.csv} at each recipe's "
+            r"held-out / same-rows scope. Colour codes the recipe. "
+            r"Grey dashed line overlays the empirical Pareto front "
+            r"of points that are not dominated on either axis; "
+            r"circled points sit on the Pareto front. The figure "
+            r"makes the methodology's prediction operational: each "
+            r"recipe occupies a different region of the trade-off "
+            r"plane, and the front is populated by recipes from "
+            r"different families."
+        ),
+        label="fig:tradeoff-pareto",
+        width=r"\linewidth",
+    ))
+    parts.append(fig(
+        "results/exp_grid/plots/tradeoff_alpha_curves.png",
+        caption=(
+            r"FGW $\alpha$ as a trade-off lever within each recipe. "
+            r"Left panel: structural (Pearson $r$) vs exemplar identity "
+            r"($R@10$) as $\alpha$ moves from $0$ (Sinkhorn endpoint) "
+            r"to $0.9$. Right panel: structural (AMI) vs semantic "
+            r"(caption-cosine lift); the right panel populates once "
+            r"the caption-agreement re-runs have landed in the "
+            r"per-experiment CSVs. Each marker is labelled with its "
+            r"$\alpha$ value. The same recipe occupies multiple "
+            r"positions on the trade-off plane depending on how the "
+            r"FGW blend is set: turning $\alpha$ toward $1$ buys "
+            r"structural fidelity at the cost of exemplar identity, "
+            r"as the methodology of \S\ref{sec:fgw-objective} "
+            r"predicts."
+        ),
+        label="fig:tradeoff-alpha",
+        width=r"\linewidth",
+    ))
+    parts.append(r"""
+\paragraph{Recipe alignment vs pre-alignment encoder similarity.}
+Linear CKA (\S\ref{sec:res-geometry}) measures the pre-alignment
+similarity of the image and audio embedding spaces, before any
+recipe is applied. We therefore expect a non-trivial relationship
+between CKA and each recipe's downstream alignment metrics: a
+recipe whose downstream metric tracks CKA closely is essentially
+``reading off'' the encoder geometry; a recipe whose metric is
+flat in CKA contributes structure of its own. Figure
+\ref{fig:tradeoff-cka-vs-recipe} plots each recipe's structural,
+semantic, and identity scores against the CKA of the same encoder
+pair, with per-recipe regression lines for the trend.
+
+""")
+    parts.append(fig(
+        "results/exp_grid/plots/tradeoff_cka_vs_recipe.png",
+        caption=(
+            r"Each cross-modal recipe's downstream alignment scores "
+            r"plotted against the pre-alignment encoder-space CKA. "
+            r"Top row: structural Pearson $r$, structural AMI, and "
+            r"exemplar identity $R@10$ vs encoder CKA. Bottom row: "
+            r"semantic caption-cosine lift vs CKA, the structural--"
+            r"semantic plane coloured by CKA, and a box-plot of "
+            r"the per-recipe ratio caption-lift~/~CKA --- the "
+            r"\emph{semantic-lift efficiency} of each recipe per unit "
+            r"of encoder-geometry similarity. Points are one per "
+            r"(recipe, encoder pair). A flat trend line means the "
+            r"recipe contributes structure of its own; a positive "
+            r"slope means the recipe rides on the encoder geometry. "
+            r"The bottom-right box-plot ranks recipes by how much "
+            r"semantic signal they extract per unit of CKA: raw "
+            r"caption cosine extracts the most per unit, GW on "
+            r"intra-modal geometry alone extracts the least, "
+            r"consistent with the methodology's predicted "
+            r"intra/inter decoupling."
+        ),
+        label="fig:tradeoff-cka-vs-recipe",
+        width=r"\linewidth",
+    ))
+
     parts.append(fig(
         "results/exp_grid/plots/cross_modal_pearson_scatter.png",
         caption=(

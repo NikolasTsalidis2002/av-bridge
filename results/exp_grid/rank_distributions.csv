@@ -1,1601 +1,3201 @@
-recipe,rank
-D (caption-cost FGW),62
-D (caption-cost FGW),21
-D (caption-cost FGW),21
-D (caption-cost FGW),45
-D (caption-cost FGW),85
-D (caption-cost FGW),46
-D (caption-cost FGW),56
-D (caption-cost FGW),88
-D (caption-cost FGW),18
-D (caption-cost FGW),1
-D (caption-cost FGW),30
-D (caption-cost FGW),2
-D (caption-cost FGW),371
-D (caption-cost FGW),3
-D (caption-cost FGW),290
-D (caption-cost FGW),2
-D (caption-cost FGW),128
-D (caption-cost FGW),46
-D (caption-cost FGW),12
-D (caption-cost FGW),12
-D (caption-cost FGW),178
-D (caption-cost FGW),15
-D (caption-cost FGW),32
-D (caption-cost FGW),108
-D (caption-cost FGW),35
-D (caption-cost FGW),152
-D (caption-cost FGW),13
-D (caption-cost FGW),81
-D (caption-cost FGW),6
-D (caption-cost FGW),151
-D (caption-cost FGW),21
-D (caption-cost FGW),4
-D (caption-cost FGW),26
-D (caption-cost FGW),10
-D (caption-cost FGW),161
-D (caption-cost FGW),2
-D (caption-cost FGW),38
-D (caption-cost FGW),3
-D (caption-cost FGW),16
-D (caption-cost FGW),28
-D (caption-cost FGW),17
-D (caption-cost FGW),261
-D (caption-cost FGW),82
-D (caption-cost FGW),3
-D (caption-cost FGW),132
-D (caption-cost FGW),5
-D (caption-cost FGW),29
-D (caption-cost FGW),8
-D (caption-cost FGW),95
-D (caption-cost FGW),1
-D (caption-cost FGW),4
-D (caption-cost FGW),169
-D (caption-cost FGW),12
-D (caption-cost FGW),224
-D (caption-cost FGW),4
-D (caption-cost FGW),25
-D (caption-cost FGW),301
-D (caption-cost FGW),57
-D (caption-cost FGW),293
-D (caption-cost FGW),54
-D (caption-cost FGW),73
-D (caption-cost FGW),195
-D (caption-cost FGW),378
-D (caption-cost FGW),50
-D (caption-cost FGW),17
-D (caption-cost FGW),126
-D (caption-cost FGW),64
-D (caption-cost FGW),181
-D (caption-cost FGW),45
-D (caption-cost FGW),30
-D (caption-cost FGW),78
-D (caption-cost FGW),14
-D (caption-cost FGW),5
-D (caption-cost FGW),34
-D (caption-cost FGW),34
-D (caption-cost FGW),10
-D (caption-cost FGW),2
-D (caption-cost FGW),184
-D (caption-cost FGW),34
-D (caption-cost FGW),185
-D (caption-cost FGW),89
-D (caption-cost FGW),19
-D (caption-cost FGW),158
-D (caption-cost FGW),18
-D (caption-cost FGW),316
-D (caption-cost FGW),25
-D (caption-cost FGW),133
-D (caption-cost FGW),185
-D (caption-cost FGW),34
-D (caption-cost FGW),47
-D (caption-cost FGW),63
-D (caption-cost FGW),129
-D (caption-cost FGW),243
-D (caption-cost FGW),99
-D (caption-cost FGW),82
-D (caption-cost FGW),37
-D (caption-cost FGW),217
-D (caption-cost FGW),133
-D (caption-cost FGW),75
-D (caption-cost FGW),240
-D (caption-cost FGW),243
-D (caption-cost FGW),123
-D (caption-cost FGW),12
-D (caption-cost FGW),344
-D (caption-cost FGW),321
-D (caption-cost FGW),29
-D (caption-cost FGW),32
-D (caption-cost FGW),10
-D (caption-cost FGW),123
-D (caption-cost FGW),1
-D (caption-cost FGW),251
-D (caption-cost FGW),235
-D (caption-cost FGW),352
-D (caption-cost FGW),1
-D (caption-cost FGW),38
-D (caption-cost FGW),60
-D (caption-cost FGW),2
-D (caption-cost FGW),147
-D (caption-cost FGW),7
-D (caption-cost FGW),192
-D (caption-cost FGW),5
-D (caption-cost FGW),28
-D (caption-cost FGW),30
-D (caption-cost FGW),1
-D (caption-cost FGW),96
-D (caption-cost FGW),49
-D (caption-cost FGW),11
-D (caption-cost FGW),7
-D (caption-cost FGW),51
-D (caption-cost FGW),46
-D (caption-cost FGW),125
-D (caption-cost FGW),11
-D (caption-cost FGW),3
-D (caption-cost FGW),29
-D (caption-cost FGW),29
-D (caption-cost FGW),62
-D (caption-cost FGW),1
-D (caption-cost FGW),171
-D (caption-cost FGW),157
-D (caption-cost FGW),41
-D (caption-cost FGW),1
-D (caption-cost FGW),149
-D (caption-cost FGW),8
-D (caption-cost FGW),102
-D (caption-cost FGW),36
-D (caption-cost FGW),7
-D (caption-cost FGW),25
-D (caption-cost FGW),115
-D (caption-cost FGW),4
-D (caption-cost FGW),2
-D (caption-cost FGW),269
-D (caption-cost FGW),339
-D (caption-cost FGW),39
-D (caption-cost FGW),7
-D (caption-cost FGW),34
-D (caption-cost FGW),4
-D (caption-cost FGW),66
-D (caption-cost FGW),68
-D (caption-cost FGW),5
-D (caption-cost FGW),13
-D (caption-cost FGW),32
-D (caption-cost FGW),12
-D (caption-cost FGW),113
-D (caption-cost FGW),24
-D (caption-cost FGW),13
-D (caption-cost FGW),40
-D (caption-cost FGW),36
-D (caption-cost FGW),58
-D (caption-cost FGW),122
-D (caption-cost FGW),6
-D (caption-cost FGW),3
-D (caption-cost FGW),135
-D (caption-cost FGW),9
-D (caption-cost FGW),113
-D (caption-cost FGW),83
-D (caption-cost FGW),12
-D (caption-cost FGW),193
-D (caption-cost FGW),287
-D (caption-cost FGW),198
-D (caption-cost FGW),19
-D (caption-cost FGW),136
-D (caption-cost FGW),27
-D (caption-cost FGW),2
-D (caption-cost FGW),6
-D (caption-cost FGW),13
-D (caption-cost FGW),13
-D (caption-cost FGW),71
-D (caption-cost FGW),164
-D (caption-cost FGW),15
-D (caption-cost FGW),4
-D (caption-cost FGW),19
-D (caption-cost FGW),5
-D (caption-cost FGW),41
-D (caption-cost FGW),57
-D (caption-cost FGW),1
-D (caption-cost FGW),266
-D (caption-cost FGW),2
-D (caption-cost FGW),21
-D (caption-cost FGW),30
-D (caption-cost FGW),85
-D (caption-cost FGW),238
-D (caption-cost FGW),24
-D (caption-cost FGW),32
-D (caption-cost FGW),92
-D (caption-cost FGW),119
-D (caption-cost FGW),285
-D (caption-cost FGW),30
-D (caption-cost FGW),143
-D (caption-cost FGW),1
-D (caption-cost FGW),229
-D (caption-cost FGW),4
-D (caption-cost FGW),12
-D (caption-cost FGW),37
-D (caption-cost FGW),163
-D (caption-cost FGW),7
-D (caption-cost FGW),2
-D (caption-cost FGW),50
-D (caption-cost FGW),22
-D (caption-cost FGW),54
-D (caption-cost FGW),124
-D (caption-cost FGW),142
-D (caption-cost FGW),26
-D (caption-cost FGW),108
-D (caption-cost FGW),22
-D (caption-cost FGW),45
-D (caption-cost FGW),202
-D (caption-cost FGW),5
-D (caption-cost FGW),3
-D (caption-cost FGW),167
-D (caption-cost FGW),104
-D (caption-cost FGW),3
-D (caption-cost FGW),228
-D (caption-cost FGW),11
-D (caption-cost FGW),154
-D (caption-cost FGW),1
-D (caption-cost FGW),80
-D (caption-cost FGW),241
-D (caption-cost FGW),59
-D (caption-cost FGW),149
-D (caption-cost FGW),26
-D (caption-cost FGW),96
-D (caption-cost FGW),98
-D (caption-cost FGW),1
-D (caption-cost FGW),38
-D (caption-cost FGW),5
-D (caption-cost FGW),20
-D (caption-cost FGW),266
-D (caption-cost FGW),54
-D (caption-cost FGW),47
-D (caption-cost FGW),55
-D (caption-cost FGW),27
-D (caption-cost FGW),15
-D (caption-cost FGW),256
-D (caption-cost FGW),31
-D (caption-cost FGW),3
-D (caption-cost FGW),12
-D (caption-cost FGW),19
-D (caption-cost FGW),98
-D (caption-cost FGW),16
-D (caption-cost FGW),35
-D (caption-cost FGW),67
-D (caption-cost FGW),10
-D (caption-cost FGW),1
-D (caption-cost FGW),17
-D (caption-cost FGW),1
-D (caption-cost FGW),6
-D (caption-cost FGW),4
-D (caption-cost FGW),1
-D (caption-cost FGW),136
-D (caption-cost FGW),60
-D (caption-cost FGW),11
-D (caption-cost FGW),290
-D (caption-cost FGW),92
-D (caption-cost FGW),1
-D (caption-cost FGW),111
-D (caption-cost FGW),253
-D (caption-cost FGW),12
-D (caption-cost FGW),39
-D (caption-cost FGW),20
-D (caption-cost FGW),76
-D (caption-cost FGW),6
-D (caption-cost FGW),57
-D (caption-cost FGW),80
-D (caption-cost FGW),147
-D (caption-cost FGW),42
-D (caption-cost FGW),166
-D (caption-cost FGW),1
-D (caption-cost FGW),5
-D (caption-cost FGW),11
-D (caption-cost FGW),244
-D (caption-cost FGW),29
-D (caption-cost FGW),23
-D (caption-cost FGW),1
-D (caption-cost FGW),4
-D (caption-cost FGW),51
-D (caption-cost FGW),18
-D (caption-cost FGW),9
-D (caption-cost FGW),35
-D (caption-cost FGW),1
-D (caption-cost FGW),1
-D (caption-cost FGW),10
-D (caption-cost FGW),30
-D (caption-cost FGW),53
-D (caption-cost FGW),37
-D (caption-cost FGW),85
-D (caption-cost FGW),59
-D (caption-cost FGW),4
-D (caption-cost FGW),209
-D (caption-cost FGW),27
-D (caption-cost FGW),122
-D (caption-cost FGW),111
-D (caption-cost FGW),5
-D (caption-cost FGW),30
-D (caption-cost FGW),34
-D (caption-cost FGW),74
-D (caption-cost FGW),226
-D (caption-cost FGW),277
-D (caption-cost FGW),180
-D (caption-cost FGW),21
-D (caption-cost FGW),32
-D (caption-cost FGW),10
-D (caption-cost FGW),104
-D (caption-cost FGW),4
-D (caption-cost FGW),22
-D (caption-cost FGW),1
-D (caption-cost FGW),6
-D (caption-cost FGW),2
-D (caption-cost FGW),72
-D (caption-cost FGW),59
-D (caption-cost FGW),119
-D (caption-cost FGW),190
-D (caption-cost FGW),17
-D (caption-cost FGW),89
-D (caption-cost FGW),191
-D (caption-cost FGW),9
-D (caption-cost FGW),280
-D (caption-cost FGW),80
-D (caption-cost FGW),85
-D (caption-cost FGW),142
-D (caption-cost FGW),25
-D (caption-cost FGW),97
-D (caption-cost FGW),12
-D (caption-cost FGW),25
-D (caption-cost FGW),19
-D (caption-cost FGW),26
-D (caption-cost FGW),173
-D (caption-cost FGW),126
-D (caption-cost FGW),81
-D (caption-cost FGW),36
-D (caption-cost FGW),40
-D (caption-cost FGW),61
-D (caption-cost FGW),1
-D (caption-cost FGW),24
-D (caption-cost FGW),42
-D (caption-cost FGW),31
-D (caption-cost FGW),288
-D (caption-cost FGW),99
-D (caption-cost FGW),99
-D (caption-cost FGW),9
-D (caption-cost FGW),81
-D (caption-cost FGW),1
-D (caption-cost FGW),400
-D (caption-cost FGW),305
-D (caption-cost FGW),102
-D (caption-cost FGW),61
-D (caption-cost FGW),29
-D (caption-cost FGW),4
-D (caption-cost FGW),4
-D (caption-cost FGW),155
-D (caption-cost FGW),22
-D (caption-cost FGW),165
-D (caption-cost FGW),178
-D (caption-cost FGW),39
-D (caption-cost FGW),155
-D (caption-cost FGW),3
-D (caption-cost FGW),114
-D (caption-cost FGW),2
-D (caption-cost FGW),123
-D (caption-cost FGW),160
-D (caption-cost FGW),99
-D (caption-cost FGW),119
-D (caption-cost FGW),2
-D (caption-cost FGW),119
-D (caption-cost FGW),13
-D (caption-cost FGW),102
-D (caption-cost FGW),13
-D (caption-cost FGW),17
-D (caption-cost FGW),236
-D (caption-cost FGW),101
-D (caption-cost FGW),94
-D (caption-cost FGW),25
-D (caption-cost FGW),213
-D (caption-cost FGW),295
-D (caption-cost FGW),2
-D (caption-cost FGW),1
-D (caption-cost FGW),74
-D (caption-cost FGW),138
-D (caption-cost FGW),195
-D (caption-cost FGW),134
-D (caption-cost FGW),151
-C-transitive (text bridge),333
-C-transitive (text bridge),1
-C-transitive (text bridge),52
-C-transitive (text bridge),215
-C-transitive (text bridge),63
-C-transitive (text bridge),235
-C-transitive (text bridge),175
-C-transitive (text bridge),212
-C-transitive (text bridge),17
-C-transitive (text bridge),2
-C-transitive (text bridge),276
-C-transitive (text bridge),66
-C-transitive (text bridge),14
-C-transitive (text bridge),1
-C-transitive (text bridge),293
-C-transitive (text bridge),7
-C-transitive (text bridge),115
-C-transitive (text bridge),286
-C-transitive (text bridge),13
-C-transitive (text bridge),3
-C-transitive (text bridge),309
-C-transitive (text bridge),24
-C-transitive (text bridge),5
-C-transitive (text bridge),5
-C-transitive (text bridge),17
-C-transitive (text bridge),13
-C-transitive (text bridge),107
-C-transitive (text bridge),59
-C-transitive (text bridge),1
-C-transitive (text bridge),319
-C-transitive (text bridge),5
-C-transitive (text bridge),13
-C-transitive (text bridge),84
-C-transitive (text bridge),1
-C-transitive (text bridge),233
-C-transitive (text bridge),2
-C-transitive (text bridge),14
-C-transitive (text bridge),1
-C-transitive (text bridge),60
-C-transitive (text bridge),30
-C-transitive (text bridge),55
-C-transitive (text bridge),284
-C-transitive (text bridge),50
-C-transitive (text bridge),3
-C-transitive (text bridge),118
-C-transitive (text bridge),14
-C-transitive (text bridge),272
-C-transitive (text bridge),210
-C-transitive (text bridge),10
-C-transitive (text bridge),1
-C-transitive (text bridge),124
-C-transitive (text bridge),47
-C-transitive (text bridge),7
-C-transitive (text bridge),205
-C-transitive (text bridge),10
-C-transitive (text bridge),78
-C-transitive (text bridge),347
-C-transitive (text bridge),141
-C-transitive (text bridge),278
-C-transitive (text bridge),4
-C-transitive (text bridge),13
-C-transitive (text bridge),87
-C-transitive (text bridge),83
-C-transitive (text bridge),38
-C-transitive (text bridge),107
-C-transitive (text bridge),157
-C-transitive (text bridge),19
-C-transitive (text bridge),81
-C-transitive (text bridge),212
-C-transitive (text bridge),108
-C-transitive (text bridge),47
-C-transitive (text bridge),7
-C-transitive (text bridge),106
-C-transitive (text bridge),166
-C-transitive (text bridge),207
-C-transitive (text bridge),11
-C-transitive (text bridge),248
-C-transitive (text bridge),170
-C-transitive (text bridge),125
-C-transitive (text bridge),228
-C-transitive (text bridge),89
-C-transitive (text bridge),19
-C-transitive (text bridge),294
-C-transitive (text bridge),189
-C-transitive (text bridge),209
-C-transitive (text bridge),29
-C-transitive (text bridge),141
-C-transitive (text bridge),217
-C-transitive (text bridge),4
-C-transitive (text bridge),328
-C-transitive (text bridge),133
-C-transitive (text bridge),21
-C-transitive (text bridge),207
-C-transitive (text bridge),200
-C-transitive (text bridge),13
-C-transitive (text bridge),260
-C-transitive (text bridge),75
-C-transitive (text bridge),281
-C-transitive (text bridge),80
-C-transitive (text bridge),376
-C-transitive (text bridge),208
-C-transitive (text bridge),169
-C-transitive (text bridge),22
-C-transitive (text bridge),188
-C-transitive (text bridge),347
-C-transitive (text bridge),54
-C-transitive (text bridge),9
-C-transitive (text bridge),19
-C-transitive (text bridge),59
-C-transitive (text bridge),16
-C-transitive (text bridge),106
-C-transitive (text bridge),228
-C-transitive (text bridge),95
-C-transitive (text bridge),18
-C-transitive (text bridge),20
-C-transitive (text bridge),358
-C-transitive (text bridge),232
-C-transitive (text bridge),110
-C-transitive (text bridge),20
-C-transitive (text bridge),396
-C-transitive (text bridge),4
-C-transitive (text bridge),13
-C-transitive (text bridge),2
-C-transitive (text bridge),15
-C-transitive (text bridge),26
-C-transitive (text bridge),39
-C-transitive (text bridge),84
-C-transitive (text bridge),148
-C-transitive (text bridge),51
-C-transitive (text bridge),320
-C-transitive (text bridge),22
-C-transitive (text bridge),85
-C-transitive (text bridge),115
-C-transitive (text bridge),277
-C-transitive (text bridge),1
-C-transitive (text bridge),288
-C-transitive (text bridge),3
-C-transitive (text bridge),72
-C-transitive (text bridge),182
-C-transitive (text bridge),155
-C-transitive (text bridge),1
-C-transitive (text bridge),74
-C-transitive (text bridge),103
-C-transitive (text bridge),21
-C-transitive (text bridge),31
-C-transitive (text bridge),25
-C-transitive (text bridge),24
-C-transitive (text bridge),322
-C-transitive (text bridge),147
-C-transitive (text bridge),6
-C-transitive (text bridge),180
-C-transitive (text bridge),81
-C-transitive (text bridge),82
-C-transitive (text bridge),35
-C-transitive (text bridge),21
-C-transitive (text bridge),1
-C-transitive (text bridge),8
-C-transitive (text bridge),89
-C-transitive (text bridge),139
-C-transitive (text bridge),49
-C-transitive (text bridge),4
-C-transitive (text bridge),14
-C-transitive (text bridge),12
-C-transitive (text bridge),45
-C-transitive (text bridge),6
-C-transitive (text bridge),248
-C-transitive (text bridge),78
-C-transitive (text bridge),18
-C-transitive (text bridge),90
-C-transitive (text bridge),4
-C-transitive (text bridge),84
-C-transitive (text bridge),324
-C-transitive (text bridge),151
-C-transitive (text bridge),159
-C-transitive (text bridge),215
-C-transitive (text bridge),186
-C-transitive (text bridge),115
-C-transitive (text bridge),155
-C-transitive (text bridge),381
-C-transitive (text bridge),36
-C-transitive (text bridge),90
-C-transitive (text bridge),80
-C-transitive (text bridge),38
-C-transitive (text bridge),71
-C-transitive (text bridge),60
-C-transitive (text bridge),59
-C-transitive (text bridge),283
-C-transitive (text bridge),75
-C-transitive (text bridge),27
-C-transitive (text bridge),12
-C-transitive (text bridge),227
-C-transitive (text bridge),3
-C-transitive (text bridge),357
-C-transitive (text bridge),270
-C-transitive (text bridge),1
-C-transitive (text bridge),161
-C-transitive (text bridge),90
-C-transitive (text bridge),124
-C-transitive (text bridge),3
-C-transitive (text bridge),14
-C-transitive (text bridge),331
-C-transitive (text bridge),29
-C-transitive (text bridge),168
-C-transitive (text bridge),53
-C-transitive (text bridge),87
-C-transitive (text bridge),75
-C-transitive (text bridge),50
-C-transitive (text bridge),126
-C-transitive (text bridge),4
-C-transitive (text bridge),348
-C-transitive (text bridge),6
-C-transitive (text bridge),51
-C-transitive (text bridge),160
-C-transitive (text bridge),113
-C-transitive (text bridge),2
-C-transitive (text bridge),36
-C-transitive (text bridge),61
-C-transitive (text bridge),5
-C-transitive (text bridge),25
-C-transitive (text bridge),10
-C-transitive (text bridge),90
-C-transitive (text bridge),113
-C-transitive (text bridge),300
-C-transitive (text bridge),168
-C-transitive (text bridge),133
-C-transitive (text bridge),27
-C-transitive (text bridge),5
-C-transitive (text bridge),8
-C-transitive (text bridge),103
-C-transitive (text bridge),163
-C-transitive (text bridge),3
-C-transitive (text bridge),308
-C-transitive (text bridge),2
-C-transitive (text bridge),131
-C-transitive (text bridge),33
-C-transitive (text bridge),1
-C-transitive (text bridge),54
-C-transitive (text bridge),35
-C-transitive (text bridge),9
-C-transitive (text bridge),292
-C-transitive (text bridge),62
-C-transitive (text bridge),28
-C-transitive (text bridge),1
-C-transitive (text bridge),144
-C-transitive (text bridge),148
-C-transitive (text bridge),164
-C-transitive (text bridge),258
-C-transitive (text bridge),2
-C-transitive (text bridge),54
-C-transitive (text bridge),68
-C-transitive (text bridge),257
-C-transitive (text bridge),95
-C-transitive (text bridge),89
-C-transitive (text bridge),66
-C-transitive (text bridge),71
-C-transitive (text bridge),50
-C-transitive (text bridge),61
-C-transitive (text bridge),195
-C-transitive (text bridge),24
-C-transitive (text bridge),131
-C-transitive (text bridge),115
-C-transitive (text bridge),99
-C-transitive (text bridge),28
-C-transitive (text bridge),61
-C-transitive (text bridge),36
-C-transitive (text bridge),4
-C-transitive (text bridge),18
-C-transitive (text bridge),12
-C-transitive (text bridge),287
-C-transitive (text bridge),171
-C-transitive (text bridge),8
-C-transitive (text bridge),338
-C-transitive (text bridge),271
-C-transitive (text bridge),1
-C-transitive (text bridge),273
-C-transitive (text bridge),24
-C-transitive (text bridge),345
-C-transitive (text bridge),166
-C-transitive (text bridge),248
-C-transitive (text bridge),371
-C-transitive (text bridge),14
-C-transitive (text bridge),59
-C-transitive (text bridge),35
-C-transitive (text bridge),68
-C-transitive (text bridge),2
-C-transitive (text bridge),43
-C-transitive (text bridge),23
-C-transitive (text bridge),148
-C-transitive (text bridge),34
-C-transitive (text bridge),33
-C-transitive (text bridge),208
-C-transitive (text bridge),374
-C-transitive (text bridge),3
-C-transitive (text bridge),89
-C-transitive (text bridge),8
-C-transitive (text bridge),52
-C-transitive (text bridge),3
-C-transitive (text bridge),148
-C-transitive (text bridge),2
-C-transitive (text bridge),21
-C-transitive (text bridge),1
-C-transitive (text bridge),28
-C-transitive (text bridge),290
-C-transitive (text bridge),114
-C-transitive (text bridge),331
-C-transitive (text bridge),45
-C-transitive (text bridge),235
-C-transitive (text bridge),98
-C-transitive (text bridge),12
-C-transitive (text bridge),51
-C-transitive (text bridge),161
-C-transitive (text bridge),5
-C-transitive (text bridge),29
-C-transitive (text bridge),115
-C-transitive (text bridge),125
-C-transitive (text bridge),37
-C-transitive (text bridge),318
-C-transitive (text bridge),187
-C-transitive (text bridge),4
-C-transitive (text bridge),17
-C-transitive (text bridge),21
-C-transitive (text bridge),112
-C-transitive (text bridge),116
-C-transitive (text bridge),95
-C-transitive (text bridge),9
-C-transitive (text bridge),27
-C-transitive (text bridge),5
-C-transitive (text bridge),87
-C-transitive (text bridge),47
-C-transitive (text bridge),35
-C-transitive (text bridge),148
-C-transitive (text bridge),21
-C-transitive (text bridge),71
-C-transitive (text bridge),269
-C-transitive (text bridge),71
-C-transitive (text bridge),183
-C-transitive (text bridge),42
-C-transitive (text bridge),133
-C-transitive (text bridge),26
-C-transitive (text bridge),175
-C-transitive (text bridge),9
-C-transitive (text bridge),13
-C-transitive (text bridge),17
-C-transitive (text bridge),140
-C-transitive (text bridge),1
-C-transitive (text bridge),100
-C-transitive (text bridge),186
-C-transitive (text bridge),7
-C-transitive (text bridge),75
-C-transitive (text bridge),31
-C-transitive (text bridge),144
-C-transitive (text bridge),28
-C-transitive (text bridge),40
-C-transitive (text bridge),249
-C-transitive (text bridge),35
-C-transitive (text bridge),32
-C-transitive (text bridge),11
-C-transitive (text bridge),219
-C-transitive (text bridge),28
-C-transitive (text bridge),135
-C-transitive (text bridge),43
-C-transitive (text bridge),377
-C-transitive (text bridge),181
-C-transitive (text bridge),186
-C-transitive (text bridge),80
-C-transitive (text bridge),2
-C-transitive (text bridge),24
-C-transitive (text bridge),36
-C-transitive (text bridge),162
-C-transitive (text bridge),209
-C-transitive (text bridge),353
-C-transitive (text bridge),217
-C-transitive (text bridge),3
-C-transitive (text bridge),294
-C-transitive (text bridge),57
-C-transitive (text bridge),169
-C-transitive (text bridge),73
-C-transitive (text bridge),243
-C-transitive (text bridge),204
-C-transitive (text bridge),108
-C-transitive (text bridge),151
-C-transitive (text bridge),4
-C-transitive (text bridge),252
-C-transitive (text bridge),20
-C-transitive (text bridge),86
-C-transitive (text bridge),4
-C-transitive (text bridge),1
-C-transitive (text bridge),205
-C-transitive (text bridge),67
-C-transitive (text bridge),94
-C-transitive (text bridge),253
-C-transitive (text bridge),178
-C-transitive (text bridge),139
-C-transitive (text bridge),13
-C-transitive (text bridge),1
-C-transitive (text bridge),107
-C-transitive (text bridge),43
-C-transitive (text bridge),192
-C-transitive (text bridge),217
-C-transitive (text bridge),130
-Pure-GW (no signal),109
-Pure-GW (no signal),86
-Pure-GW (no signal),352
-Pure-GW (no signal),285
-Pure-GW (no signal),210
-Pure-GW (no signal),148
-Pure-GW (no signal),313
-Pure-GW (no signal),146
-Pure-GW (no signal),268
-Pure-GW (no signal),138
-Pure-GW (no signal),95
-Pure-GW (no signal),375
-Pure-GW (no signal),399
-Pure-GW (no signal),311
-Pure-GW (no signal),242
-Pure-GW (no signal),151
-Pure-GW (no signal),84
-Pure-GW (no signal),57
-Pure-GW (no signal),185
-Pure-GW (no signal),195
-Pure-GW (no signal),184
-Pure-GW (no signal),75
-Pure-GW (no signal),251
-Pure-GW (no signal),279
-Pure-GW (no signal),245
-Pure-GW (no signal),205
-Pure-GW (no signal),132
-Pure-GW (no signal),55
-Pure-GW (no signal),84
-Pure-GW (no signal),25
-Pure-GW (no signal),314
-Pure-GW (no signal),6
-Pure-GW (no signal),230
-Pure-GW (no signal),79
-Pure-GW (no signal),109
-Pure-GW (no signal),33
-Pure-GW (no signal),88
-Pure-GW (no signal),166
-Pure-GW (no signal),147
-Pure-GW (no signal),360
-Pure-GW (no signal),116
-Pure-GW (no signal),213
-Pure-GW (no signal),161
-Pure-GW (no signal),196
-Pure-GW (no signal),393
-Pure-GW (no signal),178
-Pure-GW (no signal),248
-Pure-GW (no signal),97
-Pure-GW (no signal),252
-Pure-GW (no signal),208
-Pure-GW (no signal),84
-Pure-GW (no signal),4
-Pure-GW (no signal),101
-Pure-GW (no signal),368
-Pure-GW (no signal),142
-Pure-GW (no signal),126
-Pure-GW (no signal),230
-Pure-GW (no signal),61
-Pure-GW (no signal),2
-Pure-GW (no signal),367
-Pure-GW (no signal),91
-Pure-GW (no signal),29
-Pure-GW (no signal),224
-Pure-GW (no signal),142
-Pure-GW (no signal),301
-Pure-GW (no signal),270
-Pure-GW (no signal),233
-Pure-GW (no signal),193
-Pure-GW (no signal),59
-Pure-GW (no signal),144
-Pure-GW (no signal),272
-Pure-GW (no signal),82
-Pure-GW (no signal),312
-Pure-GW (no signal),121
-Pure-GW (no signal),308
-Pure-GW (no signal),342
-Pure-GW (no signal),205
-Pure-GW (no signal),240
-Pure-GW (no signal),90
-Pure-GW (no signal),291
-Pure-GW (no signal),176
-Pure-GW (no signal),182
-Pure-GW (no signal),123
-Pure-GW (no signal),103
-Pure-GW (no signal),95
-Pure-GW (no signal),312
-Pure-GW (no signal),98
-Pure-GW (no signal),173
-Pure-GW (no signal),273
-Pure-GW (no signal),187
-Pure-GW (no signal),238
-Pure-GW (no signal),392
-Pure-GW (no signal),279
-Pure-GW (no signal),274
-Pure-GW (no signal),13
-Pure-GW (no signal),328
-Pure-GW (no signal),198
-Pure-GW (no signal),246
-Pure-GW (no signal),103
-Pure-GW (no signal),237
-Pure-GW (no signal),76
-Pure-GW (no signal),28
-Pure-GW (no signal),8
-Pure-GW (no signal),95
-Pure-GW (no signal),376
-Pure-GW (no signal),252
-Pure-GW (no signal),64
-Pure-GW (no signal),70
-Pure-GW (no signal),13
-Pure-GW (no signal),33
-Pure-GW (no signal),27
-Pure-GW (no signal),127
-Pure-GW (no signal),251
-Pure-GW (no signal),20
-Pure-GW (no signal),302
-Pure-GW (no signal),267
-Pure-GW (no signal),351
-Pure-GW (no signal),253
-Pure-GW (no signal),214
-Pure-GW (no signal),180
-Pure-GW (no signal),62
-Pure-GW (no signal),292
-Pure-GW (no signal),320
-Pure-GW (no signal),272
-Pure-GW (no signal),127
-Pure-GW (no signal),4
-Pure-GW (no signal),311
-Pure-GW (no signal),65
-Pure-GW (no signal),244
-Pure-GW (no signal),116
-Pure-GW (no signal),303
-Pure-GW (no signal),289
-Pure-GW (no signal),377
-Pure-GW (no signal),76
-Pure-GW (no signal),171
-Pure-GW (no signal),343
-Pure-GW (no signal),57
-Pure-GW (no signal),290
-Pure-GW (no signal),20
-Pure-GW (no signal),84
-Pure-GW (no signal),38
-Pure-GW (no signal),341
-Pure-GW (no signal),231
-Pure-GW (no signal),307
-Pure-GW (no signal),172
-Pure-GW (no signal),140
-Pure-GW (no signal),18
-Pure-GW (no signal),40
-Pure-GW (no signal),16
-Pure-GW (no signal),31
-Pure-GW (no signal),163
-Pure-GW (no signal),92
-Pure-GW (no signal),205
-Pure-GW (no signal),115
-Pure-GW (no signal),171
-Pure-GW (no signal),387
-Pure-GW (no signal),184
-Pure-GW (no signal),282
-Pure-GW (no signal),113
-Pure-GW (no signal),261
-Pure-GW (no signal),395
-Pure-GW (no signal),30
-Pure-GW (no signal),375
-Pure-GW (no signal),379
-Pure-GW (no signal),170
-Pure-GW (no signal),193
-Pure-GW (no signal),8
-Pure-GW (no signal),101
-Pure-GW (no signal),160
-Pure-GW (no signal),74
-Pure-GW (no signal),184
-Pure-GW (no signal),247
-Pure-GW (no signal),180
-Pure-GW (no signal),98
-Pure-GW (no signal),153
-Pure-GW (no signal),53
-Pure-GW (no signal),118
-Pure-GW (no signal),372
-Pure-GW (no signal),375
-Pure-GW (no signal),203
-Pure-GW (no signal),332
-Pure-GW (no signal),179
-Pure-GW (no signal),208
-Pure-GW (no signal),85
-Pure-GW (no signal),21
-Pure-GW (no signal),19
-Pure-GW (no signal),175
-Pure-GW (no signal),219
-Pure-GW (no signal),203
-Pure-GW (no signal),221
-Pure-GW (no signal),23
-Pure-GW (no signal),257
-Pure-GW (no signal),161
-Pure-GW (no signal),220
-Pure-GW (no signal),162
-Pure-GW (no signal),27
-Pure-GW (no signal),19
-Pure-GW (no signal),207
-Pure-GW (no signal),187
-Pure-GW (no signal),308
-Pure-GW (no signal),315
-Pure-GW (no signal),287
-Pure-GW (no signal),237
-Pure-GW (no signal),105
-Pure-GW (no signal),331
-Pure-GW (no signal),26
-Pure-GW (no signal),312
-Pure-GW (no signal),22
-Pure-GW (no signal),68
-Pure-GW (no signal),121
-Pure-GW (no signal),201
-Pure-GW (no signal),391
-Pure-GW (no signal),146
-Pure-GW (no signal),377
-Pure-GW (no signal),380
-Pure-GW (no signal),133
-Pure-GW (no signal),97
-Pure-GW (no signal),48
-Pure-GW (no signal),96
-Pure-GW (no signal),214
-Pure-GW (no signal),313
-Pure-GW (no signal),115
-Pure-GW (no signal),91
-Pure-GW (no signal),71
-Pure-GW (no signal),219
-Pure-GW (no signal),253
-Pure-GW (no signal),138
-Pure-GW (no signal),139
-Pure-GW (no signal),184
-Pure-GW (no signal),151
-Pure-GW (no signal),27
-Pure-GW (no signal),122
-Pure-GW (no signal),65
-Pure-GW (no signal),391
-Pure-GW (no signal),228
-Pure-GW (no signal),271
-Pure-GW (no signal),192
-Pure-GW (no signal),195
-Pure-GW (no signal),298
-Pure-GW (no signal),26
-Pure-GW (no signal),328
-Pure-GW (no signal),69
-Pure-GW (no signal),366
-Pure-GW (no signal),196
-Pure-GW (no signal),21
-Pure-GW (no signal),235
-Pure-GW (no signal),288
-Pure-GW (no signal),316
-Pure-GW (no signal),219
-Pure-GW (no signal),357
-Pure-GW (no signal),164
-Pure-GW (no signal),169
-Pure-GW (no signal),13
-Pure-GW (no signal),89
-Pure-GW (no signal),62
-Pure-GW (no signal),97
-Pure-GW (no signal),298
-Pure-GW (no signal),167
-Pure-GW (no signal),35
-Pure-GW (no signal),162
-Pure-GW (no signal),290
-Pure-GW (no signal),17
-Pure-GW (no signal),244
-Pure-GW (no signal),342
-Pure-GW (no signal),307
-Pure-GW (no signal),30
-Pure-GW (no signal),108
-Pure-GW (no signal),205
-Pure-GW (no signal),171
-Pure-GW (no signal),252
-Pure-GW (no signal),114
-Pure-GW (no signal),194
-Pure-GW (no signal),238
-Pure-GW (no signal),144
-Pure-GW (no signal),28
-Pure-GW (no signal),289
-Pure-GW (no signal),35
-Pure-GW (no signal),15
-Pure-GW (no signal),142
-Pure-GW (no signal),77
-Pure-GW (no signal),189
-Pure-GW (no signal),119
-Pure-GW (no signal),159
-Pure-GW (no signal),297
-Pure-GW (no signal),149
-Pure-GW (no signal),209
-Pure-GW (no signal),279
-Pure-GW (no signal),15
-Pure-GW (no signal),332
-Pure-GW (no signal),39
-Pure-GW (no signal),273
-Pure-GW (no signal),334
-Pure-GW (no signal),188
-Pure-GW (no signal),165
-Pure-GW (no signal),170
-Pure-GW (no signal),161
-Pure-GW (no signal),353
-Pure-GW (no signal),54
-Pure-GW (no signal),218
-Pure-GW (no signal),215
-Pure-GW (no signal),55
-Pure-GW (no signal),248
-Pure-GW (no signal),348
-Pure-GW (no signal),335
-Pure-GW (no signal),27
-Pure-GW (no signal),310
-Pure-GW (no signal),177
-Pure-GW (no signal),342
-Pure-GW (no signal),358
-Pure-GW (no signal),234
-Pure-GW (no signal),189
-Pure-GW (no signal),300
-Pure-GW (no signal),245
-Pure-GW (no signal),95
-Pure-GW (no signal),116
-Pure-GW (no signal),346
-Pure-GW (no signal),144
-Pure-GW (no signal),121
-Pure-GW (no signal),16
-Pure-GW (no signal),106
-Pure-GW (no signal),6
-Pure-GW (no signal),78
-Pure-GW (no signal),300
-Pure-GW (no signal),229
-Pure-GW (no signal),17
-Pure-GW (no signal),80
-Pure-GW (no signal),50
-Pure-GW (no signal),122
-Pure-GW (no signal),24
-Pure-GW (no signal),349
-Pure-GW (no signal),171
-Pure-GW (no signal),17
-Pure-GW (no signal),300
-Pure-GW (no signal),395
-Pure-GW (no signal),82
-Pure-GW (no signal),287
-Pure-GW (no signal),223
-Pure-GW (no signal),228
-Pure-GW (no signal),221
-Pure-GW (no signal),38
-Pure-GW (no signal),344
-Pure-GW (no signal),70
-Pure-GW (no signal),216
-Pure-GW (no signal),104
-Pure-GW (no signal),307
-Pure-GW (no signal),246
-Pure-GW (no signal),86
-Pure-GW (no signal),287
-Pure-GW (no signal),157
-Pure-GW (no signal),217
-Pure-GW (no signal),203
-Pure-GW (no signal),27
-Pure-GW (no signal),298
-Pure-GW (no signal),178
-Pure-GW (no signal),121
-Pure-GW (no signal),59
-Pure-GW (no signal),169
-Pure-GW (no signal),73
-Pure-GW (no signal),24
-Pure-GW (no signal),263
-Pure-GW (no signal),34
-Pure-GW (no signal),393
-Pure-GW (no signal),240
-Pure-GW (no signal),244
-Pure-GW (no signal),290
-Pure-GW (no signal),32
-Pure-GW (no signal),194
-Pure-GW (no signal),25
-Pure-GW (no signal),320
-Pure-GW (no signal),96
-Pure-GW (no signal),81
-Pure-GW (no signal),351
-Pure-GW (no signal),86
-Pure-GW (no signal),206
-Pure-GW (no signal),21
-Pure-GW (no signal),310
-Pure-GW (no signal),204
-Pure-GW (no signal),11
-Pure-GW (no signal),58
-Pure-GW (no signal),83
-Pure-GW (no signal),122
-Pure-GW (no signal),27
-Pure-GW (no signal),284
-Pure-GW (no signal),51
-Pure-GW (no signal),15
-Pure-GW (no signal),40
-Pure-GW (no signal),149
-Pure-GW (no signal),29
-Pure-GW (no signal),8
-Pure-GW (no signal),212
-Pure-GW (no signal),17
-Pure-GW (no signal),325
-Pure-GW (no signal),26
-Pure-GW (no signal),103
-Pure-GW (no signal),187
-Pure-GW (no signal),272
-Pure-GW (no signal),135
-Pure-GW (no signal),219
-Pure-GW (no signal),237
-Pure-GW (no signal),211
-Text-only (cosine),151
-Text-only (cosine),1
-Text-only (cosine),12
-Text-only (cosine),125
-Text-only (cosine),172
-Text-only (cosine),47
-Text-only (cosine),4
-Text-only (cosine),158
-Text-only (cosine),82
-Text-only (cosine),2
-Text-only (cosine),15
-Text-only (cosine),1
-Text-only (cosine),207
-Text-only (cosine),1
-Text-only (cosine),102
-Text-only (cosine),8
-Text-only (cosine),98
-Text-only (cosine),80
-Text-only (cosine),6
-Text-only (cosine),16
-Text-only (cosine),143
-Text-only (cosine),78
-Text-only (cosine),33
-Text-only (cosine),2
-Text-only (cosine),141
-Text-only (cosine),146
-Text-only (cosine),3
-Text-only (cosine),49
-Text-only (cosine),16
-Text-only (cosine),271
-Text-only (cosine),5
-Text-only (cosine),1
-Text-only (cosine),29
-Text-only (cosine),10
-Text-only (cosine),118
-Text-only (cosine),3
-Text-only (cosine),17
-Text-only (cosine),1
-Text-only (cosine),19
-Text-only (cosine),11
-Text-only (cosine),24
-Text-only (cosine),297
-Text-only (cosine),12
-Text-only (cosine),3
-Text-only (cosine),123
-Text-only (cosine),1
-Text-only (cosine),167
-Text-only (cosine),25
-Text-only (cosine),108
-Text-only (cosine),1
-Text-only (cosine),24
-Text-only (cosine),120
-Text-only (cosine),19
-Text-only (cosine),216
-Text-only (cosine),6
-Text-only (cosine),45
-Text-only (cosine),311
-Text-only (cosine),140
-Text-only (cosine),324
-Text-only (cosine),74
-Text-only (cosine),80
-Text-only (cosine),173
-Text-only (cosine),188
-Text-only (cosine),162
-Text-only (cosine),16
-Text-only (cosine),258
-Text-only (cosine),25
-Text-only (cosine),99
-Text-only (cosine),141
-Text-only (cosine),81
-Text-only (cosine),20
-Text-only (cosine),39
-Text-only (cosine),42
-Text-only (cosine),213
-Text-only (cosine),82
-Text-only (cosine),1
-Text-only (cosine),3
-Text-only (cosine),348
-Text-only (cosine),3
-Text-only (cosine),298
-Text-only (cosine),300
-Text-only (cosine),25
-Text-only (cosine),201
-Text-only (cosine),95
-Text-only (cosine),219
-Text-only (cosine),24
-Text-only (cosine),48
-Text-only (cosine),325
-Text-only (cosine),2
-Text-only (cosine),166
-Text-only (cosine),76
-Text-only (cosine),19
-Text-only (cosine),316
-Text-only (cosine),137
-Text-only (cosine),24
-Text-only (cosine),21
-Text-only (cosine),154
-Text-only (cosine),113
-Text-only (cosine),112
-Text-only (cosine),297
-Text-only (cosine),370
-Text-only (cosine),180
-Text-only (cosine),28
-Text-only (cosine),214
-Text-only (cosine),151
-Text-only (cosine),55
-Text-only (cosine),64
-Text-only (cosine),13
-Text-only (cosine),187
-Text-only (cosine),150
-Text-only (cosine),225
-Text-only (cosine),313
-Text-only (cosine),170
-Text-only (cosine),9
-Text-only (cosine),7
-Text-only (cosine),127
-Text-only (cosine),4
-Text-only (cosine),159
-Text-only (cosine),38
-Text-only (cosine),392
-Text-only (cosine),6
-Text-only (cosine),39
-Text-only (cosine),3
-Text-only (cosine),9
-Text-only (cosine),72
-Text-only (cosine),35
-Text-only (cosine),4
-Text-only (cosine),156
-Text-only (cosine),25
-Text-only (cosine),84
-Text-only (cosine),46
-Text-only (cosine),8
-Text-only (cosine),82
-Text-only (cosine),157
-Text-only (cosine),5
-Text-only (cosine),168
-Text-only (cosine),2
-Text-only (cosine),280
-Text-only (cosine),140
-Text-only (cosine),4
-Text-only (cosine),1
-Text-only (cosine),138
-Text-only (cosine),74
-Text-only (cosine),53
-Text-only (cosine),85
-Text-only (cosine),2
-Text-only (cosine),9
-Text-only (cosine),277
-Text-only (cosine),7
-Text-only (cosine),3
-Text-only (cosine),204
-Text-only (cosine),320
-Text-only (cosine),25
-Text-only (cosine),13
-Text-only (cosine),36
-Text-only (cosine),1
-Text-only (cosine),26
-Text-only (cosine),5
-Text-only (cosine),22
-Text-only (cosine),7
-Text-only (cosine),6
-Text-only (cosine),64
-Text-only (cosine),16
-Text-only (cosine),7
-Text-only (cosine),28
-Text-only (cosine),234
-Text-only (cosine),114
-Text-only (cosine),162
-Text-only (cosine),105
-Text-only (cosine),2
-Text-only (cosine),24
-Text-only (cosine),100
-Text-only (cosine),13
-Text-only (cosine),154
-Text-only (cosine),271
-Text-only (cosine),79
-Text-only (cosine),156
-Text-only (cosine),177
-Text-only (cosine),235
-Text-only (cosine),42
-Text-only (cosine),340
-Text-only (cosine),106
-Text-only (cosine),2
-Text-only (cosine),39
-Text-only (cosine),63
-Text-only (cosine),33
-Text-only (cosine),261
-Text-only (cosine),24
-Text-only (cosine),28
-Text-only (cosine),18
-Text-only (cosine),101
-Text-only (cosine),10
-Text-only (cosine),158
-Text-only (cosine),168
-Text-only (cosine),1
-Text-only (cosine),338
-Text-only (cosine),51
-Text-only (cosine),58
-Text-only (cosine),7
-Text-only (cosine),11
-Text-only (cosine),267
-Text-only (cosine),28
-Text-only (cosine),101
-Text-only (cosine),90
-Text-only (cosine),232
-Text-only (cosine),123
-Text-only (cosine),35
-Text-only (cosine),253
-Text-only (cosine),1
-Text-only (cosine),304
-Text-only (cosine),2
-Text-only (cosine),14
-Text-only (cosine),69
-Text-only (cosine),129
-Text-only (cosine),2
-Text-only (cosine),2
-Text-only (cosine),106
-Text-only (cosine),84
-Text-only (cosine),103
-Text-only (cosine),64
-Text-only (cosine),61
-Text-only (cosine),76
-Text-only (cosine),343
-Text-only (cosine),3
-Text-only (cosine),58
-Text-only (cosine),18
-Text-only (cosine),9
-Text-only (cosine),4
-Text-only (cosine),378
-Text-only (cosine),360
-Text-only (cosine),2
-Text-only (cosine),236
-Text-only (cosine),11
-Text-only (cosine),9
-Text-only (cosine),4
-Text-only (cosine),20
-Text-only (cosine),148
-Text-only (cosine),45
-Text-only (cosine),94
-Text-only (cosine),307
-Text-only (cosine),87
-Text-only (cosine),28
-Text-only (cosine),1
-Text-only (cosine),86
-Text-only (cosine),13
-Text-only (cosine),154
-Text-only (cosine),270
-Text-only (cosine),2
-Text-only (cosine),24
-Text-only (cosine),66
-Text-only (cosine),158
-Text-only (cosine),24
-Text-only (cosine),171
-Text-only (cosine),3
-Text-only (cosine),8
-Text-only (cosine),20
-Text-only (cosine),23
-Text-only (cosine),173
-Text-only (cosine),21
-Text-only (cosine),20
-Text-only (cosine),97
-Text-only (cosine),70
-Text-only (cosine),1
-Text-only (cosine),89
-Text-only (cosine),2
-Text-only (cosine),1
-Text-only (cosine),6
-Text-only (cosine),3
-Text-only (cosine),259
-Text-only (cosine),187
-Text-only (cosine),2
-Text-only (cosine),301
-Text-only (cosine),114
-Text-only (cosine),1
-Text-only (cosine),204
-Text-only (cosine),56
-Text-only (cosine),332
-Text-only (cosine),126
-Text-only (cosine),61
-Text-only (cosine),385
-Text-only (cosine),210
-Text-only (cosine),77
-Text-only (cosine),11
-Text-only (cosine),101
-Text-only (cosine),15
-Text-only (cosine),208
-Text-only (cosine),1
-Text-only (cosine),7
-Text-only (cosine),5
-Text-only (cosine),222
-Text-only (cosine),15
-Text-only (cosine),131
-Text-only (cosine),1
-Text-only (cosine),59
-Text-only (cosine),2
-Text-only (cosine),128
-Text-only (cosine),80
-Text-only (cosine),31
-Text-only (cosine),2
-Text-only (cosine),8
-Text-only (cosine),1
-Text-only (cosine),36
-Text-only (cosine),108
-Text-only (cosine),65
-Text-only (cosine),248
-Text-only (cosine),42
-Text-only (cosine),5
-Text-only (cosine),275
-Text-only (cosine),13
-Text-only (cosine),307
-Text-only (cosine),36
-Text-only (cosine),8
-Text-only (cosine),37
-Text-only (cosine),143
-Text-only (cosine),87
-Text-only (cosine),218
-Text-only (cosine),297
-Text-only (cosine),310
-Text-only (cosine),6
-Text-only (cosine),60
-Text-only (cosine),193
-Text-only (cosine),152
-Text-only (cosine),24
-Text-only (cosine),64
-Text-only (cosine),8
-Text-only (cosine),24
-Text-only (cosine),6
-Text-only (cosine),147
-Text-only (cosine),130
-Text-only (cosine),51
-Text-only (cosine),104
-Text-only (cosine),32
-Text-only (cosine),312
-Text-only (cosine),145
-Text-only (cosine),16
-Text-only (cosine),149
-Text-only (cosine),67
-Text-only (cosine),68
-Text-only (cosine),51
-Text-only (cosine),208
-Text-only (cosine),44
-Text-only (cosine),4
-Text-only (cosine),97
-Text-only (cosine),95
-Text-only (cosine),1
-Text-only (cosine),135
-Text-only (cosine),226
-Text-only (cosine),11
-Text-only (cosine),125
-Text-only (cosine),59
-Text-only (cosine),35
-Text-only (cosine),1
-Text-only (cosine),133
-Text-only (cosine),116
-Text-only (cosine),12
-Text-only (cosine),23
-Text-only (cosine),39
-Text-only (cosine),142
-Text-only (cosine),60
-Text-only (cosine),34
-Text-only (cosine),1
-Text-only (cosine),391
-Text-only (cosine),301
-Text-only (cosine),86
-Text-only (cosine),13
-Text-only (cosine),71
-Text-only (cosine),1
-Text-only (cosine),5
-Text-only (cosine),198
-Text-only (cosine),54
-Text-only (cosine),330
-Text-only (cosine),147
-Text-only (cosine),221
-Text-only (cosine),325
-Text-only (cosine),1
-Text-only (cosine),46
-Text-only (cosine),89
-Text-only (cosine),253
-Text-only (cosine),232
-Text-only (cosine),101
-Text-only (cosine),116
-Text-only (cosine),5
-Text-only (cosine),129
-Text-only (cosine),28
-Text-only (cosine),260
-Text-only (cosine),12
-Text-only (cosine),4
-Text-only (cosine),38
-Text-only (cosine),15
-Text-only (cosine),114
-Text-only (cosine),99
-Text-only (cosine),223
-Text-only (cosine),122
-Text-only (cosine),4
-Text-only (cosine),1
-Text-only (cosine),22
-Text-only (cosine),132
-Text-only (cosine),71
-Text-only (cosine),169
-Text-only (cosine),344
+recipe,pair,rank
+FGW with caption cost,canonical,62
+FGW with caption cost,canonical,21
+FGW with caption cost,canonical,21
+FGW with caption cost,canonical,45
+FGW with caption cost,canonical,85
+FGW with caption cost,canonical,46
+FGW with caption cost,canonical,56
+FGW with caption cost,canonical,88
+FGW with caption cost,canonical,18
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,30
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,371
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,290
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,128
+FGW with caption cost,canonical,46
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,178
+FGW with caption cost,canonical,15
+FGW with caption cost,canonical,32
+FGW with caption cost,canonical,108
+FGW with caption cost,canonical,35
+FGW with caption cost,canonical,152
+FGW with caption cost,canonical,13
+FGW with caption cost,canonical,81
+FGW with caption cost,canonical,6
+FGW with caption cost,canonical,151
+FGW with caption cost,canonical,21
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,26
+FGW with caption cost,canonical,10
+FGW with caption cost,canonical,161
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,38
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,16
+FGW with caption cost,canonical,28
+FGW with caption cost,canonical,17
+FGW with caption cost,canonical,261
+FGW with caption cost,canonical,82
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,132
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,29
+FGW with caption cost,canonical,8
+FGW with caption cost,canonical,95
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,169
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,224
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,25
+FGW with caption cost,canonical,301
+FGW with caption cost,canonical,57
+FGW with caption cost,canonical,293
+FGW with caption cost,canonical,54
+FGW with caption cost,canonical,73
+FGW with caption cost,canonical,195
+FGW with caption cost,canonical,378
+FGW with caption cost,canonical,50
+FGW with caption cost,canonical,17
+FGW with caption cost,canonical,126
+FGW with caption cost,canonical,64
+FGW with caption cost,canonical,181
+FGW with caption cost,canonical,45
+FGW with caption cost,canonical,30
+FGW with caption cost,canonical,78
+FGW with caption cost,canonical,14
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,34
+FGW with caption cost,canonical,34
+FGW with caption cost,canonical,10
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,184
+FGW with caption cost,canonical,34
+FGW with caption cost,canonical,185
+FGW with caption cost,canonical,89
+FGW with caption cost,canonical,19
+FGW with caption cost,canonical,158
+FGW with caption cost,canonical,18
+FGW with caption cost,canonical,316
+FGW with caption cost,canonical,25
+FGW with caption cost,canonical,133
+FGW with caption cost,canonical,185
+FGW with caption cost,canonical,34
+FGW with caption cost,canonical,47
+FGW with caption cost,canonical,63
+FGW with caption cost,canonical,129
+FGW with caption cost,canonical,243
+FGW with caption cost,canonical,99
+FGW with caption cost,canonical,82
+FGW with caption cost,canonical,37
+FGW with caption cost,canonical,217
+FGW with caption cost,canonical,133
+FGW with caption cost,canonical,75
+FGW with caption cost,canonical,240
+FGW with caption cost,canonical,243
+FGW with caption cost,canonical,123
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,344
+FGW with caption cost,canonical,321
+FGW with caption cost,canonical,29
+FGW with caption cost,canonical,32
+FGW with caption cost,canonical,10
+FGW with caption cost,canonical,123
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,251
+FGW with caption cost,canonical,235
+FGW with caption cost,canonical,352
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,38
+FGW with caption cost,canonical,60
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,147
+FGW with caption cost,canonical,7
+FGW with caption cost,canonical,192
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,28
+FGW with caption cost,canonical,30
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,96
+FGW with caption cost,canonical,49
+FGW with caption cost,canonical,11
+FGW with caption cost,canonical,7
+FGW with caption cost,canonical,51
+FGW with caption cost,canonical,46
+FGW with caption cost,canonical,125
+FGW with caption cost,canonical,11
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,29
+FGW with caption cost,canonical,29
+FGW with caption cost,canonical,62
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,171
+FGW with caption cost,canonical,157
+FGW with caption cost,canonical,41
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,149
+FGW with caption cost,canonical,8
+FGW with caption cost,canonical,102
+FGW with caption cost,canonical,36
+FGW with caption cost,canonical,7
+FGW with caption cost,canonical,25
+FGW with caption cost,canonical,115
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,269
+FGW with caption cost,canonical,339
+FGW with caption cost,canonical,39
+FGW with caption cost,canonical,7
+FGW with caption cost,canonical,34
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,66
+FGW with caption cost,canonical,68
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,13
+FGW with caption cost,canonical,32
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,113
+FGW with caption cost,canonical,24
+FGW with caption cost,canonical,13
+FGW with caption cost,canonical,40
+FGW with caption cost,canonical,36
+FGW with caption cost,canonical,58
+FGW with caption cost,canonical,122
+FGW with caption cost,canonical,6
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,135
+FGW with caption cost,canonical,9
+FGW with caption cost,canonical,113
+FGW with caption cost,canonical,83
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,193
+FGW with caption cost,canonical,287
+FGW with caption cost,canonical,198
+FGW with caption cost,canonical,19
+FGW with caption cost,canonical,136
+FGW with caption cost,canonical,27
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,6
+FGW with caption cost,canonical,13
+FGW with caption cost,canonical,13
+FGW with caption cost,canonical,71
+FGW with caption cost,canonical,164
+FGW with caption cost,canonical,15
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,19
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,41
+FGW with caption cost,canonical,57
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,266
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,21
+FGW with caption cost,canonical,30
+FGW with caption cost,canonical,85
+FGW with caption cost,canonical,238
+FGW with caption cost,canonical,24
+FGW with caption cost,canonical,32
+FGW with caption cost,canonical,92
+FGW with caption cost,canonical,119
+FGW with caption cost,canonical,285
+FGW with caption cost,canonical,30
+FGW with caption cost,canonical,143
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,229
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,37
+FGW with caption cost,canonical,163
+FGW with caption cost,canonical,7
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,50
+FGW with caption cost,canonical,22
+FGW with caption cost,canonical,54
+FGW with caption cost,canonical,124
+FGW with caption cost,canonical,142
+FGW with caption cost,canonical,26
+FGW with caption cost,canonical,108
+FGW with caption cost,canonical,22
+FGW with caption cost,canonical,45
+FGW with caption cost,canonical,202
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,167
+FGW with caption cost,canonical,104
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,228
+FGW with caption cost,canonical,11
+FGW with caption cost,canonical,154
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,80
+FGW with caption cost,canonical,241
+FGW with caption cost,canonical,59
+FGW with caption cost,canonical,149
+FGW with caption cost,canonical,26
+FGW with caption cost,canonical,96
+FGW with caption cost,canonical,98
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,38
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,20
+FGW with caption cost,canonical,266
+FGW with caption cost,canonical,54
+FGW with caption cost,canonical,47
+FGW with caption cost,canonical,55
+FGW with caption cost,canonical,27
+FGW with caption cost,canonical,15
+FGW with caption cost,canonical,256
+FGW with caption cost,canonical,31
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,19
+FGW with caption cost,canonical,98
+FGW with caption cost,canonical,16
+FGW with caption cost,canonical,35
+FGW with caption cost,canonical,67
+FGW with caption cost,canonical,10
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,17
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,6
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,136
+FGW with caption cost,canonical,60
+FGW with caption cost,canonical,11
+FGW with caption cost,canonical,290
+FGW with caption cost,canonical,92
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,111
+FGW with caption cost,canonical,253
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,39
+FGW with caption cost,canonical,20
+FGW with caption cost,canonical,76
+FGW with caption cost,canonical,6
+FGW with caption cost,canonical,57
+FGW with caption cost,canonical,80
+FGW with caption cost,canonical,147
+FGW with caption cost,canonical,42
+FGW with caption cost,canonical,166
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,11
+FGW with caption cost,canonical,244
+FGW with caption cost,canonical,29
+FGW with caption cost,canonical,23
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,51
+FGW with caption cost,canonical,18
+FGW with caption cost,canonical,9
+FGW with caption cost,canonical,35
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,10
+FGW with caption cost,canonical,30
+FGW with caption cost,canonical,53
+FGW with caption cost,canonical,37
+FGW with caption cost,canonical,85
+FGW with caption cost,canonical,59
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,209
+FGW with caption cost,canonical,27
+FGW with caption cost,canonical,122
+FGW with caption cost,canonical,111
+FGW with caption cost,canonical,5
+FGW with caption cost,canonical,30
+FGW with caption cost,canonical,34
+FGW with caption cost,canonical,74
+FGW with caption cost,canonical,226
+FGW with caption cost,canonical,277
+FGW with caption cost,canonical,180
+FGW with caption cost,canonical,21
+FGW with caption cost,canonical,32
+FGW with caption cost,canonical,10
+FGW with caption cost,canonical,104
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,22
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,6
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,72
+FGW with caption cost,canonical,59
+FGW with caption cost,canonical,119
+FGW with caption cost,canonical,190
+FGW with caption cost,canonical,17
+FGW with caption cost,canonical,89
+FGW with caption cost,canonical,191
+FGW with caption cost,canonical,9
+FGW with caption cost,canonical,280
+FGW with caption cost,canonical,80
+FGW with caption cost,canonical,85
+FGW with caption cost,canonical,142
+FGW with caption cost,canonical,25
+FGW with caption cost,canonical,97
+FGW with caption cost,canonical,12
+FGW with caption cost,canonical,25
+FGW with caption cost,canonical,19
+FGW with caption cost,canonical,26
+FGW with caption cost,canonical,173
+FGW with caption cost,canonical,126
+FGW with caption cost,canonical,81
+FGW with caption cost,canonical,36
+FGW with caption cost,canonical,40
+FGW with caption cost,canonical,61
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,24
+FGW with caption cost,canonical,42
+FGW with caption cost,canonical,31
+FGW with caption cost,canonical,288
+FGW with caption cost,canonical,99
+FGW with caption cost,canonical,99
+FGW with caption cost,canonical,9
+FGW with caption cost,canonical,81
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,400
+FGW with caption cost,canonical,305
+FGW with caption cost,canonical,102
+FGW with caption cost,canonical,61
+FGW with caption cost,canonical,29
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,4
+FGW with caption cost,canonical,155
+FGW with caption cost,canonical,22
+FGW with caption cost,canonical,165
+FGW with caption cost,canonical,178
+FGW with caption cost,canonical,39
+FGW with caption cost,canonical,155
+FGW with caption cost,canonical,3
+FGW with caption cost,canonical,114
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,123
+FGW with caption cost,canonical,160
+FGW with caption cost,canonical,99
+FGW with caption cost,canonical,119
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,119
+FGW with caption cost,canonical,13
+FGW with caption cost,canonical,102
+FGW with caption cost,canonical,13
+FGW with caption cost,canonical,17
+FGW with caption cost,canonical,236
+FGW with caption cost,canonical,101
+FGW with caption cost,canonical,94
+FGW with caption cost,canonical,25
+FGW with caption cost,canonical,213
+FGW with caption cost,canonical,295
+FGW with caption cost,canonical,2
+FGW with caption cost,canonical,1
+FGW with caption cost,canonical,74
+FGW with caption cost,canonical,138
+FGW with caption cost,canonical,195
+FGW with caption cost,canonical,134
+FGW with caption cost,canonical,151
+Text-bridged composition,canonical,333
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,52
+Text-bridged composition,canonical,215
+Text-bridged composition,canonical,63
+Text-bridged composition,canonical,235
+Text-bridged composition,canonical,175
+Text-bridged composition,canonical,212
+Text-bridged composition,canonical,17
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,276
+Text-bridged composition,canonical,66
+Text-bridged composition,canonical,14
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,293
+Text-bridged composition,canonical,7
+Text-bridged composition,canonical,115
+Text-bridged composition,canonical,286
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,309
+Text-bridged composition,canonical,24
+Text-bridged composition,canonical,5
+Text-bridged composition,canonical,5
+Text-bridged composition,canonical,17
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,107
+Text-bridged composition,canonical,59
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,319
+Text-bridged composition,canonical,5
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,84
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,233
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,14
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,60
+Text-bridged composition,canonical,30
+Text-bridged composition,canonical,55
+Text-bridged composition,canonical,284
+Text-bridged composition,canonical,50
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,118
+Text-bridged composition,canonical,14
+Text-bridged composition,canonical,272
+Text-bridged composition,canonical,210
+Text-bridged composition,canonical,10
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,124
+Text-bridged composition,canonical,47
+Text-bridged composition,canonical,7
+Text-bridged composition,canonical,205
+Text-bridged composition,canonical,10
+Text-bridged composition,canonical,78
+Text-bridged composition,canonical,347
+Text-bridged composition,canonical,141
+Text-bridged composition,canonical,278
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,87
+Text-bridged composition,canonical,83
+Text-bridged composition,canonical,38
+Text-bridged composition,canonical,107
+Text-bridged composition,canonical,157
+Text-bridged composition,canonical,19
+Text-bridged composition,canonical,81
+Text-bridged composition,canonical,212
+Text-bridged composition,canonical,108
+Text-bridged composition,canonical,47
+Text-bridged composition,canonical,7
+Text-bridged composition,canonical,106
+Text-bridged composition,canonical,166
+Text-bridged composition,canonical,207
+Text-bridged composition,canonical,11
+Text-bridged composition,canonical,248
+Text-bridged composition,canonical,170
+Text-bridged composition,canonical,125
+Text-bridged composition,canonical,228
+Text-bridged composition,canonical,89
+Text-bridged composition,canonical,19
+Text-bridged composition,canonical,294
+Text-bridged composition,canonical,189
+Text-bridged composition,canonical,209
+Text-bridged composition,canonical,29
+Text-bridged composition,canonical,141
+Text-bridged composition,canonical,217
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,328
+Text-bridged composition,canonical,133
+Text-bridged composition,canonical,21
+Text-bridged composition,canonical,207
+Text-bridged composition,canonical,200
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,260
+Text-bridged composition,canonical,75
+Text-bridged composition,canonical,281
+Text-bridged composition,canonical,80
+Text-bridged composition,canonical,376
+Text-bridged composition,canonical,208
+Text-bridged composition,canonical,169
+Text-bridged composition,canonical,22
+Text-bridged composition,canonical,188
+Text-bridged composition,canonical,347
+Text-bridged composition,canonical,54
+Text-bridged composition,canonical,9
+Text-bridged composition,canonical,19
+Text-bridged composition,canonical,59
+Text-bridged composition,canonical,16
+Text-bridged composition,canonical,106
+Text-bridged composition,canonical,228
+Text-bridged composition,canonical,95
+Text-bridged composition,canonical,18
+Text-bridged composition,canonical,20
+Text-bridged composition,canonical,358
+Text-bridged composition,canonical,232
+Text-bridged composition,canonical,110
+Text-bridged composition,canonical,20
+Text-bridged composition,canonical,396
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,15
+Text-bridged composition,canonical,26
+Text-bridged composition,canonical,39
+Text-bridged composition,canonical,84
+Text-bridged composition,canonical,148
+Text-bridged composition,canonical,51
+Text-bridged composition,canonical,320
+Text-bridged composition,canonical,22
+Text-bridged composition,canonical,85
+Text-bridged composition,canonical,115
+Text-bridged composition,canonical,277
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,288
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,72
+Text-bridged composition,canonical,182
+Text-bridged composition,canonical,155
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,74
+Text-bridged composition,canonical,103
+Text-bridged composition,canonical,21
+Text-bridged composition,canonical,31
+Text-bridged composition,canonical,25
+Text-bridged composition,canonical,24
+Text-bridged composition,canonical,322
+Text-bridged composition,canonical,147
+Text-bridged composition,canonical,6
+Text-bridged composition,canonical,180
+Text-bridged composition,canonical,81
+Text-bridged composition,canonical,82
+Text-bridged composition,canonical,35
+Text-bridged composition,canonical,21
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,8
+Text-bridged composition,canonical,89
+Text-bridged composition,canonical,139
+Text-bridged composition,canonical,49
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,14
+Text-bridged composition,canonical,12
+Text-bridged composition,canonical,45
+Text-bridged composition,canonical,6
+Text-bridged composition,canonical,248
+Text-bridged composition,canonical,78
+Text-bridged composition,canonical,18
+Text-bridged composition,canonical,90
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,84
+Text-bridged composition,canonical,324
+Text-bridged composition,canonical,151
+Text-bridged composition,canonical,159
+Text-bridged composition,canonical,215
+Text-bridged composition,canonical,186
+Text-bridged composition,canonical,115
+Text-bridged composition,canonical,155
+Text-bridged composition,canonical,381
+Text-bridged composition,canonical,36
+Text-bridged composition,canonical,90
+Text-bridged composition,canonical,80
+Text-bridged composition,canonical,38
+Text-bridged composition,canonical,71
+Text-bridged composition,canonical,60
+Text-bridged composition,canonical,59
+Text-bridged composition,canonical,283
+Text-bridged composition,canonical,75
+Text-bridged composition,canonical,27
+Text-bridged composition,canonical,12
+Text-bridged composition,canonical,227
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,357
+Text-bridged composition,canonical,270
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,161
+Text-bridged composition,canonical,90
+Text-bridged composition,canonical,124
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,14
+Text-bridged composition,canonical,331
+Text-bridged composition,canonical,29
+Text-bridged composition,canonical,168
+Text-bridged composition,canonical,53
+Text-bridged composition,canonical,87
+Text-bridged composition,canonical,75
+Text-bridged composition,canonical,50
+Text-bridged composition,canonical,126
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,348
+Text-bridged composition,canonical,6
+Text-bridged composition,canonical,51
+Text-bridged composition,canonical,160
+Text-bridged composition,canonical,113
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,36
+Text-bridged composition,canonical,61
+Text-bridged composition,canonical,5
+Text-bridged composition,canonical,25
+Text-bridged composition,canonical,10
+Text-bridged composition,canonical,90
+Text-bridged composition,canonical,113
+Text-bridged composition,canonical,300
+Text-bridged composition,canonical,168
+Text-bridged composition,canonical,133
+Text-bridged composition,canonical,27
+Text-bridged composition,canonical,5
+Text-bridged composition,canonical,8
+Text-bridged composition,canonical,103
+Text-bridged composition,canonical,163
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,308
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,131
+Text-bridged composition,canonical,33
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,54
+Text-bridged composition,canonical,35
+Text-bridged composition,canonical,9
+Text-bridged composition,canonical,292
+Text-bridged composition,canonical,62
+Text-bridged composition,canonical,28
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,144
+Text-bridged composition,canonical,148
+Text-bridged composition,canonical,164
+Text-bridged composition,canonical,258
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,54
+Text-bridged composition,canonical,68
+Text-bridged composition,canonical,257
+Text-bridged composition,canonical,95
+Text-bridged composition,canonical,89
+Text-bridged composition,canonical,66
+Text-bridged composition,canonical,71
+Text-bridged composition,canonical,50
+Text-bridged composition,canonical,61
+Text-bridged composition,canonical,195
+Text-bridged composition,canonical,24
+Text-bridged composition,canonical,131
+Text-bridged composition,canonical,115
+Text-bridged composition,canonical,99
+Text-bridged composition,canonical,28
+Text-bridged composition,canonical,61
+Text-bridged composition,canonical,36
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,18
+Text-bridged composition,canonical,12
+Text-bridged composition,canonical,287
+Text-bridged composition,canonical,171
+Text-bridged composition,canonical,8
+Text-bridged composition,canonical,338
+Text-bridged composition,canonical,271
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,273
+Text-bridged composition,canonical,24
+Text-bridged composition,canonical,345
+Text-bridged composition,canonical,166
+Text-bridged composition,canonical,248
+Text-bridged composition,canonical,371
+Text-bridged composition,canonical,14
+Text-bridged composition,canonical,59
+Text-bridged composition,canonical,35
+Text-bridged composition,canonical,68
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,43
+Text-bridged composition,canonical,23
+Text-bridged composition,canonical,148
+Text-bridged composition,canonical,34
+Text-bridged composition,canonical,33
+Text-bridged composition,canonical,208
+Text-bridged composition,canonical,374
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,89
+Text-bridged composition,canonical,8
+Text-bridged composition,canonical,52
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,148
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,21
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,28
+Text-bridged composition,canonical,290
+Text-bridged composition,canonical,114
+Text-bridged composition,canonical,331
+Text-bridged composition,canonical,45
+Text-bridged composition,canonical,235
+Text-bridged composition,canonical,98
+Text-bridged composition,canonical,12
+Text-bridged composition,canonical,51
+Text-bridged composition,canonical,161
+Text-bridged composition,canonical,5
+Text-bridged composition,canonical,29
+Text-bridged composition,canonical,115
+Text-bridged composition,canonical,125
+Text-bridged composition,canonical,37
+Text-bridged composition,canonical,318
+Text-bridged composition,canonical,187
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,17
+Text-bridged composition,canonical,21
+Text-bridged composition,canonical,112
+Text-bridged composition,canonical,116
+Text-bridged composition,canonical,95
+Text-bridged composition,canonical,9
+Text-bridged composition,canonical,27
+Text-bridged composition,canonical,5
+Text-bridged composition,canonical,87
+Text-bridged composition,canonical,47
+Text-bridged composition,canonical,35
+Text-bridged composition,canonical,148
+Text-bridged composition,canonical,21
+Text-bridged composition,canonical,71
+Text-bridged composition,canonical,269
+Text-bridged composition,canonical,71
+Text-bridged composition,canonical,183
+Text-bridged composition,canonical,42
+Text-bridged composition,canonical,133
+Text-bridged composition,canonical,26
+Text-bridged composition,canonical,175
+Text-bridged composition,canonical,9
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,17
+Text-bridged composition,canonical,140
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,100
+Text-bridged composition,canonical,186
+Text-bridged composition,canonical,7
+Text-bridged composition,canonical,75
+Text-bridged composition,canonical,31
+Text-bridged composition,canonical,144
+Text-bridged composition,canonical,28
+Text-bridged composition,canonical,40
+Text-bridged composition,canonical,249
+Text-bridged composition,canonical,35
+Text-bridged composition,canonical,32
+Text-bridged composition,canonical,11
+Text-bridged composition,canonical,219
+Text-bridged composition,canonical,28
+Text-bridged composition,canonical,135
+Text-bridged composition,canonical,43
+Text-bridged composition,canonical,377
+Text-bridged composition,canonical,181
+Text-bridged composition,canonical,186
+Text-bridged composition,canonical,80
+Text-bridged composition,canonical,2
+Text-bridged composition,canonical,24
+Text-bridged composition,canonical,36
+Text-bridged composition,canonical,162
+Text-bridged composition,canonical,209
+Text-bridged composition,canonical,353
+Text-bridged composition,canonical,217
+Text-bridged composition,canonical,3
+Text-bridged composition,canonical,294
+Text-bridged composition,canonical,57
+Text-bridged composition,canonical,169
+Text-bridged composition,canonical,73
+Text-bridged composition,canonical,243
+Text-bridged composition,canonical,204
+Text-bridged composition,canonical,108
+Text-bridged composition,canonical,151
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,252
+Text-bridged composition,canonical,20
+Text-bridged composition,canonical,86
+Text-bridged composition,canonical,4
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,205
+Text-bridged composition,canonical,67
+Text-bridged composition,canonical,94
+Text-bridged composition,canonical,253
+Text-bridged composition,canonical,178
+Text-bridged composition,canonical,139
+Text-bridged composition,canonical,13
+Text-bridged composition,canonical,1
+Text-bridged composition,canonical,107
+Text-bridged composition,canonical,43
+Text-bridged composition,canonical,192
+Text-bridged composition,canonical,217
+Text-bridged composition,canonical,130
+GW (intra-modal geometry),canonical,109
+GW (intra-modal geometry),canonical,86
+GW (intra-modal geometry),canonical,352
+GW (intra-modal geometry),canonical,285
+GW (intra-modal geometry),canonical,210
+GW (intra-modal geometry),canonical,148
+GW (intra-modal geometry),canonical,313
+GW (intra-modal geometry),canonical,146
+GW (intra-modal geometry),canonical,268
+GW (intra-modal geometry),canonical,138
+GW (intra-modal geometry),canonical,95
+GW (intra-modal geometry),canonical,375
+GW (intra-modal geometry),canonical,399
+GW (intra-modal geometry),canonical,311
+GW (intra-modal geometry),canonical,242
+GW (intra-modal geometry),canonical,151
+GW (intra-modal geometry),canonical,84
+GW (intra-modal geometry),canonical,57
+GW (intra-modal geometry),canonical,185
+GW (intra-modal geometry),canonical,195
+GW (intra-modal geometry),canonical,184
+GW (intra-modal geometry),canonical,75
+GW (intra-modal geometry),canonical,251
+GW (intra-modal geometry),canonical,279
+GW (intra-modal geometry),canonical,245
+GW (intra-modal geometry),canonical,205
+GW (intra-modal geometry),canonical,132
+GW (intra-modal geometry),canonical,55
+GW (intra-modal geometry),canonical,84
+GW (intra-modal geometry),canonical,25
+GW (intra-modal geometry),canonical,314
+GW (intra-modal geometry),canonical,6
+GW (intra-modal geometry),canonical,230
+GW (intra-modal geometry),canonical,79
+GW (intra-modal geometry),canonical,109
+GW (intra-modal geometry),canonical,33
+GW (intra-modal geometry),canonical,88
+GW (intra-modal geometry),canonical,166
+GW (intra-modal geometry),canonical,147
+GW (intra-modal geometry),canonical,360
+GW (intra-modal geometry),canonical,116
+GW (intra-modal geometry),canonical,213
+GW (intra-modal geometry),canonical,161
+GW (intra-modal geometry),canonical,196
+GW (intra-modal geometry),canonical,393
+GW (intra-modal geometry),canonical,178
+GW (intra-modal geometry),canonical,248
+GW (intra-modal geometry),canonical,97
+GW (intra-modal geometry),canonical,252
+GW (intra-modal geometry),canonical,208
+GW (intra-modal geometry),canonical,84
+GW (intra-modal geometry),canonical,4
+GW (intra-modal geometry),canonical,101
+GW (intra-modal geometry),canonical,368
+GW (intra-modal geometry),canonical,142
+GW (intra-modal geometry),canonical,126
+GW (intra-modal geometry),canonical,230
+GW (intra-modal geometry),canonical,61
+GW (intra-modal geometry),canonical,2
+GW (intra-modal geometry),canonical,367
+GW (intra-modal geometry),canonical,91
+GW (intra-modal geometry),canonical,29
+GW (intra-modal geometry),canonical,224
+GW (intra-modal geometry),canonical,142
+GW (intra-modal geometry),canonical,301
+GW (intra-modal geometry),canonical,270
+GW (intra-modal geometry),canonical,233
+GW (intra-modal geometry),canonical,193
+GW (intra-modal geometry),canonical,59
+GW (intra-modal geometry),canonical,144
+GW (intra-modal geometry),canonical,272
+GW (intra-modal geometry),canonical,82
+GW (intra-modal geometry),canonical,312
+GW (intra-modal geometry),canonical,121
+GW (intra-modal geometry),canonical,308
+GW (intra-modal geometry),canonical,342
+GW (intra-modal geometry),canonical,205
+GW (intra-modal geometry),canonical,240
+GW (intra-modal geometry),canonical,90
+GW (intra-modal geometry),canonical,291
+GW (intra-modal geometry),canonical,176
+GW (intra-modal geometry),canonical,182
+GW (intra-modal geometry),canonical,123
+GW (intra-modal geometry),canonical,103
+GW (intra-modal geometry),canonical,95
+GW (intra-modal geometry),canonical,312
+GW (intra-modal geometry),canonical,98
+GW (intra-modal geometry),canonical,173
+GW (intra-modal geometry),canonical,273
+GW (intra-modal geometry),canonical,187
+GW (intra-modal geometry),canonical,238
+GW (intra-modal geometry),canonical,392
+GW (intra-modal geometry),canonical,279
+GW (intra-modal geometry),canonical,274
+GW (intra-modal geometry),canonical,13
+GW (intra-modal geometry),canonical,328
+GW (intra-modal geometry),canonical,198
+GW (intra-modal geometry),canonical,246
+GW (intra-modal geometry),canonical,103
+GW (intra-modal geometry),canonical,237
+GW (intra-modal geometry),canonical,76
+GW (intra-modal geometry),canonical,28
+GW (intra-modal geometry),canonical,8
+GW (intra-modal geometry),canonical,95
+GW (intra-modal geometry),canonical,376
+GW (intra-modal geometry),canonical,252
+GW (intra-modal geometry),canonical,64
+GW (intra-modal geometry),canonical,70
+GW (intra-modal geometry),canonical,13
+GW (intra-modal geometry),canonical,33
+GW (intra-modal geometry),canonical,27
+GW (intra-modal geometry),canonical,127
+GW (intra-modal geometry),canonical,251
+GW (intra-modal geometry),canonical,20
+GW (intra-modal geometry),canonical,302
+GW (intra-modal geometry),canonical,267
+GW (intra-modal geometry),canonical,351
+GW (intra-modal geometry),canonical,253
+GW (intra-modal geometry),canonical,214
+GW (intra-modal geometry),canonical,180
+GW (intra-modal geometry),canonical,62
+GW (intra-modal geometry),canonical,292
+GW (intra-modal geometry),canonical,320
+GW (intra-modal geometry),canonical,272
+GW (intra-modal geometry),canonical,127
+GW (intra-modal geometry),canonical,4
+GW (intra-modal geometry),canonical,311
+GW (intra-modal geometry),canonical,65
+GW (intra-modal geometry),canonical,244
+GW (intra-modal geometry),canonical,116
+GW (intra-modal geometry),canonical,303
+GW (intra-modal geometry),canonical,289
+GW (intra-modal geometry),canonical,377
+GW (intra-modal geometry),canonical,76
+GW (intra-modal geometry),canonical,171
+GW (intra-modal geometry),canonical,343
+GW (intra-modal geometry),canonical,57
+GW (intra-modal geometry),canonical,290
+GW (intra-modal geometry),canonical,20
+GW (intra-modal geometry),canonical,84
+GW (intra-modal geometry),canonical,38
+GW (intra-modal geometry),canonical,341
+GW (intra-modal geometry),canonical,231
+GW (intra-modal geometry),canonical,307
+GW (intra-modal geometry),canonical,172
+GW (intra-modal geometry),canonical,140
+GW (intra-modal geometry),canonical,18
+GW (intra-modal geometry),canonical,40
+GW (intra-modal geometry),canonical,16
+GW (intra-modal geometry),canonical,31
+GW (intra-modal geometry),canonical,163
+GW (intra-modal geometry),canonical,92
+GW (intra-modal geometry),canonical,205
+GW (intra-modal geometry),canonical,115
+GW (intra-modal geometry),canonical,171
+GW (intra-modal geometry),canonical,387
+GW (intra-modal geometry),canonical,184
+GW (intra-modal geometry),canonical,282
+GW (intra-modal geometry),canonical,113
+GW (intra-modal geometry),canonical,261
+GW (intra-modal geometry),canonical,395
+GW (intra-modal geometry),canonical,30
+GW (intra-modal geometry),canonical,375
+GW (intra-modal geometry),canonical,379
+GW (intra-modal geometry),canonical,170
+GW (intra-modal geometry),canonical,193
+GW (intra-modal geometry),canonical,8
+GW (intra-modal geometry),canonical,101
+GW (intra-modal geometry),canonical,160
+GW (intra-modal geometry),canonical,74
+GW (intra-modal geometry),canonical,184
+GW (intra-modal geometry),canonical,247
+GW (intra-modal geometry),canonical,180
+GW (intra-modal geometry),canonical,98
+GW (intra-modal geometry),canonical,153
+GW (intra-modal geometry),canonical,53
+GW (intra-modal geometry),canonical,118
+GW (intra-modal geometry),canonical,372
+GW (intra-modal geometry),canonical,375
+GW (intra-modal geometry),canonical,203
+GW (intra-modal geometry),canonical,332
+GW (intra-modal geometry),canonical,179
+GW (intra-modal geometry),canonical,208
+GW (intra-modal geometry),canonical,85
+GW (intra-modal geometry),canonical,21
+GW (intra-modal geometry),canonical,19
+GW (intra-modal geometry),canonical,175
+GW (intra-modal geometry),canonical,219
+GW (intra-modal geometry),canonical,203
+GW (intra-modal geometry),canonical,221
+GW (intra-modal geometry),canonical,23
+GW (intra-modal geometry),canonical,257
+GW (intra-modal geometry),canonical,161
+GW (intra-modal geometry),canonical,220
+GW (intra-modal geometry),canonical,162
+GW (intra-modal geometry),canonical,27
+GW (intra-modal geometry),canonical,19
+GW (intra-modal geometry),canonical,207
+GW (intra-modal geometry),canonical,187
+GW (intra-modal geometry),canonical,308
+GW (intra-modal geometry),canonical,315
+GW (intra-modal geometry),canonical,287
+GW (intra-modal geometry),canonical,237
+GW (intra-modal geometry),canonical,105
+GW (intra-modal geometry),canonical,331
+GW (intra-modal geometry),canonical,26
+GW (intra-modal geometry),canonical,312
+GW (intra-modal geometry),canonical,22
+GW (intra-modal geometry),canonical,68
+GW (intra-modal geometry),canonical,121
+GW (intra-modal geometry),canonical,201
+GW (intra-modal geometry),canonical,391
+GW (intra-modal geometry),canonical,146
+GW (intra-modal geometry),canonical,377
+GW (intra-modal geometry),canonical,380
+GW (intra-modal geometry),canonical,133
+GW (intra-modal geometry),canonical,97
+GW (intra-modal geometry),canonical,48
+GW (intra-modal geometry),canonical,96
+GW (intra-modal geometry),canonical,214
+GW (intra-modal geometry),canonical,313
+GW (intra-modal geometry),canonical,115
+GW (intra-modal geometry),canonical,91
+GW (intra-modal geometry),canonical,71
+GW (intra-modal geometry),canonical,219
+GW (intra-modal geometry),canonical,253
+GW (intra-modal geometry),canonical,138
+GW (intra-modal geometry),canonical,139
+GW (intra-modal geometry),canonical,184
+GW (intra-modal geometry),canonical,151
+GW (intra-modal geometry),canonical,27
+GW (intra-modal geometry),canonical,122
+GW (intra-modal geometry),canonical,65
+GW (intra-modal geometry),canonical,391
+GW (intra-modal geometry),canonical,228
+GW (intra-modal geometry),canonical,271
+GW (intra-modal geometry),canonical,192
+GW (intra-modal geometry),canonical,195
+GW (intra-modal geometry),canonical,298
+GW (intra-modal geometry),canonical,26
+GW (intra-modal geometry),canonical,328
+GW (intra-modal geometry),canonical,69
+GW (intra-modal geometry),canonical,366
+GW (intra-modal geometry),canonical,196
+GW (intra-modal geometry),canonical,21
+GW (intra-modal geometry),canonical,235
+GW (intra-modal geometry),canonical,288
+GW (intra-modal geometry),canonical,316
+GW (intra-modal geometry),canonical,219
+GW (intra-modal geometry),canonical,357
+GW (intra-modal geometry),canonical,164
+GW (intra-modal geometry),canonical,169
+GW (intra-modal geometry),canonical,13
+GW (intra-modal geometry),canonical,89
+GW (intra-modal geometry),canonical,62
+GW (intra-modal geometry),canonical,97
+GW (intra-modal geometry),canonical,298
+GW (intra-modal geometry),canonical,167
+GW (intra-modal geometry),canonical,35
+GW (intra-modal geometry),canonical,162
+GW (intra-modal geometry),canonical,290
+GW (intra-modal geometry),canonical,17
+GW (intra-modal geometry),canonical,244
+GW (intra-modal geometry),canonical,342
+GW (intra-modal geometry),canonical,307
+GW (intra-modal geometry),canonical,30
+GW (intra-modal geometry),canonical,108
+GW (intra-modal geometry),canonical,205
+GW (intra-modal geometry),canonical,171
+GW (intra-modal geometry),canonical,252
+GW (intra-modal geometry),canonical,114
+GW (intra-modal geometry),canonical,194
+GW (intra-modal geometry),canonical,238
+GW (intra-modal geometry),canonical,144
+GW (intra-modal geometry),canonical,28
+GW (intra-modal geometry),canonical,289
+GW (intra-modal geometry),canonical,35
+GW (intra-modal geometry),canonical,15
+GW (intra-modal geometry),canonical,142
+GW (intra-modal geometry),canonical,77
+GW (intra-modal geometry),canonical,189
+GW (intra-modal geometry),canonical,119
+GW (intra-modal geometry),canonical,159
+GW (intra-modal geometry),canonical,297
+GW (intra-modal geometry),canonical,149
+GW (intra-modal geometry),canonical,209
+GW (intra-modal geometry),canonical,279
+GW (intra-modal geometry),canonical,15
+GW (intra-modal geometry),canonical,332
+GW (intra-modal geometry),canonical,39
+GW (intra-modal geometry),canonical,273
+GW (intra-modal geometry),canonical,334
+GW (intra-modal geometry),canonical,188
+GW (intra-modal geometry),canonical,165
+GW (intra-modal geometry),canonical,170
+GW (intra-modal geometry),canonical,161
+GW (intra-modal geometry),canonical,353
+GW (intra-modal geometry),canonical,54
+GW (intra-modal geometry),canonical,218
+GW (intra-modal geometry),canonical,215
+GW (intra-modal geometry),canonical,55
+GW (intra-modal geometry),canonical,248
+GW (intra-modal geometry),canonical,348
+GW (intra-modal geometry),canonical,335
+GW (intra-modal geometry),canonical,27
+GW (intra-modal geometry),canonical,310
+GW (intra-modal geometry),canonical,177
+GW (intra-modal geometry),canonical,342
+GW (intra-modal geometry),canonical,358
+GW (intra-modal geometry),canonical,234
+GW (intra-modal geometry),canonical,189
+GW (intra-modal geometry),canonical,300
+GW (intra-modal geometry),canonical,245
+GW (intra-modal geometry),canonical,95
+GW (intra-modal geometry),canonical,116
+GW (intra-modal geometry),canonical,346
+GW (intra-modal geometry),canonical,144
+GW (intra-modal geometry),canonical,121
+GW (intra-modal geometry),canonical,16
+GW (intra-modal geometry),canonical,106
+GW (intra-modal geometry),canonical,6
+GW (intra-modal geometry),canonical,78
+GW (intra-modal geometry),canonical,300
+GW (intra-modal geometry),canonical,229
+GW (intra-modal geometry),canonical,17
+GW (intra-modal geometry),canonical,80
+GW (intra-modal geometry),canonical,50
+GW (intra-modal geometry),canonical,122
+GW (intra-modal geometry),canonical,24
+GW (intra-modal geometry),canonical,349
+GW (intra-modal geometry),canonical,171
+GW (intra-modal geometry),canonical,17
+GW (intra-modal geometry),canonical,300
+GW (intra-modal geometry),canonical,395
+GW (intra-modal geometry),canonical,82
+GW (intra-modal geometry),canonical,287
+GW (intra-modal geometry),canonical,223
+GW (intra-modal geometry),canonical,228
+GW (intra-modal geometry),canonical,221
+GW (intra-modal geometry),canonical,38
+GW (intra-modal geometry),canonical,344
+GW (intra-modal geometry),canonical,70
+GW (intra-modal geometry),canonical,216
+GW (intra-modal geometry),canonical,104
+GW (intra-modal geometry),canonical,307
+GW (intra-modal geometry),canonical,246
+GW (intra-modal geometry),canonical,86
+GW (intra-modal geometry),canonical,287
+GW (intra-modal geometry),canonical,157
+GW (intra-modal geometry),canonical,217
+GW (intra-modal geometry),canonical,203
+GW (intra-modal geometry),canonical,27
+GW (intra-modal geometry),canonical,298
+GW (intra-modal geometry),canonical,178
+GW (intra-modal geometry),canonical,121
+GW (intra-modal geometry),canonical,59
+GW (intra-modal geometry),canonical,169
+GW (intra-modal geometry),canonical,73
+GW (intra-modal geometry),canonical,24
+GW (intra-modal geometry),canonical,263
+GW (intra-modal geometry),canonical,34
+GW (intra-modal geometry),canonical,393
+GW (intra-modal geometry),canonical,240
+GW (intra-modal geometry),canonical,244
+GW (intra-modal geometry),canonical,290
+GW (intra-modal geometry),canonical,32
+GW (intra-modal geometry),canonical,194
+GW (intra-modal geometry),canonical,25
+GW (intra-modal geometry),canonical,320
+GW (intra-modal geometry),canonical,96
+GW (intra-modal geometry),canonical,81
+GW (intra-modal geometry),canonical,351
+GW (intra-modal geometry),canonical,86
+GW (intra-modal geometry),canonical,206
+GW (intra-modal geometry),canonical,21
+GW (intra-modal geometry),canonical,310
+GW (intra-modal geometry),canonical,204
+GW (intra-modal geometry),canonical,11
+GW (intra-modal geometry),canonical,58
+GW (intra-modal geometry),canonical,83
+GW (intra-modal geometry),canonical,122
+GW (intra-modal geometry),canonical,27
+GW (intra-modal geometry),canonical,284
+GW (intra-modal geometry),canonical,51
+GW (intra-modal geometry),canonical,15
+GW (intra-modal geometry),canonical,40
+GW (intra-modal geometry),canonical,149
+GW (intra-modal geometry),canonical,29
+GW (intra-modal geometry),canonical,8
+GW (intra-modal geometry),canonical,212
+GW (intra-modal geometry),canonical,17
+GW (intra-modal geometry),canonical,325
+GW (intra-modal geometry),canonical,26
+GW (intra-modal geometry),canonical,103
+GW (intra-modal geometry),canonical,187
+GW (intra-modal geometry),canonical,272
+GW (intra-modal geometry),canonical,135
+GW (intra-modal geometry),canonical,219
+GW (intra-modal geometry),canonical,237
+GW (intra-modal geometry),canonical,211
+Raw caption cosine,canonical,151
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,12
+Raw caption cosine,canonical,125
+Raw caption cosine,canonical,172
+Raw caption cosine,canonical,47
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,158
+Raw caption cosine,canonical,82
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,15
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,207
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,102
+Raw caption cosine,canonical,8
+Raw caption cosine,canonical,98
+Raw caption cosine,canonical,80
+Raw caption cosine,canonical,6
+Raw caption cosine,canonical,16
+Raw caption cosine,canonical,143
+Raw caption cosine,canonical,78
+Raw caption cosine,canonical,33
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,141
+Raw caption cosine,canonical,146
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,49
+Raw caption cosine,canonical,16
+Raw caption cosine,canonical,271
+Raw caption cosine,canonical,5
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,29
+Raw caption cosine,canonical,10
+Raw caption cosine,canonical,118
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,17
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,19
+Raw caption cosine,canonical,11
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,297
+Raw caption cosine,canonical,12
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,123
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,167
+Raw caption cosine,canonical,25
+Raw caption cosine,canonical,108
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,120
+Raw caption cosine,canonical,19
+Raw caption cosine,canonical,216
+Raw caption cosine,canonical,6
+Raw caption cosine,canonical,45
+Raw caption cosine,canonical,311
+Raw caption cosine,canonical,140
+Raw caption cosine,canonical,324
+Raw caption cosine,canonical,74
+Raw caption cosine,canonical,80
+Raw caption cosine,canonical,173
+Raw caption cosine,canonical,188
+Raw caption cosine,canonical,162
+Raw caption cosine,canonical,16
+Raw caption cosine,canonical,258
+Raw caption cosine,canonical,25
+Raw caption cosine,canonical,99
+Raw caption cosine,canonical,141
+Raw caption cosine,canonical,81
+Raw caption cosine,canonical,20
+Raw caption cosine,canonical,39
+Raw caption cosine,canonical,42
+Raw caption cosine,canonical,213
+Raw caption cosine,canonical,82
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,348
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,298
+Raw caption cosine,canonical,300
+Raw caption cosine,canonical,25
+Raw caption cosine,canonical,201
+Raw caption cosine,canonical,95
+Raw caption cosine,canonical,219
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,48
+Raw caption cosine,canonical,325
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,166
+Raw caption cosine,canonical,76
+Raw caption cosine,canonical,19
+Raw caption cosine,canonical,316
+Raw caption cosine,canonical,137
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,21
+Raw caption cosine,canonical,154
+Raw caption cosine,canonical,113
+Raw caption cosine,canonical,112
+Raw caption cosine,canonical,297
+Raw caption cosine,canonical,370
+Raw caption cosine,canonical,180
+Raw caption cosine,canonical,28
+Raw caption cosine,canonical,214
+Raw caption cosine,canonical,151
+Raw caption cosine,canonical,55
+Raw caption cosine,canonical,64
+Raw caption cosine,canonical,13
+Raw caption cosine,canonical,187
+Raw caption cosine,canonical,150
+Raw caption cosine,canonical,225
+Raw caption cosine,canonical,313
+Raw caption cosine,canonical,170
+Raw caption cosine,canonical,9
+Raw caption cosine,canonical,7
+Raw caption cosine,canonical,127
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,159
+Raw caption cosine,canonical,38
+Raw caption cosine,canonical,392
+Raw caption cosine,canonical,6
+Raw caption cosine,canonical,39
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,9
+Raw caption cosine,canonical,72
+Raw caption cosine,canonical,35
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,156
+Raw caption cosine,canonical,25
+Raw caption cosine,canonical,84
+Raw caption cosine,canonical,46
+Raw caption cosine,canonical,8
+Raw caption cosine,canonical,82
+Raw caption cosine,canonical,157
+Raw caption cosine,canonical,5
+Raw caption cosine,canonical,168
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,280
+Raw caption cosine,canonical,140
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,138
+Raw caption cosine,canonical,74
+Raw caption cosine,canonical,53
+Raw caption cosine,canonical,85
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,9
+Raw caption cosine,canonical,277
+Raw caption cosine,canonical,7
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,204
+Raw caption cosine,canonical,320
+Raw caption cosine,canonical,25
+Raw caption cosine,canonical,13
+Raw caption cosine,canonical,36
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,26
+Raw caption cosine,canonical,5
+Raw caption cosine,canonical,22
+Raw caption cosine,canonical,7
+Raw caption cosine,canonical,6
+Raw caption cosine,canonical,64
+Raw caption cosine,canonical,16
+Raw caption cosine,canonical,7
+Raw caption cosine,canonical,28
+Raw caption cosine,canonical,234
+Raw caption cosine,canonical,114
+Raw caption cosine,canonical,162
+Raw caption cosine,canonical,105
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,100
+Raw caption cosine,canonical,13
+Raw caption cosine,canonical,154
+Raw caption cosine,canonical,271
+Raw caption cosine,canonical,79
+Raw caption cosine,canonical,156
+Raw caption cosine,canonical,177
+Raw caption cosine,canonical,235
+Raw caption cosine,canonical,42
+Raw caption cosine,canonical,340
+Raw caption cosine,canonical,106
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,39
+Raw caption cosine,canonical,63
+Raw caption cosine,canonical,33
+Raw caption cosine,canonical,261
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,28
+Raw caption cosine,canonical,18
+Raw caption cosine,canonical,101
+Raw caption cosine,canonical,10
+Raw caption cosine,canonical,158
+Raw caption cosine,canonical,168
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,338
+Raw caption cosine,canonical,51
+Raw caption cosine,canonical,58
+Raw caption cosine,canonical,7
+Raw caption cosine,canonical,11
+Raw caption cosine,canonical,267
+Raw caption cosine,canonical,28
+Raw caption cosine,canonical,101
+Raw caption cosine,canonical,90
+Raw caption cosine,canonical,232
+Raw caption cosine,canonical,123
+Raw caption cosine,canonical,35
+Raw caption cosine,canonical,253
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,304
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,14
+Raw caption cosine,canonical,69
+Raw caption cosine,canonical,129
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,106
+Raw caption cosine,canonical,84
+Raw caption cosine,canonical,103
+Raw caption cosine,canonical,64
+Raw caption cosine,canonical,61
+Raw caption cosine,canonical,76
+Raw caption cosine,canonical,343
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,58
+Raw caption cosine,canonical,18
+Raw caption cosine,canonical,9
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,378
+Raw caption cosine,canonical,360
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,236
+Raw caption cosine,canonical,11
+Raw caption cosine,canonical,9
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,20
+Raw caption cosine,canonical,148
+Raw caption cosine,canonical,45
+Raw caption cosine,canonical,94
+Raw caption cosine,canonical,307
+Raw caption cosine,canonical,87
+Raw caption cosine,canonical,28
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,86
+Raw caption cosine,canonical,13
+Raw caption cosine,canonical,154
+Raw caption cosine,canonical,270
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,66
+Raw caption cosine,canonical,158
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,171
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,8
+Raw caption cosine,canonical,20
+Raw caption cosine,canonical,23
+Raw caption cosine,canonical,173
+Raw caption cosine,canonical,21
+Raw caption cosine,canonical,20
+Raw caption cosine,canonical,97
+Raw caption cosine,canonical,70
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,89
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,6
+Raw caption cosine,canonical,3
+Raw caption cosine,canonical,259
+Raw caption cosine,canonical,187
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,301
+Raw caption cosine,canonical,114
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,204
+Raw caption cosine,canonical,56
+Raw caption cosine,canonical,332
+Raw caption cosine,canonical,126
+Raw caption cosine,canonical,61
+Raw caption cosine,canonical,385
+Raw caption cosine,canonical,210
+Raw caption cosine,canonical,77
+Raw caption cosine,canonical,11
+Raw caption cosine,canonical,101
+Raw caption cosine,canonical,15
+Raw caption cosine,canonical,208
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,7
+Raw caption cosine,canonical,5
+Raw caption cosine,canonical,222
+Raw caption cosine,canonical,15
+Raw caption cosine,canonical,131
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,59
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,128
+Raw caption cosine,canonical,80
+Raw caption cosine,canonical,31
+Raw caption cosine,canonical,2
+Raw caption cosine,canonical,8
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,36
+Raw caption cosine,canonical,108
+Raw caption cosine,canonical,65
+Raw caption cosine,canonical,248
+Raw caption cosine,canonical,42
+Raw caption cosine,canonical,5
+Raw caption cosine,canonical,275
+Raw caption cosine,canonical,13
+Raw caption cosine,canonical,307
+Raw caption cosine,canonical,36
+Raw caption cosine,canonical,8
+Raw caption cosine,canonical,37
+Raw caption cosine,canonical,143
+Raw caption cosine,canonical,87
+Raw caption cosine,canonical,218
+Raw caption cosine,canonical,297
+Raw caption cosine,canonical,310
+Raw caption cosine,canonical,6
+Raw caption cosine,canonical,60
+Raw caption cosine,canonical,193
+Raw caption cosine,canonical,152
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,64
+Raw caption cosine,canonical,8
+Raw caption cosine,canonical,24
+Raw caption cosine,canonical,6
+Raw caption cosine,canonical,147
+Raw caption cosine,canonical,130
+Raw caption cosine,canonical,51
+Raw caption cosine,canonical,104
+Raw caption cosine,canonical,32
+Raw caption cosine,canonical,312
+Raw caption cosine,canonical,145
+Raw caption cosine,canonical,16
+Raw caption cosine,canonical,149
+Raw caption cosine,canonical,67
+Raw caption cosine,canonical,68
+Raw caption cosine,canonical,51
+Raw caption cosine,canonical,208
+Raw caption cosine,canonical,44
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,97
+Raw caption cosine,canonical,95
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,135
+Raw caption cosine,canonical,226
+Raw caption cosine,canonical,11
+Raw caption cosine,canonical,125
+Raw caption cosine,canonical,59
+Raw caption cosine,canonical,35
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,133
+Raw caption cosine,canonical,116
+Raw caption cosine,canonical,12
+Raw caption cosine,canonical,23
+Raw caption cosine,canonical,39
+Raw caption cosine,canonical,142
+Raw caption cosine,canonical,60
+Raw caption cosine,canonical,34
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,391
+Raw caption cosine,canonical,301
+Raw caption cosine,canonical,86
+Raw caption cosine,canonical,13
+Raw caption cosine,canonical,71
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,5
+Raw caption cosine,canonical,198
+Raw caption cosine,canonical,54
+Raw caption cosine,canonical,330
+Raw caption cosine,canonical,147
+Raw caption cosine,canonical,221
+Raw caption cosine,canonical,325
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,46
+Raw caption cosine,canonical,89
+Raw caption cosine,canonical,253
+Raw caption cosine,canonical,232
+Raw caption cosine,canonical,101
+Raw caption cosine,canonical,116
+Raw caption cosine,canonical,5
+Raw caption cosine,canonical,129
+Raw caption cosine,canonical,28
+Raw caption cosine,canonical,260
+Raw caption cosine,canonical,12
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,38
+Raw caption cosine,canonical,15
+Raw caption cosine,canonical,114
+Raw caption cosine,canonical,99
+Raw caption cosine,canonical,223
+Raw caption cosine,canonical,122
+Raw caption cosine,canonical,4
+Raw caption cosine,canonical,1
+Raw caption cosine,canonical,22
+Raw caption cosine,canonical,132
+Raw caption cosine,canonical,71
+Raw caption cosine,canonical,169
+Raw caption cosine,canonical,344
+FGW with caption cost,text-free,63
+FGW with caption cost,text-free,18
+FGW with caption cost,text-free,5
+FGW with caption cost,text-free,74
+FGW with caption cost,text-free,109
+FGW with caption cost,text-free,47
+FGW with caption cost,text-free,11
+FGW with caption cost,text-free,46
+FGW with caption cost,text-free,11
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,19
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,63
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,278
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,123
+FGW with caption cost,text-free,58
+FGW with caption cost,text-free,20
+FGW with caption cost,text-free,14
+FGW with caption cost,text-free,182
+FGW with caption cost,text-free,37
+FGW with caption cost,text-free,31
+FGW with caption cost,text-free,63
+FGW with caption cost,text-free,22
+FGW with caption cost,text-free,167
+FGW with caption cost,text-free,15
+FGW with caption cost,text-free,132
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,194
+FGW with caption cost,text-free,7
+FGW with caption cost,text-free,11
+FGW with caption cost,text-free,25
+FGW with caption cost,text-free,19
+FGW with caption cost,text-free,193
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,49
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,17
+FGW with caption cost,text-free,12
+FGW with caption cost,text-free,255
+FGW with caption cost,text-free,160
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,71
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,31
+FGW with caption cost,text-free,27
+FGW with caption cost,text-free,84
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,166
+FGW with caption cost,text-free,16
+FGW with caption cost,text-free,234
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,33
+FGW with caption cost,text-free,278
+FGW with caption cost,text-free,84
+FGW with caption cost,text-free,283
+FGW with caption cost,text-free,70
+FGW with caption cost,text-free,104
+FGW with caption cost,text-free,210
+FGW with caption cost,text-free,327
+FGW with caption cost,text-free,56
+FGW with caption cost,text-free,9
+FGW with caption cost,text-free,97
+FGW with caption cost,text-free,18
+FGW with caption cost,text-free,232
+FGW with caption cost,text-free,127
+FGW with caption cost,text-free,14
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,44
+FGW with caption cost,text-free,22
+FGW with caption cost,text-free,53
+FGW with caption cost,text-free,16
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,227
+FGW with caption cost,text-free,44
+FGW with caption cost,text-free,154
+FGW with caption cost,text-free,54
+FGW with caption cost,text-free,21
+FGW with caption cost,text-free,132
+FGW with caption cost,text-free,30
+FGW with caption cost,text-free,340
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,136
+FGW with caption cost,text-free,208
+FGW with caption cost,text-free,13
+FGW with caption cost,text-free,36
+FGW with caption cost,text-free,90
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,229
+FGW with caption cost,text-free,38
+FGW with caption cost,text-free,103
+FGW with caption cost,text-free,97
+FGW with caption cost,text-free,222
+FGW with caption cost,text-free,175
+FGW with caption cost,text-free,91
+FGW with caption cost,text-free,155
+FGW with caption cost,text-free,309
+FGW with caption cost,text-free,176
+FGW with caption cost,text-free,21
+FGW with caption cost,text-free,358
+FGW with caption cost,text-free,213
+FGW with caption cost,text-free,193
+FGW with caption cost,text-free,67
+FGW with caption cost,text-free,9
+FGW with caption cost,text-free,146
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,255
+FGW with caption cost,text-free,204
+FGW with caption cost,text-free,337
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,28
+FGW with caption cost,text-free,64
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,167
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,256
+FGW with caption cost,text-free,22
+FGW with caption cost,text-free,24
+FGW with caption cost,text-free,13
+FGW with caption cost,text-free,25
+FGW with caption cost,text-free,87
+FGW with caption cost,text-free,66
+FGW with caption cost,text-free,9
+FGW with caption cost,text-free,9
+FGW with caption cost,text-free,39
+FGW with caption cost,text-free,49
+FGW with caption cost,text-free,70
+FGW with caption cost,text-free,13
+FGW with caption cost,text-free,18
+FGW with caption cost,text-free,33
+FGW with caption cost,text-free,27
+FGW with caption cost,text-free,22
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,138
+FGW with caption cost,text-free,136
+FGW with caption cost,text-free,46
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,146
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,76
+FGW with caption cost,text-free,37
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,22
+FGW with caption cost,text-free,210
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,280
+FGW with caption cost,text-free,362
+FGW with caption cost,text-free,17
+FGW with caption cost,text-free,9
+FGW with caption cost,text-free,26
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,68
+FGW with caption cost,text-free,65
+FGW with caption cost,text-free,12
+FGW with caption cost,text-free,11
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,47
+FGW with caption cost,text-free,47
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,31
+FGW with caption cost,text-free,102
+FGW with caption cost,text-free,77
+FGW with caption cost,text-free,131
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,60
+FGW with caption cost,text-free,94
+FGW with caption cost,text-free,10
+FGW with caption cost,text-free,167
+FGW with caption cost,text-free,118
+FGW with caption cost,text-free,16
+FGW with caption cost,text-free,172
+FGW with caption cost,text-free,255
+FGW with caption cost,text-free,65
+FGW with caption cost,text-free,12
+FGW with caption cost,text-free,89
+FGW with caption cost,text-free,29
+FGW with caption cost,text-free,5
+FGW with caption cost,text-free,13
+FGW with caption cost,text-free,42
+FGW with caption cost,text-free,51
+FGW with caption cost,text-free,73
+FGW with caption cost,text-free,142
+FGW with caption cost,text-free,16
+FGW with caption cost,text-free,5
+FGW with caption cost,text-free,19
+FGW with caption cost,text-free,10
+FGW with caption cost,text-free,71
+FGW with caption cost,text-free,58
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,315
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,27
+FGW with caption cost,text-free,25
+FGW with caption cost,text-free,28
+FGW with caption cost,text-free,204
+FGW with caption cost,text-free,20
+FGW with caption cost,text-free,33
+FGW with caption cost,text-free,99
+FGW with caption cost,text-free,92
+FGW with caption cost,text-free,302
+FGW with caption cost,text-free,24
+FGW with caption cost,text-free,179
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,247
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,7
+FGW with caption cost,text-free,49
+FGW with caption cost,text-free,331
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,70
+FGW with caption cost,text-free,74
+FGW with caption cost,text-free,57
+FGW with caption cost,text-free,116
+FGW with caption cost,text-free,132
+FGW with caption cost,text-free,27
+FGW with caption cost,text-free,179
+FGW with caption cost,text-free,48
+FGW with caption cost,text-free,56
+FGW with caption cost,text-free,188
+FGW with caption cost,text-free,12
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,179
+FGW with caption cost,text-free,53
+FGW with caption cost,text-free,13
+FGW with caption cost,text-free,240
+FGW with caption cost,text-free,12
+FGW with caption cost,text-free,134
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,101
+FGW with caption cost,text-free,241
+FGW with caption cost,text-free,38
+FGW with caption cost,text-free,157
+FGW with caption cost,text-free,47
+FGW with caption cost,text-free,82
+FGW with caption cost,text-free,76
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,55
+FGW with caption cost,text-free,11
+FGW with caption cost,text-free,28
+FGW with caption cost,text-free,230
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,9
+FGW with caption cost,text-free,33
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,350
+FGW with caption cost,text-free,84
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,14
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,118
+FGW with caption cost,text-free,15
+FGW with caption cost,text-free,34
+FGW with caption cost,text-free,63
+FGW with caption cost,text-free,15
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,19
+FGW with caption cost,text-free,22
+FGW with caption cost,text-free,7
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,228
+FGW with caption cost,text-free,63
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,329
+FGW with caption cost,text-free,108
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,131
+FGW with caption cost,text-free,228
+FGW with caption cost,text-free,64
+FGW with caption cost,text-free,75
+FGW with caption cost,text-free,31
+FGW with caption cost,text-free,118
+FGW with caption cost,text-free,10
+FGW with caption cost,text-free,111
+FGW with caption cost,text-free,88
+FGW with caption cost,text-free,136
+FGW with caption cost,text-free,25
+FGW with caption cost,text-free,212
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,22
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,263
+FGW with caption cost,text-free,25
+FGW with caption cost,text-free,26
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,33
+FGW with caption cost,text-free,28
+FGW with caption cost,text-free,169
+FGW with caption cost,text-free,86
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,5
+FGW with caption cost,text-free,17
+FGW with caption cost,text-free,17
+FGW with caption cost,text-free,50
+FGW with caption cost,text-free,39
+FGW with caption cost,text-free,82
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,126
+FGW with caption cost,text-free,19
+FGW with caption cost,text-free,130
+FGW with caption cost,text-free,99
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,27
+FGW with caption cost,text-free,54
+FGW with caption cost,text-free,62
+FGW with caption cost,text-free,276
+FGW with caption cost,text-free,194
+FGW with caption cost,text-free,183
+FGW with caption cost,text-free,25
+FGW with caption cost,text-free,36
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,105
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,19
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,9
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,85
+FGW with caption cost,text-free,89
+FGW with caption cost,text-free,47
+FGW with caption cost,text-free,222
+FGW with caption cost,text-free,16
+FGW with caption cost,text-free,55
+FGW with caption cost,text-free,57
+FGW with caption cost,text-free,5
+FGW with caption cost,text-free,99
+FGW with caption cost,text-free,85
+FGW with caption cost,text-free,51
+FGW with caption cost,text-free,205
+FGW with caption cost,text-free,26
+FGW with caption cost,text-free,34
+FGW with caption cost,text-free,15
+FGW with caption cost,text-free,155
+FGW with caption cost,text-free,35
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,169
+FGW with caption cost,text-free,143
+FGW with caption cost,text-free,68
+FGW with caption cost,text-free,126
+FGW with caption cost,text-free,32
+FGW with caption cost,text-free,57
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,294
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,31
+FGW with caption cost,text-free,306
+FGW with caption cost,text-free,114
+FGW with caption cost,text-free,115
+FGW with caption cost,text-free,16
+FGW with caption cost,text-free,20
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,398
+FGW with caption cost,text-free,275
+FGW with caption cost,text-free,67
+FGW with caption cost,text-free,6
+FGW with caption cost,text-free,23
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,77
+FGW with caption cost,text-free,33
+FGW with caption cost,text-free,161
+FGW with caption cost,text-free,103
+FGW with caption cost,text-free,75
+FGW with caption cost,text-free,204
+FGW with caption cost,text-free,4
+FGW with caption cost,text-free,60
+FGW with caption cost,text-free,16
+FGW with caption cost,text-free,141
+FGW with caption cost,text-free,134
+FGW with caption cost,text-free,86
+FGW with caption cost,text-free,162
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,102
+FGW with caption cost,text-free,10
+FGW with caption cost,text-free,48
+FGW with caption cost,text-free,3
+FGW with caption cost,text-free,8
+FGW with caption cost,text-free,251
+FGW with caption cost,text-free,129
+FGW with caption cost,text-free,106
+FGW with caption cost,text-free,24
+FGW with caption cost,text-free,116
+FGW with caption cost,text-free,338
+FGW with caption cost,text-free,2
+FGW with caption cost,text-free,1
+FGW with caption cost,text-free,70
+FGW with caption cost,text-free,191
+FGW with caption cost,text-free,146
+FGW with caption cost,text-free,91
+FGW with caption cost,text-free,152
+Text-bridged composition,text-free,130
+Text-bridged composition,text-free,51
+Text-bridged composition,text-free,1
+Text-bridged composition,text-free,365
+Text-bridged composition,text-free,72
+Text-bridged composition,text-free,191
+Text-bridged composition,text-free,314
+Text-bridged composition,text-free,56
+Text-bridged composition,text-free,64
+Text-bridged composition,text-free,47
+Text-bridged composition,text-free,337
+Text-bridged composition,text-free,47
+Text-bridged composition,text-free,7
+Text-bridged composition,text-free,41
+Text-bridged composition,text-free,10
+Text-bridged composition,text-free,24
+Text-bridged composition,text-free,230
+Text-bridged composition,text-free,99
+Text-bridged composition,text-free,35
+Text-bridged composition,text-free,19
+Text-bridged composition,text-free,295
+Text-bridged composition,text-free,69
+Text-bridged composition,text-free,4
+Text-bridged composition,text-free,108
+Text-bridged composition,text-free,29
+Text-bridged composition,text-free,19
+Text-bridged composition,text-free,217
+Text-bridged composition,text-free,192
+Text-bridged composition,text-free,59
+Text-bridged composition,text-free,231
+Text-bridged composition,text-free,31
+Text-bridged composition,text-free,10
+Text-bridged composition,text-free,87
+Text-bridged composition,text-free,132
+Text-bridged composition,text-free,224
+Text-bridged composition,text-free,4
+Text-bridged composition,text-free,38
+Text-bridged composition,text-free,220
+Text-bridged composition,text-free,136
+Text-bridged composition,text-free,202
+Text-bridged composition,text-free,41
+Text-bridged composition,text-free,296
+Text-bridged composition,text-free,75
+Text-bridged composition,text-free,5
+Text-bridged composition,text-free,99
+Text-bridged composition,text-free,47
+Text-bridged composition,text-free,250
+Text-bridged composition,text-free,254
+Text-bridged composition,text-free,189
+Text-bridged composition,text-free,111
+Text-bridged composition,text-free,10
+Text-bridged composition,text-free,52
+Text-bridged composition,text-free,50
+Text-bridged composition,text-free,266
+Text-bridged composition,text-free,10
+Text-bridged composition,text-free,73
+Text-bridged composition,text-free,209
+Text-bridged composition,text-free,193
+Text-bridged composition,text-free,263
+Text-bridged composition,text-free,114
+Text-bridged composition,text-free,146
+Text-bridged composition,text-free,139
+Text-bridged composition,text-free,107
+Text-bridged composition,text-free,301
+Text-bridged composition,text-free,108
+Text-bridged composition,text-free,322
+Text-bridged composition,text-free,2
+Text-bridged composition,text-free,119
+Text-bridged composition,text-free,276
+Text-bridged composition,text-free,87
+Text-bridged composition,text-free,37
+Text-bridged composition,text-free,254
+Text-bridged composition,text-free,18
+Text-bridged composition,text-free,62
+Text-bridged composition,text-free,304
+Text-bridged composition,text-free,70
+Text-bridged composition,text-free,288
+Text-bridged composition,text-free,232
+Text-bridged composition,text-free,52
+Text-bridged composition,text-free,179
+Text-bridged composition,text-free,45
+Text-bridged composition,text-free,10
+Text-bridged composition,text-free,292
+Text-bridged composition,text-free,56
+Text-bridged composition,text-free,224
+Text-bridged composition,text-free,74
+Text-bridged composition,text-free,115
+Text-bridged composition,text-free,342
+Text-bridged composition,text-free,134
+Text-bridged composition,text-free,246
+Text-bridged composition,text-free,228
+Text-bridged composition,text-free,207
+Text-bridged composition,text-free,154
+Text-bridged composition,text-free,253
+Text-bridged composition,text-free,87
+Text-bridged composition,text-free,316
+Text-bridged composition,text-free,126
+Text-bridged composition,text-free,55
+Text-bridged composition,text-free,60
+Text-bridged composition,text-free,198
+Text-bridged composition,text-free,352
+Text-bridged composition,text-free,111
+Text-bridged composition,text-free,11
+Text-bridged composition,text-free,133
+Text-bridged composition,text-free,371
+Text-bridged composition,text-free,6
+Text-bridged composition,text-free,34
+Text-bridged composition,text-free,12
+Text-bridged composition,text-free,217
+Text-bridged composition,text-free,166
+Text-bridged composition,text-free,112
+Text-bridged composition,text-free,216
+Text-bridged composition,text-free,40
+Text-bridged composition,text-free,8
+Text-bridged composition,text-free,51
+Text-bridged composition,text-free,360
+Text-bridged composition,text-free,260
+Text-bridged composition,text-free,384
+Text-bridged composition,text-free,15
+Text-bridged composition,text-free,386
+Text-bridged composition,text-free,180
+Text-bridged composition,text-free,102
+Text-bridged composition,text-free,22
+Text-bridged composition,text-free,17
+Text-bridged composition,text-free,27
+Text-bridged composition,text-free,161
+Text-bridged composition,text-free,61
+Text-bridged composition,text-free,69
+Text-bridged composition,text-free,75
+Text-bridged composition,text-free,248
+Text-bridged composition,text-free,58
+Text-bridged composition,text-free,180
+Text-bridged composition,text-free,43
+Text-bridged composition,text-free,280
+Text-bridged composition,text-free,73
+Text-bridged composition,text-free,258
+Text-bridged composition,text-free,3
+Text-bridged composition,text-free,130
+Text-bridged composition,text-free,69
+Text-bridged composition,text-free,59
+Text-bridged composition,text-free,75
+Text-bridged composition,text-free,270
+Text-bridged composition,text-free,218
+Text-bridged composition,text-free,12
+Text-bridged composition,text-free,67
+Text-bridged composition,text-free,155
+Text-bridged composition,text-free,48
+Text-bridged composition,text-free,383
+Text-bridged composition,text-free,249
+Text-bridged composition,text-free,14
+Text-bridged composition,text-free,271
+Text-bridged composition,text-free,184
+Text-bridged composition,text-free,33
+Text-bridged composition,text-free,8
+Text-bridged composition,text-free,21
+Text-bridged composition,text-free,104
+Text-bridged composition,text-free,37
+Text-bridged composition,text-free,155
+Text-bridged composition,text-free,13
+Text-bridged composition,text-free,135
+Text-bridged composition,text-free,46
+Text-bridged composition,text-free,87
+Text-bridged composition,text-free,8
+Text-bridged composition,text-free,117
+Text-bridged composition,text-free,366
+Text-bridged composition,text-free,385
+Text-bridged composition,text-free,252
+Text-bridged composition,text-free,53
+Text-bridged composition,text-free,194
+Text-bridged composition,text-free,10
+Text-bridged composition,text-free,1
+Text-bridged composition,text-free,29
+Text-bridged composition,text-free,122
+Text-bridged composition,text-free,173
+Text-bridged composition,text-free,332
+Text-bridged composition,text-free,218
+Text-bridged composition,text-free,357
+Text-bridged composition,text-free,308
+Text-bridged composition,text-free,327
+Text-bridged composition,text-free,151
+Text-bridged composition,text-free,311
+Text-bridged composition,text-free,40
+Text-bridged composition,text-free,53
+Text-bridged composition,text-free,93
+Text-bridged composition,text-free,241
+Text-bridged composition,text-free,341
+Text-bridged composition,text-free,47
+Text-bridged composition,text-free,37
+Text-bridged composition,text-free,130
+Text-bridged composition,text-free,246
+Text-bridged composition,text-free,216
+Text-bridged composition,text-free,86
+Text-bridged composition,text-free,1
+Text-bridged composition,text-free,345
+Text-bridged composition,text-free,4
+Text-bridged composition,text-free,249
+Text-bridged composition,text-free,101
+Text-bridged composition,text-free,142
+Text-bridged composition,text-free,26
+Text-bridged composition,text-free,23
+Text-bridged composition,text-free,83
+Text-bridged composition,text-free,19
+Text-bridged composition,text-free,29
+Text-bridged composition,text-free,30
+Text-bridged composition,text-free,115
+Text-bridged composition,text-free,17
+Text-bridged composition,text-free,12
+Text-bridged composition,text-free,118
+Text-bridged composition,text-free,2
+Text-bridged composition,text-free,64
+Text-bridged composition,text-free,156
+Text-bridged composition,text-free,117
+Text-bridged composition,text-free,200
+Text-bridged composition,text-free,148
+Text-bridged composition,text-free,15
+Text-bridged composition,text-free,7
+Text-bridged composition,text-free,307
+Text-bridged composition,text-free,46
+Text-bridged composition,text-free,25
+Text-bridged composition,text-free,117
+Text-bridged composition,text-free,60
+Text-bridged composition,text-free,109
+Text-bridged composition,text-free,356
+Text-bridged composition,text-free,179
+Text-bridged composition,text-free,137
+Text-bridged composition,text-free,172
+Text-bridged composition,text-free,20
+Text-bridged composition,text-free,41
+Text-bridged composition,text-free,342
+Text-bridged composition,text-free,46
+Text-bridged composition,text-free,144
+Text-bridged composition,text-free,251
+Text-bridged composition,text-free,2
+Text-bridged composition,text-free,4
+Text-bridged composition,text-free,68
+Text-bridged composition,text-free,25
+Text-bridged composition,text-free,12
+Text-bridged composition,text-free,44
+Text-bridged composition,text-free,26
+Text-bridged composition,text-free,4
+Text-bridged composition,text-free,286
+Text-bridged composition,text-free,54
+Text-bridged composition,text-free,30
+Text-bridged composition,text-free,183
+Text-bridged composition,text-free,78
+Text-bridged composition,text-free,284
+Text-bridged composition,text-free,284
+Text-bridged composition,text-free,138
+Text-bridged composition,text-free,43
+Text-bridged composition,text-free,158
+Text-bridged composition,text-free,31
+Text-bridged composition,text-free,211
+Text-bridged composition,text-free,157
+Text-bridged composition,text-free,88
+Text-bridged composition,text-free,32
+Text-bridged composition,text-free,76
+Text-bridged composition,text-free,46
+Text-bridged composition,text-free,177
+Text-bridged composition,text-free,7
+Text-bridged composition,text-free,7
+Text-bridged composition,text-free,260
+Text-bridged composition,text-free,111
+Text-bridged composition,text-free,104
+Text-bridged composition,text-free,204
+Text-bridged composition,text-free,2
+Text-bridged composition,text-free,11
+Text-bridged composition,text-free,22
+Text-bridged composition,text-free,1
+Text-bridged composition,text-free,352
+Text-bridged composition,text-free,337
+Text-bridged composition,text-free,2
+Text-bridged composition,text-free,336
+Text-bridged composition,text-free,349
+Text-bridged composition,text-free,8
+Text-bridged composition,text-free,336
+Text-bridged composition,text-free,171
+Text-bridged composition,text-free,86
+Text-bridged composition,text-free,288
+Text-bridged composition,text-free,96
+Text-bridged composition,text-free,28
+Text-bridged composition,text-free,286
+Text-bridged composition,text-free,53
+Text-bridged composition,text-free,25
+Text-bridged composition,text-free,28
+Text-bridged composition,text-free,22
+Text-bridged composition,text-free,133
+Text-bridged composition,text-free,144
+Text-bridged composition,text-free,207
+Text-bridged composition,text-free,48
+Text-bridged composition,text-free,52
+Text-bridged composition,text-free,75
+Text-bridged composition,text-free,341
+Text-bridged composition,text-free,34
+Text-bridged composition,text-free,125
+Text-bridged composition,text-free,3
+Text-bridged composition,text-free,120
+Text-bridged composition,text-free,34
+Text-bridged composition,text-free,253
+Text-bridged composition,text-free,9
+Text-bridged composition,text-free,116
+Text-bridged composition,text-free,2
+Text-bridged composition,text-free,110
+Text-bridged composition,text-free,74
+Text-bridged composition,text-free,137
+Text-bridged composition,text-free,107
+Text-bridged composition,text-free,96
+Text-bridged composition,text-free,147
+Text-bridged composition,text-free,145
+Text-bridged composition,text-free,21
+Text-bridged composition,text-free,335
+Text-bridged composition,text-free,101
+Text-bridged composition,text-free,11
+Text-bridged composition,text-free,199
+Text-bridged composition,text-free,256
+Text-bridged composition,text-free,17
+Text-bridged composition,text-free,113
+Text-bridged composition,text-free,62
+Text-bridged composition,text-free,231
+Text-bridged composition,text-free,12
+Text-bridged composition,text-free,34
+Text-bridged composition,text-free,50
+Text-bridged composition,text-free,94
+Text-bridged composition,text-free,130
+Text-bridged composition,text-free,127
+Text-bridged composition,text-free,19
+Text-bridged composition,text-free,108
+Text-bridged composition,text-free,47
+Text-bridged composition,text-free,26
+Text-bridged composition,text-free,112
+Text-bridged composition,text-free,87
+Text-bridged composition,text-free,176
+Text-bridged composition,text-free,27
+Text-bridged composition,text-free,15
+Text-bridged composition,text-free,20
+Text-bridged composition,text-free,93
+Text-bridged composition,text-free,239
+Text-bridged composition,text-free,113
+Text-bridged composition,text-free,267
+Text-bridged composition,text-free,67
+Text-bridged composition,text-free,328
+Text-bridged composition,text-free,73
+Text-bridged composition,text-free,95
+Text-bridged composition,text-free,8
+Text-bridged composition,text-free,125
+Text-bridged composition,text-free,27
+Text-bridged composition,text-free,73
+Text-bridged composition,text-free,281
+Text-bridged composition,text-free,41
+Text-bridged composition,text-free,24
+Text-bridged composition,text-free,34
+Text-bridged composition,text-free,22
+Text-bridged composition,text-free,108
+Text-bridged composition,text-free,1
+Text-bridged composition,text-free,330
+Text-bridged composition,text-free,66
+Text-bridged composition,text-free,8
+Text-bridged composition,text-free,132
+Text-bridged composition,text-free,356
+Text-bridged composition,text-free,17
+Text-bridged composition,text-free,124
+Text-bridged composition,text-free,49
+Text-bridged composition,text-free,51
+Text-bridged composition,text-free,56
+Text-bridged composition,text-free,119
+Text-bridged composition,text-free,18
+Text-bridged composition,text-free,31
+Text-bridged composition,text-free,176
+Text-bridged composition,text-free,42
+Text-bridged composition,text-free,95
+Text-bridged composition,text-free,303
+Text-bridged composition,text-free,95
+Text-bridged composition,text-free,63
+Text-bridged composition,text-free,224
+Text-bridged composition,text-free,266
+Text-bridged composition,text-free,147
+Text-bridged composition,text-free,182
+Text-bridged composition,text-free,13
+Text-bridged composition,text-free,342
+Text-bridged composition,text-free,238
+Text-bridged composition,text-free,226
+Text-bridged composition,text-free,254
+Text-bridged composition,text-free,6
+Text-bridged composition,text-free,131
+Text-bridged composition,text-free,122
+Text-bridged composition,text-free,158
+Text-bridged composition,text-free,46
+Text-bridged composition,text-free,7
+Text-bridged composition,text-free,184
+Text-bridged composition,text-free,48
+Text-bridged composition,text-free,223
+Text-bridged composition,text-free,145
+Text-bridged composition,text-free,19
+Text-bridged composition,text-free,142
+Text-bridged composition,text-free,11
+Text-bridged composition,text-free,2
+Text-bridged composition,text-free,61
+Text-bridged composition,text-free,182
+Text-bridged composition,text-free,304
+Text-bridged composition,text-free,87
+Text-bridged composition,text-free,10
+GW (intra-modal geometry),text-free,190
+GW (intra-modal geometry),text-free,330
+GW (intra-modal geometry),text-free,51
+GW (intra-modal geometry),text-free,339
+GW (intra-modal geometry),text-free,324
+GW (intra-modal geometry),text-free,140
+GW (intra-modal geometry),text-free,231
+GW (intra-modal geometry),text-free,11
+GW (intra-modal geometry),text-free,257
+GW (intra-modal geometry),text-free,57
+GW (intra-modal geometry),text-free,66
+GW (intra-modal geometry),text-free,106
+GW (intra-modal geometry),text-free,233
+GW (intra-modal geometry),text-free,199
+GW (intra-modal geometry),text-free,196
+GW (intra-modal geometry),text-free,34
+GW (intra-modal geometry),text-free,263
+GW (intra-modal geometry),text-free,35
+GW (intra-modal geometry),text-free,183
+GW (intra-modal geometry),text-free,140
+GW (intra-modal geometry),text-free,204
+GW (intra-modal geometry),text-free,87
+GW (intra-modal geometry),text-free,78
+GW (intra-modal geometry),text-free,261
+GW (intra-modal geometry),text-free,226
+GW (intra-modal geometry),text-free,230
+GW (intra-modal geometry),text-free,78
+GW (intra-modal geometry),text-free,292
+GW (intra-modal geometry),text-free,268
+GW (intra-modal geometry),text-free,33
+GW (intra-modal geometry),text-free,27
+GW (intra-modal geometry),text-free,193
+GW (intra-modal geometry),text-free,242
+GW (intra-modal geometry),text-free,274
+GW (intra-modal geometry),text-free,241
+GW (intra-modal geometry),text-free,52
+GW (intra-modal geometry),text-free,335
+GW (intra-modal geometry),text-free,55
+GW (intra-modal geometry),text-free,117
+GW (intra-modal geometry),text-free,249
+GW (intra-modal geometry),text-free,51
+GW (intra-modal geometry),text-free,130
+GW (intra-modal geometry),text-free,362
+GW (intra-modal geometry),text-free,122
+GW (intra-modal geometry),text-free,290
+GW (intra-modal geometry),text-free,214
+GW (intra-modal geometry),text-free,273
+GW (intra-modal geometry),text-free,246
+GW (intra-modal geometry),text-free,125
+GW (intra-modal geometry),text-free,181
+GW (intra-modal geometry),text-free,23
+GW (intra-modal geometry),text-free,5
+GW (intra-modal geometry),text-free,149
+GW (intra-modal geometry),text-free,300
+GW (intra-modal geometry),text-free,193
+GW (intra-modal geometry),text-free,244
+GW (intra-modal geometry),text-free,246
+GW (intra-modal geometry),text-free,28
+GW (intra-modal geometry),text-free,134
+GW (intra-modal geometry),text-free,159
+GW (intra-modal geometry),text-free,223
+GW (intra-modal geometry),text-free,132
+GW (intra-modal geometry),text-free,318
+GW (intra-modal geometry),text-free,317
+GW (intra-modal geometry),text-free,9
+GW (intra-modal geometry),text-free,101
+GW (intra-modal geometry),text-free,35
+GW (intra-modal geometry),text-free,25
+GW (intra-modal geometry),text-free,175
+GW (intra-modal geometry),text-free,147
+GW (intra-modal geometry),text-free,8
+GW (intra-modal geometry),text-free,320
+GW (intra-modal geometry),text-free,39
+GW (intra-modal geometry),text-free,71
+GW (intra-modal geometry),text-free,371
+GW (intra-modal geometry),text-free,20
+GW (intra-modal geometry),text-free,283
+GW (intra-modal geometry),text-free,91
+GW (intra-modal geometry),text-free,65
+GW (intra-modal geometry),text-free,77
+GW (intra-modal geometry),text-free,133
+GW (intra-modal geometry),text-free,282
+GW (intra-modal geometry),text-free,199
+GW (intra-modal geometry),text-free,193
+GW (intra-modal geometry),text-free,189
+GW (intra-modal geometry),text-free,285
+GW (intra-modal geometry),text-free,86
+GW (intra-modal geometry),text-free,346
+GW (intra-modal geometry),text-free,124
+GW (intra-modal geometry),text-free,79
+GW (intra-modal geometry),text-free,212
+GW (intra-modal geometry),text-free,181
+GW (intra-modal geometry),text-free,318
+GW (intra-modal geometry),text-free,168
+GW (intra-modal geometry),text-free,240
+GW (intra-modal geometry),text-free,354
+GW (intra-modal geometry),text-free,30
+GW (intra-modal geometry),text-free,361
+GW (intra-modal geometry),text-free,81
+GW (intra-modal geometry),text-free,216
+GW (intra-modal geometry),text-free,287
+GW (intra-modal geometry),text-free,178
+GW (intra-modal geometry),text-free,82
+GW (intra-modal geometry),text-free,232
+GW (intra-modal geometry),text-free,391
+GW (intra-modal geometry),text-free,380
+GW (intra-modal geometry),text-free,50
+GW (intra-modal geometry),text-free,57
+GW (intra-modal geometry),text-free,55
+GW (intra-modal geometry),text-free,158
+GW (intra-modal geometry),text-free,1
+GW (intra-modal geometry),text-free,105
+GW (intra-modal geometry),text-free,182
+GW (intra-modal geometry),text-free,10
+GW (intra-modal geometry),text-free,111
+GW (intra-modal geometry),text-free,278
+GW (intra-modal geometry),text-free,4
+GW (intra-modal geometry),text-free,131
+GW (intra-modal geometry),text-free,88
+GW (intra-modal geometry),text-free,220
+GW (intra-modal geometry),text-free,118
+GW (intra-modal geometry),text-free,71
+GW (intra-modal geometry),text-free,158
+GW (intra-modal geometry),text-free,382
+GW (intra-modal geometry),text-free,309
+GW (intra-modal geometry),text-free,138
+GW (intra-modal geometry),text-free,94
+GW (intra-modal geometry),text-free,72
+GW (intra-modal geometry),text-free,85
+GW (intra-modal geometry),text-free,11
+GW (intra-modal geometry),text-free,16
+GW (intra-modal geometry),text-free,366
+GW (intra-modal geometry),text-free,32
+GW (intra-modal geometry),text-free,4
+GW (intra-modal geometry),text-free,57
+GW (intra-modal geometry),text-free,21
+GW (intra-modal geometry),text-free,87
+GW (intra-modal geometry),text-free,31
+GW (intra-modal geometry),text-free,110
+GW (intra-modal geometry),text-free,60
+GW (intra-modal geometry),text-free,87
+GW (intra-modal geometry),text-free,316
+GW (intra-modal geometry),text-free,205
+GW (intra-modal geometry),text-free,49
+GW (intra-modal geometry),text-free,237
+GW (intra-modal geometry),text-free,205
+GW (intra-modal geometry),text-free,101
+GW (intra-modal geometry),text-free,308
+GW (intra-modal geometry),text-free,158
+GW (intra-modal geometry),text-free,13
+GW (intra-modal geometry),text-free,217
+GW (intra-modal geometry),text-free,157
+GW (intra-modal geometry),text-free,15
+GW (intra-modal geometry),text-free,74
+GW (intra-modal geometry),text-free,32
+GW (intra-modal geometry),text-free,22
+GW (intra-modal geometry),text-free,105
+GW (intra-modal geometry),text-free,211
+GW (intra-modal geometry),text-free,314
+GW (intra-modal geometry),text-free,35
+GW (intra-modal geometry),text-free,77
+GW (intra-modal geometry),text-free,78
+GW (intra-modal geometry),text-free,58
+GW (intra-modal geometry),text-free,277
+GW (intra-modal geometry),text-free,208
+GW (intra-modal geometry),text-free,52
+GW (intra-modal geometry),text-free,169
+GW (intra-modal geometry),text-free,6
+GW (intra-modal geometry),text-free,152
+GW (intra-modal geometry),text-free,5
+GW (intra-modal geometry),text-free,399
+GW (intra-modal geometry),text-free,22
+GW (intra-modal geometry),text-free,45
+GW (intra-modal geometry),text-free,315
+GW (intra-modal geometry),text-free,311
+GW (intra-modal geometry),text-free,126
+GW (intra-modal geometry),text-free,124
+GW (intra-modal geometry),text-free,372
+GW (intra-modal geometry),text-free,59
+GW (intra-modal geometry),text-free,20
+GW (intra-modal geometry),text-free,179
+GW (intra-modal geometry),text-free,11
+GW (intra-modal geometry),text-free,110
+GW (intra-modal geometry),text-free,34
+GW (intra-modal geometry),text-free,173
+GW (intra-modal geometry),text-free,303
+GW (intra-modal geometry),text-free,354
+GW (intra-modal geometry),text-free,323
+GW (intra-modal geometry),text-free,272
+GW (intra-modal geometry),text-free,186
+GW (intra-modal geometry),text-free,152
+GW (intra-modal geometry),text-free,57
+GW (intra-modal geometry),text-free,185
+GW (intra-modal geometry),text-free,226
+GW (intra-modal geometry),text-free,203
+GW (intra-modal geometry),text-free,248
+GW (intra-modal geometry),text-free,102
+GW (intra-modal geometry),text-free,153
+GW (intra-modal geometry),text-free,204
+GW (intra-modal geometry),text-free,114
+GW (intra-modal geometry),text-free,220
+GW (intra-modal geometry),text-free,261
+GW (intra-modal geometry),text-free,351
+GW (intra-modal geometry),text-free,114
+GW (intra-modal geometry),text-free,279
+GW (intra-modal geometry),text-free,32
+GW (intra-modal geometry),text-free,81
+GW (intra-modal geometry),text-free,63
+GW (intra-modal geometry),text-free,41
+GW (intra-modal geometry),text-free,204
+GW (intra-modal geometry),text-free,175
+GW (intra-modal geometry),text-free,346
+GW (intra-modal geometry),text-free,284
+GW (intra-modal geometry),text-free,400
+GW (intra-modal geometry),text-free,21
+GW (intra-modal geometry),text-free,9
+GW (intra-modal geometry),text-free,170
+GW (intra-modal geometry),text-free,109
+GW (intra-modal geometry),text-free,237
+GW (intra-modal geometry),text-free,129
+GW (intra-modal geometry),text-free,318
+GW (intra-modal geometry),text-free,55
+GW (intra-modal geometry),text-free,338
+GW (intra-modal geometry),text-free,275
+GW (intra-modal geometry),text-free,43
+GW (intra-modal geometry),text-free,146
+GW (intra-modal geometry),text-free,42
+GW (intra-modal geometry),text-free,211
+GW (intra-modal geometry),text-free,15
+GW (intra-modal geometry),text-free,58
+GW (intra-modal geometry),text-free,365
+GW (intra-modal geometry),text-free,139
+GW (intra-modal geometry),text-free,268
+GW (intra-modal geometry),text-free,397
+GW (intra-modal geometry),text-free,17
+GW (intra-modal geometry),text-free,283
+GW (intra-modal geometry),text-free,140
+GW (intra-modal geometry),text-free,80
+GW (intra-modal geometry),text-free,51
+GW (intra-modal geometry),text-free,11
+GW (intra-modal geometry),text-free,362
+GW (intra-modal geometry),text-free,175
+GW (intra-modal geometry),text-free,199
+GW (intra-modal geometry),text-free,164
+GW (intra-modal geometry),text-free,151
+GW (intra-modal geometry),text-free,10
+GW (intra-modal geometry),text-free,268
+GW (intra-modal geometry),text-free,4
+GW (intra-modal geometry),text-free,245
+GW (intra-modal geometry),text-free,2
+GW (intra-modal geometry),text-free,184
+GW (intra-modal geometry),text-free,255
+GW (intra-modal geometry),text-free,330
+GW (intra-modal geometry),text-free,293
+GW (intra-modal geometry),text-free,103
+GW (intra-modal geometry),text-free,39
+GW (intra-modal geometry),text-free,198
+GW (intra-modal geometry),text-free,84
+GW (intra-modal geometry),text-free,43
+GW (intra-modal geometry),text-free,335
+GW (intra-modal geometry),text-free,323
+GW (intra-modal geometry),text-free,3
+GW (intra-modal geometry),text-free,377
+GW (intra-modal geometry),text-free,176
+GW (intra-modal geometry),text-free,363
+GW (intra-modal geometry),text-free,57
+GW (intra-modal geometry),text-free,39
+GW (intra-modal geometry),text-free,170
+GW (intra-modal geometry),text-free,337
+GW (intra-modal geometry),text-free,30
+GW (intra-modal geometry),text-free,261
+GW (intra-modal geometry),text-free,283
+GW (intra-modal geometry),text-free,161
+GW (intra-modal geometry),text-free,145
+GW (intra-modal geometry),text-free,99
+GW (intra-modal geometry),text-free,87
+GW (intra-modal geometry),text-free,1
+GW (intra-modal geometry),text-free,249
+GW (intra-modal geometry),text-free,317
+GW (intra-modal geometry),text-free,211
+GW (intra-modal geometry),text-free,193
+GW (intra-modal geometry),text-free,266
+GW (intra-modal geometry),text-free,301
+GW (intra-modal geometry),text-free,168
+GW (intra-modal geometry),text-free,72
+GW (intra-modal geometry),text-free,320
+GW (intra-modal geometry),text-free,287
+GW (intra-modal geometry),text-free,290
+GW (intra-modal geometry),text-free,142
+GW (intra-modal geometry),text-free,61
+GW (intra-modal geometry),text-free,334
+GW (intra-modal geometry),text-free,136
+GW (intra-modal geometry),text-free,135
+GW (intra-modal geometry),text-free,26
+GW (intra-modal geometry),text-free,153
+GW (intra-modal geometry),text-free,297
+GW (intra-modal geometry),text-free,395
+GW (intra-modal geometry),text-free,248
+GW (intra-modal geometry),text-free,66
+GW (intra-modal geometry),text-free,326
+GW (intra-modal geometry),text-free,104
+GW (intra-modal geometry),text-free,69
+GW (intra-modal geometry),text-free,361
+GW (intra-modal geometry),text-free,1
+GW (intra-modal geometry),text-free,42
+GW (intra-modal geometry),text-free,118
+GW (intra-modal geometry),text-free,211
+GW (intra-modal geometry),text-free,234
+GW (intra-modal geometry),text-free,314
+GW (intra-modal geometry),text-free,144
+GW (intra-modal geometry),text-free,50
+GW (intra-modal geometry),text-free,130
+GW (intra-modal geometry),text-free,118
+GW (intra-modal geometry),text-free,23
+GW (intra-modal geometry),text-free,116
+GW (intra-modal geometry),text-free,374
+GW (intra-modal geometry),text-free,2
+GW (intra-modal geometry),text-free,22
+GW (intra-modal geometry),text-free,1
+GW (intra-modal geometry),text-free,65
+GW (intra-modal geometry),text-free,55
+GW (intra-modal geometry),text-free,222
+GW (intra-modal geometry),text-free,2
+GW (intra-modal geometry),text-free,246
+GW (intra-modal geometry),text-free,39
+GW (intra-modal geometry),text-free,296
+GW (intra-modal geometry),text-free,322
+GW (intra-modal geometry),text-free,72
+GW (intra-modal geometry),text-free,67
+GW (intra-modal geometry),text-free,26
+GW (intra-modal geometry),text-free,61
+GW (intra-modal geometry),text-free,10
+GW (intra-modal geometry),text-free,49
+GW (intra-modal geometry),text-free,47
+GW (intra-modal geometry),text-free,42
+GW (intra-modal geometry),text-free,355
+GW (intra-modal geometry),text-free,4
+GW (intra-modal geometry),text-free,159
+GW (intra-modal geometry),text-free,362
+GW (intra-modal geometry),text-free,7
+GW (intra-modal geometry),text-free,36
+GW (intra-modal geometry),text-free,133
+GW (intra-modal geometry),text-free,386
+GW (intra-modal geometry),text-free,63
+GW (intra-modal geometry),text-free,304
+GW (intra-modal geometry),text-free,329
+GW (intra-modal geometry),text-free,203
+GW (intra-modal geometry),text-free,79
+GW (intra-modal geometry),text-free,348
+GW (intra-modal geometry),text-free,226
+GW (intra-modal geometry),text-free,228
+GW (intra-modal geometry),text-free,195
+GW (intra-modal geometry),text-free,394
+GW (intra-modal geometry),text-free,186
+GW (intra-modal geometry),text-free,60
+GW (intra-modal geometry),text-free,42
+GW (intra-modal geometry),text-free,213
+GW (intra-modal geometry),text-free,111
+GW (intra-modal geometry),text-free,177
+GW (intra-modal geometry),text-free,74
+GW (intra-modal geometry),text-free,19
+GW (intra-modal geometry),text-free,98
+GW (intra-modal geometry),text-free,247
+GW (intra-modal geometry),text-free,45
+GW (intra-modal geometry),text-free,330
+GW (intra-modal geometry),text-free,31
+GW (intra-modal geometry),text-free,133
+GW (intra-modal geometry),text-free,23
+GW (intra-modal geometry),text-free,207
+GW (intra-modal geometry),text-free,247
+GW (intra-modal geometry),text-free,58
+GW (intra-modal geometry),text-free,329
+GW (intra-modal geometry),text-free,149
+GW (intra-modal geometry),text-free,141
+GW (intra-modal geometry),text-free,324
+GW (intra-modal geometry),text-free,93
+GW (intra-modal geometry),text-free,340
+GW (intra-modal geometry),text-free,95
+GW (intra-modal geometry),text-free,4
+GW (intra-modal geometry),text-free,29
+GW (intra-modal geometry),text-free,285
+GW (intra-modal geometry),text-free,70
+GW (intra-modal geometry),text-free,394
+GW (intra-modal geometry),text-free,99
+GW (intra-modal geometry),text-free,10
+GW (intra-modal geometry),text-free,26
+GW (intra-modal geometry),text-free,172
+GW (intra-modal geometry),text-free,114
+GW (intra-modal geometry),text-free,154
+GW (intra-modal geometry),text-free,37
+GW (intra-modal geometry),text-free,16
+GW (intra-modal geometry),text-free,130
+GW (intra-modal geometry),text-free,222
+GW (intra-modal geometry),text-free,39
+GW (intra-modal geometry),text-free,20
+GW (intra-modal geometry),text-free,300
+GW (intra-modal geometry),text-free,237
+GW (intra-modal geometry),text-free,158
+GW (intra-modal geometry),text-free,83
+GW (intra-modal geometry),text-free,44
+Raw caption cosine,text-free,151
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,12
+Raw caption cosine,text-free,125
+Raw caption cosine,text-free,172
+Raw caption cosine,text-free,47
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,158
+Raw caption cosine,text-free,82
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,15
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,207
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,102
+Raw caption cosine,text-free,8
+Raw caption cosine,text-free,98
+Raw caption cosine,text-free,80
+Raw caption cosine,text-free,6
+Raw caption cosine,text-free,16
+Raw caption cosine,text-free,143
+Raw caption cosine,text-free,78
+Raw caption cosine,text-free,33
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,141
+Raw caption cosine,text-free,146
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,49
+Raw caption cosine,text-free,16
+Raw caption cosine,text-free,271
+Raw caption cosine,text-free,5
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,29
+Raw caption cosine,text-free,10
+Raw caption cosine,text-free,118
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,17
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,19
+Raw caption cosine,text-free,11
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,297
+Raw caption cosine,text-free,12
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,123
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,167
+Raw caption cosine,text-free,25
+Raw caption cosine,text-free,108
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,120
+Raw caption cosine,text-free,19
+Raw caption cosine,text-free,216
+Raw caption cosine,text-free,6
+Raw caption cosine,text-free,45
+Raw caption cosine,text-free,311
+Raw caption cosine,text-free,140
+Raw caption cosine,text-free,324
+Raw caption cosine,text-free,74
+Raw caption cosine,text-free,80
+Raw caption cosine,text-free,173
+Raw caption cosine,text-free,188
+Raw caption cosine,text-free,162
+Raw caption cosine,text-free,16
+Raw caption cosine,text-free,258
+Raw caption cosine,text-free,25
+Raw caption cosine,text-free,99
+Raw caption cosine,text-free,141
+Raw caption cosine,text-free,81
+Raw caption cosine,text-free,20
+Raw caption cosine,text-free,39
+Raw caption cosine,text-free,42
+Raw caption cosine,text-free,213
+Raw caption cosine,text-free,82
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,348
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,298
+Raw caption cosine,text-free,300
+Raw caption cosine,text-free,25
+Raw caption cosine,text-free,201
+Raw caption cosine,text-free,95
+Raw caption cosine,text-free,219
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,48
+Raw caption cosine,text-free,325
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,166
+Raw caption cosine,text-free,76
+Raw caption cosine,text-free,19
+Raw caption cosine,text-free,316
+Raw caption cosine,text-free,137
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,21
+Raw caption cosine,text-free,154
+Raw caption cosine,text-free,113
+Raw caption cosine,text-free,112
+Raw caption cosine,text-free,297
+Raw caption cosine,text-free,370
+Raw caption cosine,text-free,180
+Raw caption cosine,text-free,28
+Raw caption cosine,text-free,214
+Raw caption cosine,text-free,151
+Raw caption cosine,text-free,55
+Raw caption cosine,text-free,64
+Raw caption cosine,text-free,13
+Raw caption cosine,text-free,187
+Raw caption cosine,text-free,150
+Raw caption cosine,text-free,225
+Raw caption cosine,text-free,313
+Raw caption cosine,text-free,170
+Raw caption cosine,text-free,9
+Raw caption cosine,text-free,7
+Raw caption cosine,text-free,127
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,159
+Raw caption cosine,text-free,38
+Raw caption cosine,text-free,392
+Raw caption cosine,text-free,6
+Raw caption cosine,text-free,39
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,9
+Raw caption cosine,text-free,72
+Raw caption cosine,text-free,35
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,156
+Raw caption cosine,text-free,25
+Raw caption cosine,text-free,84
+Raw caption cosine,text-free,46
+Raw caption cosine,text-free,8
+Raw caption cosine,text-free,82
+Raw caption cosine,text-free,157
+Raw caption cosine,text-free,5
+Raw caption cosine,text-free,168
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,280
+Raw caption cosine,text-free,140
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,138
+Raw caption cosine,text-free,74
+Raw caption cosine,text-free,53
+Raw caption cosine,text-free,85
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,9
+Raw caption cosine,text-free,277
+Raw caption cosine,text-free,7
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,204
+Raw caption cosine,text-free,320
+Raw caption cosine,text-free,25
+Raw caption cosine,text-free,13
+Raw caption cosine,text-free,36
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,26
+Raw caption cosine,text-free,5
+Raw caption cosine,text-free,22
+Raw caption cosine,text-free,7
+Raw caption cosine,text-free,6
+Raw caption cosine,text-free,64
+Raw caption cosine,text-free,16
+Raw caption cosine,text-free,7
+Raw caption cosine,text-free,28
+Raw caption cosine,text-free,234
+Raw caption cosine,text-free,114
+Raw caption cosine,text-free,162
+Raw caption cosine,text-free,105
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,100
+Raw caption cosine,text-free,13
+Raw caption cosine,text-free,154
+Raw caption cosine,text-free,271
+Raw caption cosine,text-free,79
+Raw caption cosine,text-free,156
+Raw caption cosine,text-free,177
+Raw caption cosine,text-free,235
+Raw caption cosine,text-free,42
+Raw caption cosine,text-free,340
+Raw caption cosine,text-free,106
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,39
+Raw caption cosine,text-free,63
+Raw caption cosine,text-free,33
+Raw caption cosine,text-free,261
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,28
+Raw caption cosine,text-free,18
+Raw caption cosine,text-free,101
+Raw caption cosine,text-free,10
+Raw caption cosine,text-free,158
+Raw caption cosine,text-free,168
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,338
+Raw caption cosine,text-free,51
+Raw caption cosine,text-free,58
+Raw caption cosine,text-free,7
+Raw caption cosine,text-free,11
+Raw caption cosine,text-free,267
+Raw caption cosine,text-free,28
+Raw caption cosine,text-free,101
+Raw caption cosine,text-free,90
+Raw caption cosine,text-free,232
+Raw caption cosine,text-free,123
+Raw caption cosine,text-free,35
+Raw caption cosine,text-free,253
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,304
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,14
+Raw caption cosine,text-free,69
+Raw caption cosine,text-free,129
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,106
+Raw caption cosine,text-free,84
+Raw caption cosine,text-free,103
+Raw caption cosine,text-free,64
+Raw caption cosine,text-free,61
+Raw caption cosine,text-free,76
+Raw caption cosine,text-free,343
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,58
+Raw caption cosine,text-free,18
+Raw caption cosine,text-free,9
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,378
+Raw caption cosine,text-free,360
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,236
+Raw caption cosine,text-free,11
+Raw caption cosine,text-free,9
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,20
+Raw caption cosine,text-free,148
+Raw caption cosine,text-free,45
+Raw caption cosine,text-free,94
+Raw caption cosine,text-free,307
+Raw caption cosine,text-free,87
+Raw caption cosine,text-free,28
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,86
+Raw caption cosine,text-free,13
+Raw caption cosine,text-free,154
+Raw caption cosine,text-free,270
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,66
+Raw caption cosine,text-free,158
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,171
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,8
+Raw caption cosine,text-free,20
+Raw caption cosine,text-free,23
+Raw caption cosine,text-free,173
+Raw caption cosine,text-free,21
+Raw caption cosine,text-free,20
+Raw caption cosine,text-free,97
+Raw caption cosine,text-free,70
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,89
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,6
+Raw caption cosine,text-free,3
+Raw caption cosine,text-free,259
+Raw caption cosine,text-free,187
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,301
+Raw caption cosine,text-free,114
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,204
+Raw caption cosine,text-free,56
+Raw caption cosine,text-free,332
+Raw caption cosine,text-free,126
+Raw caption cosine,text-free,61
+Raw caption cosine,text-free,385
+Raw caption cosine,text-free,210
+Raw caption cosine,text-free,77
+Raw caption cosine,text-free,11
+Raw caption cosine,text-free,101
+Raw caption cosine,text-free,15
+Raw caption cosine,text-free,208
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,7
+Raw caption cosine,text-free,5
+Raw caption cosine,text-free,222
+Raw caption cosine,text-free,15
+Raw caption cosine,text-free,131
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,59
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,128
+Raw caption cosine,text-free,80
+Raw caption cosine,text-free,31
+Raw caption cosine,text-free,2
+Raw caption cosine,text-free,8
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,36
+Raw caption cosine,text-free,108
+Raw caption cosine,text-free,65
+Raw caption cosine,text-free,248
+Raw caption cosine,text-free,42
+Raw caption cosine,text-free,5
+Raw caption cosine,text-free,275
+Raw caption cosine,text-free,13
+Raw caption cosine,text-free,307
+Raw caption cosine,text-free,36
+Raw caption cosine,text-free,8
+Raw caption cosine,text-free,37
+Raw caption cosine,text-free,143
+Raw caption cosine,text-free,87
+Raw caption cosine,text-free,218
+Raw caption cosine,text-free,297
+Raw caption cosine,text-free,310
+Raw caption cosine,text-free,6
+Raw caption cosine,text-free,60
+Raw caption cosine,text-free,193
+Raw caption cosine,text-free,152
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,64
+Raw caption cosine,text-free,8
+Raw caption cosine,text-free,24
+Raw caption cosine,text-free,6
+Raw caption cosine,text-free,147
+Raw caption cosine,text-free,130
+Raw caption cosine,text-free,51
+Raw caption cosine,text-free,104
+Raw caption cosine,text-free,32
+Raw caption cosine,text-free,312
+Raw caption cosine,text-free,145
+Raw caption cosine,text-free,16
+Raw caption cosine,text-free,149
+Raw caption cosine,text-free,67
+Raw caption cosine,text-free,68
+Raw caption cosine,text-free,51
+Raw caption cosine,text-free,208
+Raw caption cosine,text-free,44
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,97
+Raw caption cosine,text-free,95
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,135
+Raw caption cosine,text-free,226
+Raw caption cosine,text-free,11
+Raw caption cosine,text-free,125
+Raw caption cosine,text-free,59
+Raw caption cosine,text-free,35
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,133
+Raw caption cosine,text-free,116
+Raw caption cosine,text-free,12
+Raw caption cosine,text-free,23
+Raw caption cosine,text-free,39
+Raw caption cosine,text-free,142
+Raw caption cosine,text-free,60
+Raw caption cosine,text-free,34
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,391
+Raw caption cosine,text-free,301
+Raw caption cosine,text-free,86
+Raw caption cosine,text-free,13
+Raw caption cosine,text-free,71
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,5
+Raw caption cosine,text-free,198
+Raw caption cosine,text-free,54
+Raw caption cosine,text-free,330
+Raw caption cosine,text-free,147
+Raw caption cosine,text-free,221
+Raw caption cosine,text-free,325
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,46
+Raw caption cosine,text-free,89
+Raw caption cosine,text-free,253
+Raw caption cosine,text-free,232
+Raw caption cosine,text-free,101
+Raw caption cosine,text-free,116
+Raw caption cosine,text-free,5
+Raw caption cosine,text-free,129
+Raw caption cosine,text-free,28
+Raw caption cosine,text-free,260
+Raw caption cosine,text-free,12
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,38
+Raw caption cosine,text-free,15
+Raw caption cosine,text-free,114
+Raw caption cosine,text-free,99
+Raw caption cosine,text-free,223
+Raw caption cosine,text-free,122
+Raw caption cosine,text-free,4
+Raw caption cosine,text-free,1
+Raw caption cosine,text-free,22
+Raw caption cosine,text-free,132
+Raw caption cosine,text-free,71
+Raw caption cosine,text-free,169
+Raw caption cosine,text-free,344

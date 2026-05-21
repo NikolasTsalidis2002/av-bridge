@@ -46,6 +46,17 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def _path_relative_to_root(p: Path) -> str:
+    """Return p as a string relative to ROOT when possible, absolute
+    otherwise. Avoids the `is not in the subpath of` ValueError that
+    pathlib.relative_to raises when paths don't share an ancestor."""
+    p = Path(p).resolve()
+    try:
+        return str(p.relative_to(ROOT))
+    except ValueError:
+        return str(p)
 RES = ROOT / "results"
 EMB = ROOT / "embeddings"
 
@@ -189,6 +200,8 @@ def main() -> None:
         )
 
     out_dir = Path(args.out_dir)
+    if not out_dir.is_absolute():
+        out_dir = (ROOT / out_dir).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     ranks = ["best", "worst"] if args.rank == "both" else [args.rank]
@@ -223,7 +236,7 @@ def main() -> None:
                 "metric_used": args.metric,
                 "metric_value": val,
                 "scope": scope,
-                "plan_path": str(plan_path.relative_to(ROOT)),
+                "plan_path": _path_relative_to_root(plan_path),
             })
 
     # Stratified clip sample driven by the D-best image encoder (independent

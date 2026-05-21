@@ -1279,12 +1279,196 @@ def emit_unimodal_comparison() -> None:
         )
 
 
+# ---------------------------------------------------------------------------
+# Caption-agreement plots (external-semantic metric, see code/metrics.py).
+# ---------------------------------------------------------------------------
+CAPTION_DIR = RES / "exp_grid" / "plots"
+
+# Recipe key in the grid CSV  ->  human-readable label used in plots.
+RECIPE_LABELS = {
+    "procrustes":   "Procrustes (rigid orthogonal)",
+    "c-direct":     "Ridge-supervised FGW",
+    "c-transitive": "Text-bridged composition",
+    "d":            "FGW with caption cost",
+    "unsup":        "GW (intra-modal geometry alone)",
+    "text":         "Raw caption cosine",
+}
+
+# Per-recipe scope to read from the grid CSV (matches the conventions used
+# elsewhere in the chapter).
+RECIPE_SCOPE = {
+    "procrustes":   "heldout",
+    "c-direct":     "heldout",
+    "c-transitive": "heldout_like_c",
+    "d":            "heldout_like_c",
+    "unsup":        "heldout_like_c",
+    "text":         "heldout_like_c",
+}
+
+CAP_COLUMNS = ["cap_cos_argmax", "cap_cos_planmass",
+               "cap_cos_chance", "cap_cos_identity", "cap_cos_lift"]
+
+
+def _has_caption_cols(df: pd.DataFrame) -> bool:
+    return all(c in df.columns for c in CAP_COLUMNS)
+
+
+def emit_caption_agreement(
+    grid_csv: Path = RES / "exp_grid" / "sweep.csv",
+    out_dir: Path = CAPTION_DIR,
+    canon_image: str = "clip-large",
+    canon_audio: str = "clap-unfused",
+) -> None:
+    """Three caption-agreement figures from the encoder-grid sweep CSV.
+
+    Reads ``results/exp_grid/sweep.csv`` (must include the five
+    ``cap_cos_*`` columns produced by the updated ``code/metrics.py``)
+    and emits:
+
+      caption_agreement_bars.png
+        Per-recipe bar chart at the canonical encoder pair, plotting
+        argmax / plan-mass / chance / identity cosine side by side, with
+        the lift annotated.
+
+      caption_lift_heatmap_{recipe}.png  (one per recipe)
+        $6 \\times 5$ heatmap of ``cap_cos_lift`` across the encoder
+        grid; cells with positive lift are direct evidence that the
+        recipe retrieves semantically related targets above chance.
+
+      caption_agreement_refpairs.png
+        Per-recipe x reference-pair bars: same scalar comparison but
+        with the canonical (text-aligned) and the DINOv2-large x
+        MERT-330m (text-free) pairs side by side. Useful for the Pure-GW
+        narrative because the text-free pair is the cleanest evidence
+        of recipe-induced semantic agreement.
+    """
+    if not grid_csv.exists():
+        print(f"[caption] skip: {grid_csv} not present")
+        return
+    df = pd.read_csv(grid_csv)
+    if not _has_caption_cols(df):
+        print(f"[caption] skip: {grid_csv} does not have the cap_cos_* "
+              f"columns. Re-run experiments with the updated metrics.py.")
+        return
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # ---- 1. Canonical-pair per-recipe bar chart ----------------------
+    rows = []
+    for exp, label in RECIPE_LABELS.items():
+        scope = RECIPE_SCOPE[exp]
+        sub = df[(df.experiment == exp) & (df.scope == scope)
+                 & (df.image_encoder == canon_image)
+                 & (df.audio_encoder == canon_audio)]
+        if sub.empty:
+            continue
+        r = sub.iloc[0]
+        rows.append({"method": label, "argmax": r["cap_cos_argmax"],
+                     "plan_mass": r["cap_cos_planmass"],
+                     "chance": r["cap_cos_chance"],
+                     "identity": r["cap_cos_identity"],
+                     "lift": r["cap_cos_lift"]})
+    if not rows:
+        print("[caption] skip: no canonical-pair rows for any recipe")
+    else:
+        df_canon = pd.DataFrame(rows)
+        long = df_canon.melt(
+            id_vars="method",
+            value_vars=["chance", "argmax", "plan_mass", "identity"],
+            var_name="quantity", value_name="cosine",
+        )
+        # Order the categories for legend readability.
+        long["quantity"] = pd.Categorical(
+            long["quantity"], ["chance", "argmax", "plan_mass", "identity"]
+        )
+        fig, ax = plt.subplots(figsize=(11, 5.0))
+        sns.barplot(data=long, x="method", y="cosine", hue="quantity",
+                    ax=ax, palette="colorblind", edgecolor="white")
+        for container in ax.containers:
+            ax.bar_label(container, fmt="%.3f", padding=2, fontsize=7)
+        ax.set_ylabel("caption cosine")
+        ax.set_xlabel("")
+        ax.set_title(
+            f"Caption-agreement scalars per recipe "
+            f"(canonical pair: {canon_image} $\\times$ {canon_audio}, "
+            f"held-out / same-rows scope)"
+        )
+        plt.setp(ax.get_xticklabels(), rotation=15, ha="right")
+        ax.legend(title="quantity", loc="best")
+        sns.despine(ax=ax)
+        fig.tight_layout()
+        out = out_dir / "caption_agreement_bars.png"
+        fig.savefig(out, bbox_inches="tight", dpi=140)
+        plt.close(fig)
+        print(f"[caption] wrote {out}")
+
+    # ---- 2. Lift heatmap per recipe ---------------------------------
+    for exp, label in RECIPE_LABELS.items():
+        scope = RECIPE_SCOPE[exp]
+        sub = df[(df.experiment == exp) & (df.scope == scope)].dropna(
+            subset=["cap_cos_lift"])
+        if sub.empty:
+            continue
+        pv = sub.pivot(index="image_encoder", columns="audio_encoder",
+                       values="cap_cos_lift").sort_index().sort_index(axis=1)
+        # Symmetric colour scale around zero so the chance baseline is
+        # visually flat; positive cells are coloured warm, negative cool.
+        vmax = max(0.05, float(np.nanmax(np.abs(pv.values))))
+        _heatmap(
+            pv,
+            f"{label}: caption-cosine lift over chance "
+            f"({scope.replace('_', ' ')})",
+            out_dir / f"caption_lift_heatmap_{exp}.png",
+            cmap="RdBu_r", vmin=-vmax, vmax=+vmax,
+            fmt="+.3f", cbar_label="cap_cos_lift",
+        )
+
+    # ---- 3. Reference-pair comparison (canonical vs text-free) ------
+    free_image, free_audio = "dinov2-large", "mert-330m"
+    rows = []
+    for exp, label in RECIPE_LABELS.items():
+        scope = RECIPE_SCOPE[exp]
+        for pair_label, img_enc, aud_enc in [
+            ("CLIP $\\times$ CLAP",      canon_image, canon_audio),
+            ("DINOv2 $\\times$ MERT",    free_image,  free_audio),
+        ]:
+            sub = df[(df.experiment == exp) & (df.scope == scope)
+                     & (df.image_encoder == img_enc)
+                     & (df.audio_encoder == aud_enc)]
+            if sub.empty:
+                continue
+            r = sub.iloc[0]
+            rows.append({"method": label, "pair": pair_label,
+                         "lift": r["cap_cos_lift"]})
+    if rows:
+        df_pairs = pd.DataFrame(rows)
+        fig, ax = plt.subplots(figsize=(11, 4.5))
+        sns.barplot(data=df_pairs, x="method", y="lift", hue="pair",
+                    ax=ax, palette="colorblind", edgecolor="white")
+        for container in ax.containers:
+            ax.bar_label(container, fmt="%+.3f", padding=2, fontsize=8)
+        ax.axhline(0.0, color="grey", linestyle="--", lw=1.0,
+                   label="chance (lift = 0)")
+        ax.set_ylabel("cap_cos_lift  (= argmax cosine $-$ chance)")
+        ax.set_xlabel("")
+        ax.set_title(
+            r"Caption-agreement lift per recipe at the two reference pairs"
+        )
+        plt.setp(ax.get_xticklabels(), rotation=15, ha="right")
+        sns.despine(ax=ax)
+        ax.legend(title="encoder pair", loc="best")
+        fig.tight_layout()
+        out = out_dir / "caption_agreement_refpairs.png"
+        fig.savefig(out, bbox_inches="tight", dpi=140)
+        plt.close(fig)
+        print(f"[caption] wrote {out}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--exp",
                     choices=["a", "b", "c", "d", "unsup", "text",
                              "grid", "confusion", "scatter",
-                             "comparison", "all"],
+                             "comparison", "caption", "tradeoff", "all"],
                     default="all")
     ap.add_argument("--comparison", action="store_true")
     ap.add_argument("--confusion-K", type=int, default=15,
@@ -1334,6 +1518,13 @@ def main() -> None:
         )
     if args.exp in ("comparison", "all"):
         emit_unimodal_comparison()
+    if args.exp in ("caption", "all"):
+        emit_caption_agreement()
+    if args.exp in ("tradeoff", "all"):
+        import subprocess, sys as _sys
+        subprocess.run([_sys.executable,
+                        str(Path(__file__).with_name("analyse_tradeoff.py"))],
+                       check=False)
 
     if args.comparison or args.exp == "all":
         emit_comparison()

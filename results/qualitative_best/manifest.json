@@ -1,0 +1,61 @@
+{
+  "metric_used": "nmi",
+  "rank_requested": "best",
+  "ref_image_encoder_for_clip_sample": "clip-base",
+  "clips": [
+    "10164182964",
+    "11162473963",
+    "4367056464",
+    "4508384185",
+    "4533035526",
+    "4648608582",
+    "4862215227",
+    "4969723020",
+    "5293233413",
+    "5306545201",
+    "5460164242",
+    "5654616479"
+  ],
+  "plans": [
+    {
+      "experiment": "c-direct",
+      "rank": "best",
+      "image_encoder": "clip-base",
+      "audio_encoder": "mert-330m",
+      "metric_used": "nmi",
+      "metric_value": 0.4958157106410996,
+      "scope": "heldout",
+      "plan_path": "results/qualitative_best/T_c_direct_best__clip-base__mert-330m.npy"
+    },
+    {
+      "experiment": "d",
+      "rank": "best",
+      "image_encoder": "clip-base",
+      "audio_encoder": "clap-larger",
+      "metric_used": "nmi",
+      "metric_value": 0.8336972773037123,
+      "scope": "heldout_like_c",
+      "plan_path": "results/qualitative_best/T_d_best__clip-base__clap-larger.npy"
+    },
+    {
+      "experiment": "unsup",
+      "rank": "best",
+      "image_encoder": "clip-base",
+      "audio_encoder": "mert-330m",
+      "metric_used": "nmi",
+      "metric_value": 0.8203983712406583,
+      "scope": "heldout_like_c",
+      "plan_path": "results/qualitative_best/T_unsup_best__clip-base__mert-330m.npy"
+    },
+    {
+      "experiment": "text",
+      "rank": "best",
+      "image_encoder": "clip-base",
+      "audio_encoder": "clap-larger",
+      "metric_used": "nmi",
+      "metric_value": 0.8634735441331755,
+      "scope": "heldout_like_c",
+      "plan_path": "results/qualitative_best/T_text_best__clip-base__clap-larger.npy"
+    }
+  ]
+}

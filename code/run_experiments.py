@@ -24,6 +24,7 @@ from sklearn.cluster import KMeans
 from algorithms import (
     build_bridge,
     caption_cost_recipe,
+    procrustes_recipe,
     pure_gw,
     recipe,
     text_only_retrieval,
@@ -49,6 +50,7 @@ KCL = {
     "a": 10, "b": 20,
     "c-direct": 15, "c-transitive": 15,
     "d": 15, "unsup": 15, "text": 15,
+    "procrustes": 15,
 }
 
 # Reusable-plan K for C-transitive (= 300 here, rescaled from spec's 350).
@@ -61,6 +63,8 @@ CSV_COLS = [
     "routes_correct", "routes_total",
     "knn_overlap", "pearson_r",
     "nmi", "ami", "ari", "v_measure", "homogeneity", "completeness",
+    "cap_cos_argmax", "cap_cos_planmass",
+    "cap_cos_chance", "cap_cos_identity", "cap_cos_lift",
 ]
 
 
@@ -134,8 +138,16 @@ def run_sweep(
     plan_path: Path | None = None,
     K_grid: list[int] | None = None,
     alpha_grid: list[float] | None = None,
+    Z_src_cap: np.ndarray | None = None,
+    Z_tgt_cap: np.ndarray | None = None,
 ) -> None:
-    """Run the (K, alpha) sweep, evaluate, append rows to csv_path."""
+    """Run the (K, alpha) sweep, evaluate, append rows to csv_path.
+
+    ``Z_src_cap`` / ``Z_tgt_cap`` are optional per-row caption embeddings
+    used to compute the external caption-agreement metric. When omitted
+    those columns of the output CSV land as NaN; the rest of the metric
+    suite is unaffected.
+    """
     n = X.shape[0]
     gt = np.arange(n)
     K_grid = K_grid or K_GRID
@@ -156,10 +168,12 @@ def run_sweep(
                 print(f"  K={K:4d}  alpha={alpha:.2f}")
                 T = recipe(X, Y, S, S, alpha=alpha, eps=0.005, lam=1.0)
 
-                agg = evaluate(T, X, Y, gt, K_cl, seed=SEED)
+                agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
+                               Z_src_cap=Z_src_cap, Z_tgt_cap=Z_tgt_cap)
                 w.writerow({"K": K, "alpha": alpha, "scope": "aggregate", **agg})
 
-                hel = evaluate_heldout(T, X, Y, gt, S, K_cl, seed=SEED)
+                hel = evaluate_heldout(T, X, Y, gt, S, K_cl, seed=SEED,
+                                       Z_src_cap=Z_src_cap, Z_tgt_cap=Z_tgt_cap)
                 w.writerow({"K": K, "alpha": alpha, "scope": "heldout", **hel})
 
                 if (save_plan_at is not None
@@ -224,27 +238,38 @@ def exp_c_direct(image_name: str, audio_name: str,
     print(f"[Exp C-direct] image={image_name}  audio={audio_name}")
     X_image = load_embedding(f"vision_{image_name}")
     Y_audio = load_embedding(f"audio_{audio_name}")
+    ZV = load_embedding("ZV_text")
+    ZA = load_embedding("ZA_text")
     anchors = load_anchors(X_image, n=X_image.shape[0])
     X = X_image[anchors]
     Y = Y_audio[anchors]
+    ZV_a = ZV[anchors]
+    ZA_a = ZA[anchors]
     run_sweep(
         X, Y,
         K_cl=KCL["c-direct"],
         csv_path=RES / "exp_c" / "sweep_direct.csv",
         K_grid=K_grid,
+        Z_src_cap=ZV_a, Z_tgt_cap=ZA_a,
     )
 
 
 def exp_c_transitive(image_name: str, audio_name: str,
                      top_k: int = 20, tau: float = 0.1,
                      K_per_leg: int = REUSABLE_K,
-                     alpha_per_leg: float = REUSABLE_ALPHA) -> None:
+                     alpha_per_leg: float = REUSABLE_ALPHA,
+                     out_suffix: str = "") -> None:
     """Compose Exp A and Exp B plans through the text bridge."""
     print(f"[Exp C-transitive] top_k={top_k} tau={tau} "
           f"K_per_leg={K_per_leg} alpha_per_leg={alpha_per_leg}")
 
-    T_iv = np.load(RES / "exp_a" / "T_iv.npy")
-    T_ac = np.load(RES / "exp_b" / "T_ac.npy")
+    # Source the within-modality reusable plans from the same encoder
+    # suffix used by Experiments A and B (auto-suffixed when the encoder
+    # differs from the canonical default).
+    a_dir = RES / f"exp_a{_suffix_for(DEFAULT_IMAGE, image_name)}"
+    b_dir = RES / f"exp_b{_suffix_for(DEFAULT_AUDIO, audio_name)}"
+    T_iv = np.load(a_dir / "T_iv.npy")
+    T_ac = np.load(b_dir / "T_ac.npy")
 
     ZV = load_embedding("ZV_text")
     ZA = load_embedding("ZA_text")
@@ -262,15 +287,18 @@ def exp_c_transitive(image_name: str, audio_name: str,
 
     gt = np.arange(X.shape[0])
     K_cl = KCL["c-transitive"]
-    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED)
+    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
+                   Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
     # Held-out for transitive: rows in NEITHER A's nor B's K=REUSABLE_K index set.
     S_a = kmeans_stratified_indices(X, n=K_per_leg, n_clusters=min(10, K_per_leg), seed=SEED)
     S_b = kmeans_stratified_indices(Y, n=K_per_leg, n_clusters=min(10, K_per_leg), seed=SEED)
     S_both = np.unique(np.concatenate([S_a, S_b]))
-    hel = evaluate_heldout(T, X, Y, gt, S_both, K_cl, seed=SEED)
+    hel = evaluate_heldout(T, X, Y, gt, S_both, K_cl, seed=SEED,
+                           Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
 
-    out = RES / "exp_c" / "sweep_transitive.csv"
-    out.parent.mkdir(parents=True, exist_ok=True)
+    out_dir = RES / f"exp_c{out_suffix}"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out = out_dir / "sweep_transitive.csv"
     extra_cols = ["bridge_top_k", "bridge_tau", "K_per_leg", "alpha_per_leg"]
     with out.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CSV_COLS + extra_cols)
@@ -282,11 +310,13 @@ def exp_c_transitive(image_name: str, audio_name: str,
         w.writerow({"K": K_per_leg, "alpha": alpha_per_leg, "scope": "aggregate", **agg, **extras})
         w.writerow({"K": K_per_leg, "alpha": alpha_per_leg, "scope": "heldout", **hel, **extras})
     print(f"  wrote {out}")
-    np.save(RES / "exp_c" / "T_transitive.npy", T)
+    np.save(out_dir / "T_transitive.npy", T)
+    print(f"  wrote {out_dir / 'T_transitive.npy'}")
 
 
 def exp_d_caption(image_name: str, audio_name: str,
-                  alpha_grid: list[float] | None = None) -> None:
+                  alpha_grid: list[float] | None = None,
+                  out_suffix: str = "") -> None:
     """Experiment D — caption-cost FGW for image -> audio.
 
     No anchors, no ridge: M is built directly from caption distances
@@ -311,7 +341,7 @@ def exp_d_caption(image_name: str, audio_name: str,
     K_cl = KCL["d"]
     alpha_grid = alpha_grid or ALPHA_GRID
 
-    out_dir = RES / "exp_d"
+    out_dir = RES / f"exp_d{out_suffix}"
     out_dir.mkdir(parents=True, exist_ok=True)
     csv_path = out_dir / "sweep.csv"
 
@@ -328,14 +358,16 @@ def exp_d_caption(image_name: str, audio_name: str,
         for alpha in alpha_grid:
             print(f"  alpha={alpha:.2f}")
             T = caption_cost_recipe(X, Y, ZV, ZA, alpha=alpha, eps=0.005)
-            agg = evaluate(T, X, Y, gt, K_cl, seed=SEED)
+            agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
+                           Z_src_cap=ZV, Z_tgt_cap=ZA)
             # K column is 0: no anchors / no ridge in this experiment.
             w.writerow({"K": 0, "alpha": alpha, "scope": "aggregate", **agg})
             if abs(alpha - REUSABLE_ALPHA) < 1e-12:
                 # Same-rows view at the canonical alpha — flagged as not a
                 # real held-out (D has no anchors), only for comparability
                 # with C-direct/C-transitive at the same out-of-A∪B rows.
-                cmp = evaluate_heldout(T, X, Y, gt, S_compare, K_cl, seed=SEED)
+                cmp = evaluate_heldout(T, X, Y, gt, S_compare, K_cl, seed=SEED,
+                                       Z_src_cap=ZV, Z_tgt_cap=ZA)
                 w.writerow({"K": 0, "alpha": alpha, "scope": "heldout_like_c", **cmp})
                 saved_plan = T
             f.flush()
@@ -346,7 +378,8 @@ def exp_d_caption(image_name: str, audio_name: str,
         print(f"  wrote {out_dir / 'T_caption.npy'}")
 
 
-def exp_unsupervised_gw(image_name: str, audio_name: str) -> None:
+def exp_unsupervised_gw(image_name: str, audio_name: str,
+                        out_suffix: str = "") -> None:
     """Fully unsupervised image -> audio alignment with pure entropic GW.
 
     No anchors, no ridge, no captions: the plan is determined entirely by
@@ -359,9 +392,16 @@ def exp_unsupervised_gw(image_name: str, audio_name: str) -> None:
 
     X_image = load_embedding(f"vision_{image_name}")
     Y_audio = load_embedding(f"audio_{audio_name}")
+    # Caption embeddings are loaded only to enable the caption-agreement
+    # evaluation downstream; they are *not* fed into pure_gw(), so the
+    # recipe itself remains text-blind.
+    ZV = load_embedding("ZV_text")
+    ZA = load_embedding("ZA_text")
     anchors = load_anchors(X_image, n=X_image.shape[0])
     X = X_image[anchors]
     Y = Y_audio[anchors]
+    ZV_a = ZV[anchors]
+    ZA_a = ZA[anchors]
 
     gt = np.arange(X.shape[0])
     K_cl = KCL["unsup"]
@@ -370,7 +410,7 @@ def exp_unsupervised_gw(image_name: str, audio_name: str) -> None:
     T = pure_gw(X, Y, eps=0.005)
     print(f"  plan shape={T.shape}  sum={T.sum():.6f}")
 
-    out_dir = RES / "exp_unsup"
+    out_dir = RES / f"exp_unsup{out_suffix}"
     out_dir.mkdir(parents=True, exist_ok=True)
     csv_path = out_dir / "sweep.csv"
 
@@ -381,8 +421,10 @@ def exp_unsupervised_gw(image_name: str, audio_name: str) -> None:
     S_b = kmeans_stratified_indices(Y, n=REUSABLE_K, n_clusters=min(10, REUSABLE_K), seed=SEED)
     S_compare = np.unique(np.concatenate([S_a, S_b]))
 
-    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED)
-    cmp = evaluate_heldout(T, X, Y, gt, S_compare, K_cl, seed=SEED)
+    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
+                   Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
+    cmp = evaluate_heldout(T, X, Y, gt, S_compare, K_cl, seed=SEED,
+                           Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
 
     with csv_path.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CSV_COLS)
@@ -396,7 +438,8 @@ def exp_unsupervised_gw(image_name: str, audio_name: str) -> None:
     print(f"  wrote {out_dir / 'T_gw.npy'}")
 
 
-def exp_text_only(image_name: str, audio_name: str) -> None:
+def exp_text_only(image_name: str, audio_name: str,
+                  out_suffix: str = "") -> None:
     """Pure text-caption retrieval baseline for image -> audio.
 
     No OT, no FGW, no image or audio embeddings at all. The "plan" is
@@ -428,7 +471,7 @@ def exp_text_only(image_name: str, audio_name: str) -> None:
     T = text_only_retrieval(ZV, ZA)
     print(f"  similarity matrix shape={T.shape}  range=[{T.min():.3f},{T.max():.3f}]")
 
-    out_dir = RES / "exp_text"
+    out_dir = RES / f"exp_text{out_suffix}"
     out_dir.mkdir(parents=True, exist_ok=True)
     csv_path = out_dir / "sweep.csv"
 
@@ -438,8 +481,10 @@ def exp_text_only(image_name: str, audio_name: str) -> None:
     S_b = kmeans_stratified_indices(Y, n=REUSABLE_K, n_clusters=min(10, REUSABLE_K), seed=SEED)
     S_compare = np.unique(np.concatenate([S_a, S_b]))
 
-    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED)
-    cmp = evaluate_heldout(T, X, Y, gt, S_compare, K_cl, seed=SEED)
+    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
+                   Z_src_cap=ZV, Z_tgt_cap=ZA)
+    cmp = evaluate_heldout(T, X, Y, gt, S_compare, K_cl, seed=SEED,
+                           Z_src_cap=ZV, Z_tgt_cap=ZA)
 
     with csv_path.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CSV_COLS)
@@ -451,6 +496,68 @@ def exp_text_only(image_name: str, audio_name: str) -> None:
     np.save(out_dir / "T_text.npy", T)
     print(f"  wrote {csv_path}")
     print(f"  wrote {out_dir / 'T_text.npy'}")
+
+
+def exp_procrustes(image_name: str, audio_name: str,
+                   out_suffix: str = "") -> None:
+    """Procrustes (rigid orthogonal) baseline for image -> audio.
+
+    Identity-supervised at K=300 anchors (same partition C-direct uses,
+    so held-out scope is directly comparable). The map W is the
+    closed-form semi-orthogonal solution to ||X[S] W - Y[S]||_F^2:
+    no FGW, no entropic OT, no captions involved. The plan is the
+    (X W) Y^T similarity matrix, consumed by the standard metric
+    suite as if it were a transport plan."""
+    print(f"[Exp Procrustes] image={image_name}  audio={audio_name}  "
+          f"K=300 anchors (identity-paired), semi-orthogonal map")
+
+    X_image = load_embedding(f"vision_{image_name}")
+    Y_audio = load_embedding(f"audio_{audio_name}")
+    ZV = load_embedding("ZV_text")
+    ZA = load_embedding("ZA_text")
+    anchors = load_anchors(X_image, n=X_image.shape[0])
+    X = X_image[anchors]
+    Y = Y_audio[anchors]
+    ZV_a = ZV[anchors]
+    ZA_a = ZA[anchors]
+
+    gt = np.arange(X.shape[0])
+    K_cl = KCL["procrustes"]
+    K_target = REUSABLE_K
+
+    # Stratified anchor partition identical to the one C-direct uses
+    # at K=REUSABLE_K, so the held-out scope matches row-for-row.
+    S = kmeans_stratified_indices(X, n=K_target,
+                                  n_clusters=min(10, K_target), seed=SEED)
+
+    print(f"  fitting semi-orthogonal map W: "
+          f"d_src={X.shape[1]} -> d_tgt={Y.shape[1]}  "
+          f"using |S|={len(S)} paired anchors")
+    T = procrustes_recipe(X, Y, S, S)
+    print(f"  plan shape={T.shape}  "
+          f"range=[{T.min():.3f},{T.max():.3f}]")
+
+    out_dir = RES / f"exp_procrustes{out_suffix}"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = out_dir / "sweep.csv"
+
+    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
+                   Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
+    hel = evaluate_heldout(T, X, Y, gt, S, K_cl, seed=SEED,
+                           Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
+
+    with csv_path.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=CSV_COLS)
+        w.writeheader()
+        # K=300 (paired-anchor budget), alpha=NaN (no entropic blend).
+        w.writerow({"K": K_target, "alpha": float("nan"),
+                    "scope": "aggregate", **agg})
+        w.writerow({"K": K_target, "alpha": float("nan"),
+                    "scope": "heldout", **hel})
+
+    np.save(out_dir / "T_procrustes.npy", T)
+    print(f"  wrote {csv_path}")
+    print(f"  wrote {out_dir / 'T_procrustes.npy'}")
 
 
 def _discover_encoders() -> tuple[list[str], list[str]]:
@@ -467,6 +574,8 @@ GRID_CSV_COLS = [
     "routes_correct", "routes_total",
     "knn_overlap", "pearson_r",
     "nmi", "ami", "ari", "v_measure", "homogeneity", "completeness",
+    "cap_cos_argmax", "cap_cos_planmass",
+    "cap_cos_chance", "cap_cos_identity", "cap_cos_lift",
 ]
 
 
@@ -509,6 +618,12 @@ def exp_encoder_grid(
 
     rows: list[dict] = []
 
+    # Cache within-modality plans for C-transitive composition below.
+    # Each entry is the (n, n) plan from image i to its visual-caption (A)
+    # or from audio j to its audio-caption (B) at the canonical (K, alpha).
+    t_iv_by_image: dict[str, np.ndarray] = {}
+    t_ac_by_audio: dict[str, np.ndarray] = {}
+
     # ---- Unimodal A: image -> visual-caption text -----------------------
     for img in vision:
         try:
@@ -524,6 +639,7 @@ def exp_encoder_grid(
         gt = np.arange(X.shape[0])
         print(f"  [A] image={img}")
         T = recipe(X, Y, S, S, alpha=alpha_iv, eps=eps, lam=1.0)
+        t_iv_by_image[img] = T  # reused for c-transitive composition
         for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["a"], seed=SEED)),
                          ("heldout",   evaluate_heldout(T, X, Y, gt, S, KCL["a"], seed=SEED))]:
             rows.append({"experiment": "a", "image_encoder": img, "audio_encoder": "—",
@@ -551,6 +667,7 @@ def exp_encoder_grid(
         gt = np.arange(X.shape[0])
         print(f"  [B] audio={aud}")
         T = recipe(X, Y, S, S, alpha=alpha_iv, eps=eps, lam=1.0)
+        t_ac_by_audio[aud] = T  # reused for c-transitive composition
         for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["b"], seed=SEED)),
                          ("heldout",   evaluate_heldout(T, X, Y, gt, S, KCL["b"], seed=SEED))]:
             rows.append({"experiment": "b", "image_encoder": "—", "audio_encoder": aud,
@@ -583,22 +700,55 @@ def exp_encoder_grid(
             S_compare = np.unique(np.concatenate([S_a, S_b]))
             print(f"  [grid] image={img}  audio={aud}")
 
+            cap_kw = {"Z_src_cap": ZV, "Z_tgt_cap": ZA}
+
             # C-direct at (K=REUSABLE_K, alpha=0.5)
             S = kmeans_stratified_indices(X, n=K_target,
                                           n_clusters=min(10, K_target), seed=SEED)
             T = recipe(X, Y, S, S, alpha=alpha_iv, eps=eps, lam=1.0)
-            for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["c-direct"], seed=SEED)),
+            for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["c-direct"], seed=SEED, **cap_kw)),
                              ("heldout",   evaluate_heldout(T, X, Y, gt, S,
-                                                            KCL["c-direct"], seed=SEED))]:
+                                                            KCL["c-direct"], seed=SEED, **cap_kw))]:
                 rows.append({"experiment": "c-direct",
                              "image_encoder": img, "audio_encoder": aud,
                              "K": K_target, "alpha": alpha_iv,
                              "scope": scope, **m})
 
+            # C-transitive: compose A's image->visual-caption plan with the
+            # text bridge and B's audio->audio-caption plan. Reuses the
+            # cached T_iv / T_ac from the within-modality loops above.
+            T_iv = t_iv_by_image.get(img)
+            T_ac = t_ac_by_audio.get(aud)
+            if T_iv is not None and T_ac is not None:
+                B_bridge = build_bridge(ZV, ZA, top_k=20, tau=0.1)
+                T = transitive_plan(T_iv, B_bridge, T_ac)
+                for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["c-transitive"], seed=SEED, **cap_kw)),
+                                 ("heldout",   evaluate_heldout(T, X, Y, gt, S_compare,
+                                                                KCL["c-transitive"], seed=SEED, **cap_kw))]:
+                    # Use heldout_like_c so this row aligns with d / unsup / text
+                    # held-out partitioning (rows outside S_a ∪ S_b).
+                    scope_out = "heldout_like_c" if scope == "heldout" else scope
+                    rows.append({"experiment": "c-transitive",
+                                 "image_encoder": img, "audio_encoder": aud,
+                                 "K": K_target, "alpha": REUSABLE_ALPHA,
+                                 "scope": scope_out, **m})
+
+            # Procrustes (identity-supervised rigid orthogonal alignment)
+            # reusing the same K=REUSABLE_K paired anchors as C-direct so
+            # held-out partition matches row-for-row.
+            T = procrustes_recipe(X, Y, S, S)
+            for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["procrustes"], seed=SEED, **cap_kw)),
+                             ("heldout",   evaluate_heldout(T, X, Y, gt, S,
+                                                            KCL["procrustes"], seed=SEED, **cap_kw))]:
+                rows.append({"experiment": "procrustes",
+                             "image_encoder": img, "audio_encoder": aud,
+                             "K": K_target, "alpha": float("nan"),
+                             "scope": scope, **m})
+
             # D at alpha=0.7
             T = caption_cost_recipe(X, Y, ZV, ZA, alpha=alpha_d, eps=eps)
-            agg = evaluate(T, X, Y, gt, KCL["d"], seed=SEED)
-            hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["d"], seed=SEED)
+            agg = evaluate(T, X, Y, gt, KCL["d"], seed=SEED, **cap_kw)
+            hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["d"], seed=SEED, **cap_kw)
             rows.append({"experiment": "d", "image_encoder": img, "audio_encoder": aud,
                          "K": 0, "alpha": alpha_d, "scope": "aggregate", **agg})
             rows.append({"experiment": "d", "image_encoder": img, "audio_encoder": aud,
@@ -606,8 +756,8 @@ def exp_encoder_grid(
 
             # Unsup (pure entropic GW)
             T = pure_gw(X, Y, eps=eps)
-            agg = evaluate(T, X, Y, gt, KCL["unsup"], seed=SEED)
-            hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["unsup"], seed=SEED)
+            agg = evaluate(T, X, Y, gt, KCL["unsup"], seed=SEED, **cap_kw)
+            hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["unsup"], seed=SEED, **cap_kw)
             rows.append({"experiment": "unsup", "image_encoder": img, "audio_encoder": aud,
                          "K": 0, "alpha": 1.0, "scope": "aggregate", **agg})
             rows.append({"experiment": "unsup", "image_encoder": img, "audio_encoder": aud,
@@ -616,8 +766,8 @@ def exp_encoder_grid(
             # Text-only (the plan itself is encoder-independent, but structural
             # metrics depend on Y, so we evaluate per cell).
             T = text_only_retrieval(ZV, ZA)
-            agg = evaluate(T, X, Y, gt, KCL["text"], seed=SEED)
-            hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["text"], seed=SEED)
+            agg = evaluate(T, X, Y, gt, KCL["text"], seed=SEED, **cap_kw)
+            hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["text"], seed=SEED, **cap_kw)
             rows.append({"experiment": "text", "image_encoder": img, "audio_encoder": aud,
                          "K": 0, "alpha": float("nan"), "scope": "aggregate", **agg})
             rows.append({"experiment": "text", "image_encoder": img, "audio_encoder": aud,
@@ -635,7 +785,8 @@ def main() -> None:
     ap.add_argument(
         "--exp",
         choices=["a", "b", "c-direct", "c-transitive",
-                 "d", "unsup", "text", "grid", "all"],
+                 "d", "unsup", "text", "procrustes",
+                 "grid", "all"],
         required=True,
     )
     ap.add_argument("--grid-images", type=str, default=None,
@@ -648,6 +799,11 @@ def main() -> None:
                     help="Override K sweep, e.g. '50,100,200,300,400'")
     ap.add_argument("--bridge-top-k", type=int, default=20)
     ap.add_argument("--bridge-tau", type=float, default=0.1)
+    ap.add_argument("--out-suffix", type=str, default="",
+                    help="Append this suffix to per-experiment output "
+                         "directories (e.g. '__dinov2-large__mert-330m'). "
+                         "Leaves the canonical-pair artefacts intact when "
+                         "running additional encoder pairs.")
     args = ap.parse_args()
 
     K_grid = (
@@ -665,13 +821,20 @@ def main() -> None:
         exp_c_transitive(
             args.image_encoder, args.audio_encoder,
             top_k=args.bridge_top_k, tau=args.bridge_tau,
+            out_suffix=args.out_suffix,
         )
     if args.exp in ("d", "all"):
-        exp_d_caption(args.image_encoder, args.audio_encoder)
+        exp_d_caption(args.image_encoder, args.audio_encoder,
+                      out_suffix=args.out_suffix)
     if args.exp in ("unsup", "all"):
-        exp_unsupervised_gw(args.image_encoder, args.audio_encoder)
+        exp_unsupervised_gw(args.image_encoder, args.audio_encoder,
+                            out_suffix=args.out_suffix)
     if args.exp in ("text", "all"):
-        exp_text_only(args.image_encoder, args.audio_encoder)
+        exp_text_only(args.image_encoder, args.audio_encoder,
+                      out_suffix=args.out_suffix)
+    if args.exp in ("procrustes", "all"):
+        exp_procrustes(args.image_encoder, args.audio_encoder,
+                       out_suffix=args.out_suffix)
     if args.exp == "grid":
         image_only = (args.grid_images.split(",")
                       if args.grid_images else None)

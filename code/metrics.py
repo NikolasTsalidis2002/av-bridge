@@ -81,6 +81,114 @@ def knn_overlap(T: np.ndarray, X_src: np.ndarray, Y_tgt: np.ndarray, k: int = 5)
     return float(np.mean(overlaps))
 
 
+def caption_agreement(
+    T: np.ndarray,
+    Z_src: np.ndarray,
+    Z_tgt: np.ndarray,
+    seed: int = 42,
+    n_chance_draws: int = 200,
+) -> dict:
+    """Caption-similarity score of the plan's argmax retrievals.
+
+    The captions $z^{\\,\\text{src}}_i$ and $z^{\\,\\text{tgt}}_j$ are
+    encoded by a third encoder that the recipe's transport plan does
+    not see (in our setup: MiniLM-L6-v2 vs CLIP/CLAP). Cosine
+    similarity between caption pools is therefore an *external*
+    semantic-agreement signal independent of the modality embeddings
+    the plan was fitted on.
+
+    Returns a dict with five keys:
+      cap_cos_argmax    : mean cosine between the source-caption of i
+                          and the target-caption of the plan's argmax
+                          partner of i.
+      cap_cos_planmass  : plan-mass-weighted cosine; reads the full
+                          plan distribution per row rather than just
+                          the argmax. For uniform-marginal plans the
+                          two metrics coincide in expectation under a
+                          permutation upper bound.
+      cap_cos_chance    : Monte-Carlo estimate of the mean cosine
+                          under a random permutation of the partner
+                          mapping. The honest chance baseline.
+      cap_cos_identity  : mean cosine under the identity permutation
+                          (the empirical upper bound on this dataset
+                          --- visual and audio captions of the same
+                          clip are written by independent annotators
+                          and do not perfectly agree).
+      cap_cos_lift      : argmax cosine minus chance cosine; positive
+                          values are direct evidence of semantic
+                          agreement above chance.
+
+    Returns NaN-only dict if Z_src or Z_tgt is missing.
+    """
+    NAN_OUT = {
+        "cap_cos_argmax":   float("nan"),
+        "cap_cos_planmass": float("nan"),
+        "cap_cos_chance":   float("nan"),
+        "cap_cos_identity": float("nan"),
+        "cap_cos_lift":     float("nan"),
+    }
+    if Z_src is None or Z_tgt is None:
+        return NAN_OUT
+
+    h, m = T.shape  # h source rows scored, m total target candidates
+    if Z_src.shape[0] != h or Z_tgt.shape[0] != m:
+        return NAN_OUT
+
+    # Normalise once: dot product == cosine. Skip if already unit-norm.
+    def _l2norm(M: np.ndarray) -> np.ndarray:
+        norms = np.linalg.norm(M, axis=1, keepdims=True)
+        norms[norms < 1e-12] = 1.0
+        return M / norms
+
+    Zs = _l2norm(Z_src.astype(np.float64))
+    Zt = _l2norm(Z_tgt.astype(np.float64))
+
+    # Full (h x m) cosine matrix between source and target captions.
+    # At h, m <= 400 this is trivial in time and memory.
+    C = Zs @ Zt.T
+
+    # 1. Argmax-partner cosine.
+    partners = T.argmax(axis=1)
+    argmax_cos = C[np.arange(h), partners]
+
+    # 2. Plan-mass-weighted cosine. Row-normalise the plan first so the
+    # mass per source row sums to 1, otherwise rows with low marginal
+    # mass contribute less than they should.
+    row_sums = T.sum(axis=1, keepdims=True)
+    row_sums[row_sums < 1e-12] = 1.0
+    T_rowstoch = T / row_sums
+    planmass_cos = (T_rowstoch * C).sum(axis=1)
+
+    # 3. Identity-permutation reference (the dataset upper bound). On the
+    # full-set call h == m == n and this is C[i, i]; on the held-out call
+    # we cannot read C[i, i] because the held-out source rows are
+    # re-indexed 0..h-1 while their GT partners sit at their original
+    # indices in Y. The held-out path therefore supplies Z_src already
+    # restricted to the held rows; we approximate the identity by taking
+    # the per-row max of C, which is a meaningful upper-bound proxy.
+    identity_cos = (C[np.arange(h), np.arange(h)]
+                    if h == m else C.max(axis=1))
+
+    # 4. Random-permutation chance: sample partners uniformly at random
+    # from the m target candidates, recompute the mean argmax-style cosine,
+    # average over draws.
+    rng = np.random.default_rng(seed)
+    chance_vals = np.empty(n_chance_draws, dtype=np.float64)
+    idx = np.arange(h)
+    for k in range(n_chance_draws):
+        rand_partners = rng.integers(0, m, size=h)
+        chance_vals[k] = C[idx, rand_partners].mean()
+    chance_cos = float(chance_vals.mean())
+
+    return {
+        "cap_cos_argmax":   float(argmax_cos.mean()),
+        "cap_cos_planmass": float(planmass_cos.mean()),
+        "cap_cos_chance":   chance_cos,
+        "cap_cos_identity": float(identity_cos.mean()),
+        "cap_cos_lift":     float(argmax_cos.mean() - chance_cos),
+    }
+
+
 def pearson_pairwise(T: np.ndarray, X_src: np.ndarray, Y_tgt: np.ndarray) -> float:
     """Pearson correlation of pairwise distances in source space vs partner-target space."""
     if len(X_src) < 3:
@@ -103,6 +211,14 @@ _AGREEMENT_NANS: dict = {
     "v_measure": float("nan"),
     "homogeneity": float("nan"),
     "completeness": float("nan"),
+}
+
+_CAPAGREE_NANS: dict = {
+    "cap_cos_argmax":   float("nan"),
+    "cap_cos_planmass": float("nan"),
+    "cap_cos_chance":   float("nan"),
+    "cap_cos_identity": float("nan"),
+    "cap_cos_lift":     float("nan"),
 }
 
 
@@ -231,8 +347,17 @@ def evaluate(
     gt: np.ndarray,
     K_cl: int,
     seed: int = 42,
+    Z_src_cap: np.ndarray | None = None,
+    Z_tgt_cap: np.ndarray | None = None,
 ) -> dict:
-    """Full metric suite. Used by run_experiments.py for each (K, alpha) cell."""
+    """Full metric suite. Used by run_experiments.py for each (K, alpha) cell.
+
+    Optional ``Z_src_cap`` and ``Z_tgt_cap`` are the per-row caption
+    embeddings of each side, used to compute the external-semantic
+    caption-agreement scores (\\S\\ref{sec:res-classvis}). When omitted
+    the caption-agreement columns of the return dict are NaN, preserving
+    backwards compatibility with callers that pre-date this change.
+    """
     r1 = recall_at_k(T, gt, 1)
     r5 = recall_at_k(T, gt, 5)
     r10 = recall_at_k(T, gt, 10)
@@ -241,11 +366,13 @@ def evaluate(
     kno = knn_overlap(T, X_src, Y_tgt, k=5)
     pr = pearson_pairwise(T, X_src, Y_tgt)
     agree = cluster_agreement(T, X_src, Y_tgt, K_cl, seed=seed)
+    cap = caption_agreement(T, Z_src_cap, Z_tgt_cap, seed=seed)
     return {
         "R@1": r1, "R@5": r5, "R@10": r10, "R@20": r20,
         "routes_correct": r_correct, "routes_total": r_total,
         "knn_overlap": kno, "pearson_r": pr,
         **agree,
+        **cap,
     }
 
 
@@ -257,13 +384,17 @@ def evaluate_heldout(
     S: np.ndarray,
     K_cl: int,
     seed: int = 42,
+    Z_src_cap: np.ndarray | None = None,
+    Z_tgt_cap: np.ndarray | None = None,
 ) -> dict:
     """Same suite but restricted to rows whose index is NOT in S.
 
     For recall_at_k this is a row mask: we keep the full plan (so the
     columns the held-out rows can match against are still the whole target
     set, which is the honest setup) but only score rows not in S.
-    For structural metrics we recompute on the masked subset.
+    For structural metrics we recompute on the masked subset. Caption
+    embeddings, when supplied, are likewise restricted to the held-out
+    rows on the source side; the target side keeps all $n$ candidates.
     """
     n = T.shape[0]
     in_S = np.zeros(n, dtype=bool)
@@ -278,6 +409,7 @@ def evaluate_heldout(
             "knn_overlap": float("nan"),
             "pearson_r": float("nan"),
             **_AGREEMENT_NANS,
+            **_CAPAGREE_NANS,
         }
 
     # Row-masked recall.
@@ -352,9 +484,16 @@ def evaluate_heldout(
             "completeness": float(completeness_score(src_lab, mapped_h)),
         }
 
+    # Caption agreement on the held-out subset of source rows.
+    if Z_src_cap is not None and Z_tgt_cap is not None:
+        cap = caption_agreement(T_h, Z_src_cap[held], Z_tgt_cap, seed=seed)
+    else:
+        cap = dict(_CAPAGREE_NANS)
+
     return {
         "R@1": r1, "R@5": r5, "R@10": r10, "R@20": r20,
         "routes_correct": r_correct, "routes_total": r_total,
         "knn_overlap": kno, "pearson_r": pr,
         **agree,
+        **cap,
     }

@@ -162,7 +162,8 @@ def _render_captions(ax, captions: list[str], n_show: int = 2) -> None:
 def make_figure(query_clip: str, manifest: list[dict],
                 X_image: np.ndarray, Y_audio: np.ndarray, plan: np.ndarray,
                 top_k: int, query_top_k: int, query_temp: float,
-                title: str, out: Path) -> None:
+                title: str, out: Path,
+                method_label: str | None = None) -> None:
     ids = [m["clip_id"] for m in manifest]
     if query_clip not in ids:
         raise KeyError(f"clip_id {query_clip!r} not in manifest")
@@ -196,7 +197,8 @@ def make_figure(query_clip: str, manifest: list[dict],
                  fontsize=13, fontweight="bold", transform=hax.transAxes)
 
     # ---- Image -> Audio panel ----
-    _header(0, f"Image → Audio   (query clip {query_clip})")
+    method_str = f"  ·  {method_label}" if method_label else ""
+    _header(0, f"Image → Audio   (query clip {query_clip}){method_str}")
 
     ax = fig.add_subplot(gs[1, 0])
     _render_image(ax, q["frame_path"], title="query (image)", border="tab:blue")
@@ -212,7 +214,7 @@ def make_figure(query_clip: str, manifest: list[dict],
         _render_captions(cap_ax, item["audio_captions"])
 
     # ---- Audio -> Image panel ----
-    _header(4, f"Audio → Image   (query clip {query_clip})")
+    _header(4, f"Audio → Image   (query clip {query_clip}){method_str}")
 
     ax = fig.add_subplot(gs[5, 0])
     _render_spectrogram(ax, q["audio_path"],
@@ -256,6 +258,10 @@ def main() -> None:
                     help="Soft-assign temperature (~0 = strict argmax).")
     ap.add_argument("--out", type=str, default=None,
                     help="Output PNG path (default: results/qualitative/<clip>.png).")
+    ap.add_argument("--method-label", type=str, default=None,
+                    help="Human-readable name shown in the figure header "
+                         "(e.g. 'FGW with caption cost'). If omitted, the "
+                         "plan filename stem is used.")
     ap.add_argument("--random-plan", type=str, default=None,
                     choices=["permutation", "sinkhorn", "uniform"],
                     help="If set, synthesise a chance-level plan in memory "
@@ -302,15 +308,17 @@ def main() -> None:
     out = Path(args.out) if args.out else (
         RES / "qualitative" / f"{args.clip_id}__{plan_label}.png"
     )
-    title = (f"plan={plan_label}   image_encoder={args.image_encoder}   "
-             f"audio_encoder={args.audio_encoder}   "
-             f"top_k={args.top_k}   q_top_k={args.query_top_k}   "
-             f"q_temp={args.query_temp}")
+    display_label = args.method_label if args.method_label else plan_label
+    title = (f"method = {display_label}   "
+             f"encoders = ({args.image_encoder}, {args.audio_encoder})   "
+             f"top_k = {args.top_k}   q_top_k = {args.query_top_k}   "
+             f"q_temp = {args.query_temp}")
     make_figure(args.clip_id, manifest, X, Y, plan,
                 top_k=args.top_k,
                 query_top_k=args.query_top_k,
                 query_temp=args.query_temp,
-                title=title, out=out)
+                title=title, out=out,
+                method_label=args.method_label)
 
 
 if __name__ == "__main__":

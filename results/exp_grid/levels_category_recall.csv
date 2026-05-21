@@ -1,29 +1,29 @@
 recipe,k,category_recall,category_recall_chance
-D (caption-cost FGW),1,0.0675,0.08447500000000001
-D (caption-cost FGW),3,0.0725,0.08447500000000001
-D (caption-cost FGW),5,0.079,0.08447500000000001
-D (caption-cost FGW),10,0.08100000000000002,0.08447500000000001
-D (caption-cost FGW),20,0.07937500000000001,0.08447500000000001
-D (caption-cost FGW),50,0.0786,0.08447500000000001
-D (caption-cost FGW),100,0.075425,0.08447500000000001
-C-transitive (text bridge),1,0.085,0.08447500000000001
-C-transitive (text bridge),3,0.09083333333333332,0.08447500000000001
-C-transitive (text bridge),5,0.09,0.08447500000000001
-C-transitive (text bridge),10,0.08649999999999998,0.08447500000000001
-C-transitive (text bridge),20,0.08125,0.08447500000000001
-C-transitive (text bridge),50,0.0766,0.08447500000000001
-C-transitive (text bridge),100,0.077075,0.08447500000000001
-Pure-GW (no signal),1,0.0475,0.08447500000000001
-Pure-GW (no signal),3,0.06333333333333332,0.08447500000000001
-Pure-GW (no signal),5,0.0645,0.08447500000000001
-Pure-GW (no signal),10,0.061500000000000006,0.08447500000000001
-Pure-GW (no signal),20,0.069375,0.08447500000000001
-Pure-GW (no signal),50,0.07005,0.08447500000000001
-Pure-GW (no signal),100,0.069125,0.08447500000000001
-Text-only (cosine),1,0.075,0.08447500000000001
-Text-only (cosine),3,0.08,0.08447500000000001
-Text-only (cosine),5,0.086,0.08447500000000001
-Text-only (cosine),10,0.08100000000000002,0.08447500000000001
-Text-only (cosine),20,0.079,0.08447500000000001
-Text-only (cosine),50,0.07830000000000001,0.08447500000000001
-Text-only (cosine),100,0.07615000000000001,0.08447500000000001
+D (caption-cost FGW),1,0.24,0.0736
+D (caption-cost FGW),3,0.22833333333333333,0.0736
+D (caption-cost FGW),5,0.21400000000000002,0.0736
+D (caption-cost FGW),10,0.19225,0.0736
+D (caption-cost FGW),20,0.17600000000000002,0.0736
+D (caption-cost FGW),50,0.15115,0.0736
+D (caption-cost FGW),100,0.12652500000000003,0.0736
+C-transitive (text bridge),1,0.2425,0.0736
+C-transitive (text bridge),3,0.23666666666666664,0.0736
+C-transitive (text bridge),5,0.23199999999999998,0.0736
+C-transitive (text bridge),10,0.21575000000000003,0.0736
+C-transitive (text bridge),20,0.19962500000000002,0.0736
+C-transitive (text bridge),50,0.16605,0.0736
+C-transitive (text bridge),100,0.137575,0.0736
+Pure-GW (no signal),1,0.0825,0.0736
+Pure-GW (no signal),3,0.0925,0.0736
+Pure-GW (no signal),5,0.0965,0.0736
+Pure-GW (no signal),10,0.0925,0.0736
+Pure-GW (no signal),20,0.08975,0.0736
+Pure-GW (no signal),50,0.0872,0.0736
+Pure-GW (no signal),100,0.084575,0.0736
+Text-only (cosine),1,0.2275,0.0736
+Text-only (cosine),3,0.21333333333333332,0.0736
+Text-only (cosine),5,0.1945,0.0736
+Text-only (cosine),10,0.18875,0.0736
+Text-only (cosine),20,0.173625,0.0736
+Text-only (cosine),50,0.14585,0.0736
+Text-only (cosine),100,0.12302500000000002,0.0736
