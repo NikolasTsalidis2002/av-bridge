@@ -56,10 +56,11 @@ PAIRS = [
 
 # Per-recipe plan filename (within whichever exp_*<suffix> directory).
 RECIPES = [
-    {"label": "FGW with caption cost",       "exp": "exp_d",     "file": "T_caption.npy"},
-    {"label": "Text-bridged composition",    "exp": "exp_c",     "file": "T_transitive.npy"},
-    {"label": "GW (intra-modal geometry)",   "exp": "exp_unsup", "file": "T_gw.npy"},
-    {"label": "Raw caption cosine",          "exp": "exp_text",  "file": "T_text.npy"},
+    {"label": "Random (baseline)",            "exp": "exp_random", "file": "T_random.npy"},
+    {"label": "Transitive Transport Bridge",  "exp": "exp_c",      "file": "T_transitive.npy"},
+    {"label": "Caption Distance FGW",         "exp": "exp_d",      "file": "T_caption.npy"},
+    {"label": "GW (intra-modal geometry)",    "exp": "exp_unsup",  "file": "T_gw.npy"},
+    {"label": "Raw caption cosine (ceiling)", "exp": "exp_text",   "file": "T_text.npy"},
 ]
 
 

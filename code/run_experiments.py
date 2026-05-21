@@ -22,13 +22,12 @@ import torch
 from sklearn.cluster import KMeans
 
 from algorithms import (
-    build_bridge,
     caption_cost_recipe,
-    procrustes_recipe,
     pure_gw,
+    random_baseline,
     recipe,
     text_only_retrieval,
-    transitive_plan,
+    transitive_plan_identity,
 )
 from metrics import evaluate, evaluate_heldout
 
@@ -48,9 +47,9 @@ ALPHA_GRID = [0.0, 0.3, 0.5, 0.7, 0.9]
 # K_cl values per experiment, per the spec.
 KCL = {
     "a": 10, "b": 20,
-    "c-direct": 15, "c-transitive": 15,
+    "c-transitive": 15,
     "d": 15, "unsup": 15, "text": 15,
-    "procrustes": 15,
+    "random": 15,
 }
 
 # Reusable-plan K for C-transitive (= 300 here, rescaled from spec's 350).
@@ -65,6 +64,7 @@ CSV_COLS = [
     "nmi", "ami", "ari", "v_measure", "homogeneity", "completeness",
     "cap_cos_argmax", "cap_cos_planmass",
     "cap_cos_chance", "cap_cos_identity", "cap_cos_lift",
+    "cat_recall_10",
 ]
 
 
@@ -233,85 +233,98 @@ def exp_b(audio_name: str, K_grid: list[int] | None = None) -> None:
     )
 
 
-def exp_c_direct(image_name: str, audio_name: str,
-                 K_grid: list[int] | None = None) -> None:
-    print(f"[Exp C-direct] image={image_name}  audio={audio_name}")
-    X_image = load_embedding(f"vision_{image_name}")
-    Y_audio = load_embedding(f"audio_{audio_name}")
-    ZV = load_embedding("ZV_text")
-    ZA = load_embedding("ZA_text")
-    anchors = load_anchors(X_image, n=X_image.shape[0])
-    X = X_image[anchors]
-    Y = Y_audio[anchors]
-    ZV_a = ZV[anchors]
-    ZA_a = ZA[anchors]
-    run_sweep(
-        X, Y,
-        K_cl=KCL["c-direct"],
-        csv_path=RES / "exp_c" / "sweep_direct.csv",
-        K_grid=K_grid,
-        Z_src_cap=ZV_a, Z_tgt_cap=ZA_a,
-    )
-
-
 def exp_c_transitive(image_name: str, audio_name: str,
-                     top_k: int = 20, tau: float = 0.1,
-                     K_per_leg: int = REUSABLE_K,
-                     alpha_per_leg: float = REUSABLE_ALPHA,
+                     K_grid: list[int] | None = None,
+                     alpha_grid: list[float] | None = None,
                      out_suffix: str = "") -> None:
-    """Compose Exp A and Exp B plans through the text bridge."""
-    print(f"[Exp C-transitive] top_k={top_k} tau={tau} "
-          f"K_per_leg={K_per_leg} alpha_per_leg={alpha_per_leg}")
+    """Identity-bridge C-transitive sweep across (K, alpha) for both legs.
 
-    # Source the within-modality reusable plans from the same encoder
-    # suffix used by Experiments A and B (auto-suffixed when the encoder
-    # differs from the canonical default).
-    a_dir = RES / f"exp_a{_suffix_for(DEFAULT_IMAGE, image_name)}"
-    b_dir = RES / f"exp_b{_suffix_for(DEFAULT_AUDIO, audio_name)}"
-    T_iv = np.load(a_dir / "T_iv.npy")
-    T_ac = np.load(b_dir / "T_ac.npy")
+    The two within-modality plans are refit at every (K, alpha) cell
+    rather than being loaded from disk -- this lets us sweep them
+    independently of Experiments A and B's saved canonical plan.
+    The cross-modal bridge is the ground-truth caption-row identity:
+        T = row-norm(T_iv @ T_ac.T)
+    (See ``algorithms.transitive_plan_identity``.)
 
-    ZV = load_embedding("ZV_text")
-    ZA = load_embedding("ZA_text")
+    Both legs share the same (K, alpha) per cell. Each leg uses its
+    own modality-stratified k-means anchor partition. The plan at the
+    canonical reusable point (K=REUSABLE_K, alpha=REUSABLE_ALPHA) is
+    saved to ``T_transitive.npy`` for downstream consumers.
+    """
+    print(f"[Exp C-transitive (identity bridge)] "
+          f"image={image_name}  audio={audio_name}")
+
     X_image = load_embedding(f"vision_{image_name}")
     Y_audio = load_embedding(f"audio_{audio_name}")
+    ZV = load_embedding("ZV_text")
+    ZA = load_embedding("ZA_text")
 
     anchors = load_anchors(X_image, n=X_image.shape[0])
     X = X_image[anchors]
     Y = Y_audio[anchors]
     ZV_a = ZV[anchors]
     ZA_a = ZA[anchors]
+    n = X.shape[0]
+    gt = np.arange(n)
 
-    B = build_bridge(ZV_a, ZA_a, top_k=top_k, tau=tau)
-    T = transitive_plan(T_iv, B, T_ac)
-
-    gt = np.arange(X.shape[0])
     K_cl = KCL["c-transitive"]
-    agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
-                   Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
-    # Held-out for transitive: rows in NEITHER A's nor B's K=REUSABLE_K index set.
-    S_a = kmeans_stratified_indices(X, n=K_per_leg, n_clusters=min(10, K_per_leg), seed=SEED)
-    S_b = kmeans_stratified_indices(Y, n=K_per_leg, n_clusters=min(10, K_per_leg), seed=SEED)
-    S_both = np.unique(np.concatenate([S_a, S_b]))
-    hel = evaluate_heldout(T, X, Y, gt, S_both, K_cl, seed=SEED,
-                           Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
+    K_grid = K_grid or K_GRID
+    alpha_grid = alpha_grid or ALPHA_GRID
+
+    # Same-rows held-out partition matches D / unsup / text / random
+    # at the REUSABLE_K budget, so the held-out rows are comparable to
+    # every other cross-modal recipe in the chapter regardless of the
+    # current sweep cell's K.
+    S_a_compare = kmeans_stratified_indices(
+        X, n=REUSABLE_K, n_clusters=min(10, REUSABLE_K), seed=SEED)
+    S_b_compare = kmeans_stratified_indices(
+        Y, n=REUSABLE_K, n_clusters=min(10, REUSABLE_K), seed=SEED)
+    S_compare = np.unique(np.concatenate([S_a_compare, S_b_compare]))
 
     out_dir = RES / f"exp_c{out_suffix}"
     out_dir.mkdir(parents=True, exist_ok=True)
-    out = out_dir / "sweep_transitive.csv"
-    extra_cols = ["bridge_top_k", "bridge_tau", "K_per_leg", "alpha_per_leg"]
-    with out.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=CSV_COLS + extra_cols)
+    csv_path = out_dir / "sweep_transitive.csv"
+
+    with csv_path.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=CSV_COLS)
         w.writeheader()
-        extras = {
-            "bridge_top_k": top_k, "bridge_tau": tau,
-            "K_per_leg": K_per_leg, "alpha_per_leg": alpha_per_leg,
-        }
-        w.writerow({"K": K_per_leg, "alpha": alpha_per_leg, "scope": "aggregate", **agg, **extras})
-        w.writerow({"K": K_per_leg, "alpha": alpha_per_leg, "scope": "heldout", **hel, **extras})
-    print(f"  wrote {out}")
-    np.save(out_dir / "T_transitive.npy", T)
-    print(f"  wrote {out_dir / 'T_transitive.npy'}")
+        for K in K_grid:
+            if K > n:
+                continue
+            # Per-modality anchor sets at this K. The legs are
+            # independent supervised problems, so each picks its own
+            # stratification on its own source manifold.
+            S_iv = kmeans_stratified_indices(
+                X, n=K, n_clusters=min(10, K), seed=SEED)
+            S_ac = kmeans_stratified_indices(
+                Y, n=K, n_clusters=min(10, K), seed=SEED)
+            for alpha in alpha_grid:
+                print(f"  K={K:4d}  alpha={alpha:.2f}  fitting legs...")
+                T_iv = recipe(X, ZV_a, S_iv, S_iv,
+                              alpha=alpha, eps=0.005, lam=1.0)
+                T_ac = recipe(Y, ZA_a, S_ac, S_ac,
+                              alpha=alpha, eps=0.005, lam=1.0)
+                T = transitive_plan_identity(T_iv, T_ac)
+
+                agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
+                               Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
+                hel = evaluate_heldout(T, X, Y, gt, S_compare, K_cl,
+                                       seed=SEED,
+                                       Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
+                w.writerow({"K": K, "alpha": alpha,
+                            "scope": "aggregate", **agg})
+                w.writerow({"K": K, "alpha": alpha,
+                            "scope": "heldout_like_c", **hel})
+                f.flush()
+
+                # Persist the plan at the canonical reusable point so
+                # downstream tools (qualitative renders, ranks, etc.)
+                # find the same filename they did before the swap.
+                if K == REUSABLE_K and abs(alpha - REUSABLE_ALPHA) < 1e-9:
+                    np.save(out_dir / "T_transitive.npy", T)
+                    print(f"    saved plan -> T_transitive.npy")
+
+    print(f"  wrote {csv_path}")
 
 
 def exp_d_caption(image_name: str, audio_name: str,
@@ -498,23 +511,21 @@ def exp_text_only(image_name: str, audio_name: str,
     print(f"  wrote {out_dir / 'T_text.npy'}")
 
 
-def exp_procrustes(image_name: str, audio_name: str,
-                   out_suffix: str = "") -> None:
-    """Procrustes (rigid orthogonal) baseline for image -> audio.
+def exp_random(image_name: str, audio_name: str,
+               out_suffix: str = "") -> None:
+    """Random baseline: a uniform row-stochastic plan, no information.
 
-    Identity-supervised at K=300 anchors (same partition C-direct uses,
-    so held-out scope is directly comparable). The map W is the
-    closed-form semi-orthogonal solution to ||X[S] W - Y[S]||_F^2:
-    no FGW, no entropic OT, no captions involved. The plan is the
-    (X W) Y^T similarity matrix, consumed by the standard metric
-    suite as if it were a transport plan."""
-    print(f"[Exp Procrustes] image={image_name}  audio={audio_name}  "
-          f"K=300 anchors (identity-paired), semi-orthogonal map")
+    Every other recipe should beat this on every metric; whatever
+    quantity it does not beat random on is, by definition, a quantity
+    in which the recipe carries no above-chance signal."""
+    print(f"[Exp Random] image={image_name}  audio={audio_name}  "
+          f"uniform random row-stochastic plan")
 
     X_image = load_embedding(f"vision_{image_name}")
     Y_audio = load_embedding(f"audio_{audio_name}")
     ZV = load_embedding("ZV_text")
     ZA = load_embedding("ZA_text")
+
     anchors = load_anchors(X_image, n=X_image.shape[0])
     X = X_image[anchors]
     Y = Y_audio[anchors]
@@ -522,42 +533,38 @@ def exp_procrustes(image_name: str, audio_name: str,
     ZA_a = ZA[anchors]
 
     gt = np.arange(X.shape[0])
-    K_cl = KCL["procrustes"]
-    K_target = REUSABLE_K
+    K_cl = KCL["random"]
 
-    # Stratified anchor partition identical to the one C-direct uses
-    # at K=REUSABLE_K, so the held-out scope matches row-for-row.
-    S = kmeans_stratified_indices(X, n=K_target,
-                                  n_clusters=min(10, K_target), seed=SEED)
+    T = random_baseline(X.shape[0], Y.shape[0], seed=SEED)
+    print(f"  plan shape={T.shape}  row sums in "
+          f"[{T.sum(axis=1).min():.6f}, {T.sum(axis=1).max():.6f}]")
 
-    print(f"  fitting semi-orthogonal map W: "
-          f"d_src={X.shape[1]} -> d_tgt={Y.shape[1]}  "
-          f"using |S|={len(S)} paired anchors")
-    T = procrustes_recipe(X, Y, S, S)
-    print(f"  plan shape={T.shape}  "
-          f"range=[{T.min():.3f},{T.max():.3f}]")
-
-    out_dir = RES / f"exp_procrustes{out_suffix}"
+    out_dir = RES / f"exp_random{out_suffix}"
     out_dir.mkdir(parents=True, exist_ok=True)
     csv_path = out_dir / "sweep.csv"
 
+    S_a = kmeans_stratified_indices(X, n=REUSABLE_K,
+                                    n_clusters=min(10, REUSABLE_K), seed=SEED)
+    S_b = kmeans_stratified_indices(Y, n=REUSABLE_K,
+                                    n_clusters=min(10, REUSABLE_K), seed=SEED)
+    S_compare = np.unique(np.concatenate([S_a, S_b]))
+
     agg = evaluate(T, X, Y, gt, K_cl, seed=SEED,
                    Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
-    hel = evaluate_heldout(T, X, Y, gt, S, K_cl, seed=SEED,
+    hel = evaluate_heldout(T, X, Y, gt, S_compare, K_cl, seed=SEED,
                            Z_src_cap=ZV_a, Z_tgt_cap=ZA_a)
 
     with csv_path.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CSV_COLS)
         w.writeheader()
-        # K=300 (paired-anchor budget), alpha=NaN (no entropic blend).
-        w.writerow({"K": K_target, "alpha": float("nan"),
+        w.writerow({"K": 0, "alpha": float("nan"),
                     "scope": "aggregate", **agg})
-        w.writerow({"K": K_target, "alpha": float("nan"),
-                    "scope": "heldout", **hel})
+        w.writerow({"K": 0, "alpha": float("nan"),
+                    "scope": "heldout_like_c", **hel})
 
-    np.save(out_dir / "T_procrustes.npy", T)
+    np.save(out_dir / "T_random.npy", T)
     print(f"  wrote {csv_path}")
-    print(f"  wrote {out_dir / 'T_procrustes.npy'}")
+    print(f"  wrote {out_dir / 'T_random.npy'}")
 
 
 def _discover_encoders() -> tuple[list[str], list[str]]:
@@ -576,6 +583,7 @@ GRID_CSV_COLS = [
     "nmi", "ami", "ari", "v_measure", "homogeneity", "completeness",
     "cap_cos_argmax", "cap_cos_planmass",
     "cap_cos_chance", "cap_cos_identity", "cap_cos_lift",
+    "cat_recall_10",
 ]
 
 
@@ -702,50 +710,26 @@ def exp_encoder_grid(
 
             cap_kw = {"Z_src_cap": ZV, "Z_tgt_cap": ZA}
 
-            # C-direct at (K=REUSABLE_K, alpha=0.5)
-            S = kmeans_stratified_indices(X, n=K_target,
-                                          n_clusters=min(10, K_target), seed=SEED)
-            T = recipe(X, Y, S, S, alpha=alpha_iv, eps=eps, lam=1.0)
-            for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["c-direct"], seed=SEED, **cap_kw)),
-                             ("heldout",   evaluate_heldout(T, X, Y, gt, S,
-                                                            KCL["c-direct"], seed=SEED, **cap_kw))]:
-                rows.append({"experiment": "c-direct",
-                             "image_encoder": img, "audio_encoder": aud,
-                             "K": K_target, "alpha": alpha_iv,
-                             "scope": scope, **m})
-
-            # C-transitive: compose A's image->visual-caption plan with the
-            # text bridge and B's audio->audio-caption plan. Reuses the
-            # cached T_iv / T_ac from the within-modality loops above.
+            # Transitive transport bridge: compose A's image->visual-caption plan
+            # with B's audio->audio-caption plan through the GT caption-row
+            # identity. Reuses the cached T_iv / T_ac from the within-modality
+            # loops above.
             T_iv = t_iv_by_image.get(img)
             T_ac = t_ac_by_audio.get(aud)
             if T_iv is not None and T_ac is not None:
-                B_bridge = build_bridge(ZV, ZA, top_k=20, tau=0.1)
-                T = transitive_plan(T_iv, B_bridge, T_ac)
+                T = transitive_plan_identity(T_iv, T_ac)
                 for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["c-transitive"], seed=SEED, **cap_kw)),
                                  ("heldout",   evaluate_heldout(T, X, Y, gt, S_compare,
                                                                 KCL["c-transitive"], seed=SEED, **cap_kw))]:
                     # Use heldout_like_c so this row aligns with d / unsup / text
-                    # held-out partitioning (rows outside S_a ∪ S_b).
+                    # held-out partitioning (rows outside S_a U S_b).
                     scope_out = "heldout_like_c" if scope == "heldout" else scope
                     rows.append({"experiment": "c-transitive",
                                  "image_encoder": img, "audio_encoder": aud,
-                                 "K": K_target, "alpha": REUSABLE_ALPHA,
+                                 "K": K_target, "alpha": alpha_iv,
                                  "scope": scope_out, **m})
 
-            # Procrustes (identity-supervised rigid orthogonal alignment)
-            # reusing the same K=REUSABLE_K paired anchors as C-direct so
-            # held-out partition matches row-for-row.
-            T = procrustes_recipe(X, Y, S, S)
-            for scope, m in [("aggregate", evaluate(T, X, Y, gt, KCL["procrustes"], seed=SEED, **cap_kw)),
-                             ("heldout",   evaluate_heldout(T, X, Y, gt, S,
-                                                            KCL["procrustes"], seed=SEED, **cap_kw))]:
-                rows.append({"experiment": "procrustes",
-                             "image_encoder": img, "audio_encoder": aud,
-                             "K": K_target, "alpha": float("nan"),
-                             "scope": scope, **m})
-
-            # D at alpha=0.7
+            # Caption Distance FGW (D) at alpha=0.7
             T = caption_cost_recipe(X, Y, ZV, ZA, alpha=alpha_d, eps=eps)
             agg = evaluate(T, X, Y, gt, KCL["d"], seed=SEED, **cap_kw)
             hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["d"], seed=SEED, **cap_kw)
@@ -773,6 +757,15 @@ def exp_encoder_grid(
             rows.append({"experiment": "text", "image_encoder": img, "audio_encoder": aud,
                          "K": 0, "alpha": float("nan"), "scope": "heldout_like_c", **hel})
 
+            # Random baseline: uniform row-stochastic plan, no information.
+            T = random_baseline(X.shape[0], Y.shape[0], seed=SEED)
+            agg = evaluate(T, X, Y, gt, KCL["random"], seed=SEED, **cap_kw)
+            hel = evaluate_heldout(T, X, Y, gt, S_compare, KCL["random"], seed=SEED, **cap_kw)
+            rows.append({"experiment": "random", "image_encoder": img, "audio_encoder": aud,
+                         "K": 0, "alpha": float("nan"), "scope": "aggregate", **agg})
+            rows.append({"experiment": "random", "image_encoder": img, "audio_encoder": aud,
+                         "K": 0, "alpha": float("nan"), "scope": "heldout_like_c", **hel})
+
             # Persist progressively so a crash doesn't lose hours of work.
             write_rows(rows)
 
@@ -784,8 +777,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--exp",
-        choices=["a", "b", "c-direct", "c-transitive",
-                 "d", "unsup", "text", "procrustes",
+        choices=["a", "b", "c-transitive",
+                 "d", "unsup", "text", "random",
                  "grid", "all"],
         required=True,
     )
@@ -797,8 +790,8 @@ def main() -> None:
     ap.add_argument("--audio-encoder", default="clap-unfused")
     ap.add_argument("--K-grid", type=str, default=None,
                     help="Override K sweep, e.g. '50,100,200,300,400'")
-    ap.add_argument("--bridge-top-k", type=int, default=20)
-    ap.add_argument("--bridge-tau", type=float, default=0.1)
+    ap.add_argument("--alpha-grid", type=str, default=None,
+                    help="Override alpha sweep, e.g. '0.0,0.3,0.5,0.7,0.9'")
     ap.add_argument("--out-suffix", type=str, default="",
                     help="Append this suffix to per-experiment output "
                          "directories (e.g. '__dinov2-large__mert-330m'). "
@@ -810,17 +803,19 @@ def main() -> None:
         [int(x) for x in args.K_grid.split(",")]
         if args.K_grid else None
     )
+    alpha_grid = (
+        [float(x) for x in args.alpha_grid.split(",")]
+        if args.alpha_grid else None
+    )
 
     if args.exp in ("a", "all"):
         exp_a(args.image_encoder, K_grid=K_grid)
     if args.exp in ("b", "all"):
         exp_b(args.audio_encoder, K_grid=K_grid)
-    if args.exp in ("c-direct", "all"):
-        exp_c_direct(args.image_encoder, args.audio_encoder, K_grid=K_grid)
     if args.exp in ("c-transitive", "all"):
         exp_c_transitive(
             args.image_encoder, args.audio_encoder,
-            top_k=args.bridge_top_k, tau=args.bridge_tau,
+            K_grid=K_grid, alpha_grid=alpha_grid,
             out_suffix=args.out_suffix,
         )
     if args.exp in ("d", "all"):
@@ -832,9 +827,9 @@ def main() -> None:
     if args.exp in ("text", "all"):
         exp_text_only(args.image_encoder, args.audio_encoder,
                       out_suffix=args.out_suffix)
-    if args.exp in ("procrustes", "all"):
-        exp_procrustes(args.image_encoder, args.audio_encoder,
-                       out_suffix=args.out_suffix)
+    if args.exp in ("random", "all"):
+        exp_random(args.image_encoder, args.audio_encoder,
+                   out_suffix=args.out_suffix)
     if args.exp == "grid":
         image_only = (args.grid_images.split(",")
                       if args.grid_images else None)

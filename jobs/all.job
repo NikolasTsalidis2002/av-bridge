@@ -60,7 +60,10 @@ if [ "$SKIP_TEXTFREE" = "0" ]; then
     python code/run_experiments.py --exp b --audio-encoder "$FREE_AUD"
 
     echo "=== 1c. text-free cross-modal recipes (--out-suffix ${FREE_SUFFIX}) ==="
-    for EXP in c-direct c-transitive d unsup text procrustes; do
+    # NOTE: c-transitive triggers the full K x alpha sweep (8 K x 5 alpha
+    # = 40 cells, ~20 min) at the text-free pair, mirroring stage 1a
+    # for the canonical pair.
+    for EXP in c-transitive d unsup text random; do
         python code/run_experiments.py --exp "$EXP" \
             --image-encoder "$FREE_IMG" --audio-encoder "$FREE_AUD" \
             --out-suffix "$FREE_SUFFIX"
@@ -96,6 +99,13 @@ python code/analyse_levels.py
 
 echo "=== 2f. structure-vs-semantic trade-off plots ==="
 python code/analyse_tradeoff.py
+
+echo "=== 2f.1 all-recipes full-vs-heldout comparison ==="
+python code/plot_full_vs_heldout.py
+
+echo "=== 2f.2 transitive K-sweep at alpha=0.7 (and alpha=0.5) ==="
+python code/plot_transitive_K_sweep.py --alpha 0.7
+python code/plot_transitive_K_sweep.py --alpha 0.5
 
 echo "=== 2g. qualitative panels (canonical + text-free, both directions) ==="
 python code/qualitative_panel.py --direction image_to_audio

@@ -58,10 +58,11 @@ K_CL_GRID = [5, 10, 15, 20, 30, 50, 75, 100]
 RECALL_K_GRID = [1, 3, 5, 10, 20, 50, 100]
 
 PLANS: list[tuple[str, Path]] = [
-    ("D (caption-cost FGW)",       RES / "exp_d"     / "T_caption.npy"),
-    ("C-transitive (text bridge)", RES / "exp_c"     / "T_transitive.npy"),
-    ("Pure-GW (no signal)",        RES / "exp_unsup" / "T_gw.npy"),
-    ("Text-only (cosine)",         RES / "exp_text"  / "T_text.npy"),
+    ("Random (baseline)",             RES / "exp_random" / "T_random.npy"),
+    ("Transitive Transport Bridge",   RES / "exp_c"      / "T_transitive.npy"),
+    ("Caption Distance FGW",          RES / "exp_d"      / "T_caption.npy"),
+    ("Pure-GW (intra-modal geom.)",   RES / "exp_unsup"  / "T_gw.npy"),
+    ("Raw caption cosine (ceiling)",  RES / "exp_text"   / "T_text.npy"),
 ]
 
 SEED = 42

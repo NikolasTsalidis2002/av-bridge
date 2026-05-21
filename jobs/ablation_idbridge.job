@@ -1,0 +1,69 @@
+#!/bin/bash
+#SBATCH --job-name=avb-idbridge
+#SBATCH --output=logs/idbridge_%j.out
+#SBATCH --error=logs/idbridge_%j.err
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=8G
+#SBATCH --time=00:20:00
+#SBATCH --partition=scavenge
+#SBATCH --mail-user=edlu@itu.dk
+#SBATCH --mail-type=FAIL
+
+# C-transitive identity-bridge ablation: load already-saved T_iv and
+# T_ac from Exp A and Exp B, compose T = row-norm(T_iv @ T_ac.T),
+# evaluate with the standard metrics. Writes to:
+#   results/exp_c_idbridge[__<img>__<aud>]/
+#
+# Does not touch any existing experiment or any cosine-bridge artefact.
+# A and B must already have been run for the chosen encoders (their
+# T_iv.npy / T_ac.npy files are required inputs).
+#
+# Modes:
+#   - Default (no env vars):  runs canonical + text-free pair.
+#   - Targeted: set IMG_ENC and AUD_ENC to run a single specific pair.
+#       sbatch --export=ALL,IMG_ENC=clip-base,AUD_ENC=clap-larger \
+#              jobs/ablation_idbridge.job
+#     or equivalently
+#       IMG_ENC=clip-base AUD_ENC=clap-larger sbatch jobs/ablation_idbridge.job
+
+set -e
+set -x
+
+PROJECT_DIR="$HOME/av-bridge"
+ENV_PATH="/home/edlu/miniconda3-25-5-1-1/envs/gwot"
+
+module load Miniconda3/25.5.1-1
+source /opt/itu/easybuild/software/Miniconda3/25.5.1-1/etc/profile.d/conda.sh
+conda activate "$ENV_PATH"
+cd "$PROJECT_DIR"
+mkdir -p logs
+
+if [[ -n "${IMG_ENC:-}" && -n "${AUD_ENC:-}" ]]; then
+    # --- Targeted: one specific (IMG_ENC, AUD_ENC) pair -----------------
+    echo "[ablation] targeted pair: image=${IMG_ENC}  audio=${AUD_ENC}"
+    python code/ablation_transitive_idbridge.py \
+        --image-encoder "$IMG_ENC" \
+        --audio-encoder "$AUD_ENC"
+else
+    # --- Default: both reference pairs ---------------------------------
+    python code/ablation_transitive_idbridge.py \
+        --image-encoder clip-large \
+        --audio-encoder clap-unfused
+
+    if [[ -f "results/exp_a__dinov2-large/T_iv.npy" \
+          && -f "results/exp_b__mert-330m/T_ac.npy" ]]; then
+        python code/ablation_transitive_idbridge.py \
+            --image-encoder dinov2-large \
+            --audio-encoder mert-330m
+    else
+        echo "[ablation] text-free A/B plans missing -- skipping that pair"
+    fi
+fi
+
+# --- Optional: render the comparison plot --------------------------------
+python code/plot_ablation_idbridge.py || \
+    echo "[ablation] plot step failed (non-fatal)"
+
+echo "[ablation] done; artefacts under results/exp_c_idbridge*/"

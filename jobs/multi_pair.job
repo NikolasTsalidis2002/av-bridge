@@ -42,7 +42,7 @@ python code/run_experiments.py --exp b --audio-encoder "$AUD_ENC"
 # --- 2. Four cross-modal recipes at the new pair ----------------------
 # Pass --out-suffix so saved plans land in suffixed directories instead
 # of overwriting the canonical-pair artefacts.
-for EXP in c-direct c-transitive d unsup text; do
+for EXP in c-transitive d unsup text random; do
     python code/run_experiments.py --exp "$EXP" \
         --image-encoder "$IMG_ENC" \
         --audio-encoder "$AUD_ENC" \

@@ -309,7 +309,9 @@ def emit_comparison() -> None:
 
     a = load_sweep(RES / "exp_a" / "sweep.csv")
     b = load_sweep(RES / "exp_b" / "sweep.csv")
-    c_dir = load_sweep(RES / "exp_c" / "sweep_direct.csv")
+    # C-direct is no longer in the suite; emit_comparison leaves the
+    # corresponding cells empty (rendered as a dash) rather than crashing.
+    c_dir = pd.DataFrame()
     c_tr = load_sweep(RES / "exp_c" / "sweep_transitive.csv")
     d = load_sweep(RES / "exp_d" / "sweep.csv")
     unsup = load_sweep(RES / "exp_unsup" / "sweep.csv")
@@ -611,26 +613,30 @@ def emit_grid_plots(grid_dir: Path) -> None:
 
     has_ami = "ami" in df.columns
 
-    # C-direct (held-out is the honest measure)
-    heat("c-direct", "heldout", "R@10",
-         "cdirect_R10_heldout.png",
-         "Experiment C-direct — R@10 (held-out, K=300, α=0.5)",
+    # C-direct removed from the suite -- no heatmaps for it.
+
+    # C-transitive (identity bridge): heatmaps mirror D.
+    heat("c-transitive", "heldout_like_c", "R@10",
+         "ctrans_R10_heldout.png",
+         "Caption-index C-transitive -- R@10 (held-out)",
          cmap="viridis", vmin=0.0, vmax=0.6)
-    heat("c-direct", "heldout", "nmi",
-         "cdirect_NMI_heldout.png",
-         "Experiment C-direct — cluster NMI (held-out, uncorrected)",
-         cmap="magma", vmin=0.0, vmax=0.8)
     if has_ami:
-        heat("c-direct", "heldout", "ami",
-             "cdirect_AMI_heldout.png",
-             "Experiment C-direct — cluster AMI (held-out, chance-corrected)",
+        heat("c-transitive", "heldout_like_c", "ami",
+             "ctrans_AMI_heldout.png",
+             "Caption-index C-transitive -- AMI (held-out)",
              cmap="magma", vmin=-0.05, vmax=0.6)
-    heat("c-direct", "aggregate", "R@10",
-         "cdirect_R10_aggregate.png",
-         "Experiment C-direct — R@10 (aggregate)",
+    heat("c-transitive", "aggregate", "R@10",
+         "ctrans_R10_aggregate.png",
+         "Caption-index C-transitive -- R@10 (aggregate)",
          cmap="viridis", vmin=0.0, vmax=1.0)
 
-    # D — caption-cost FGW
+    # Random baseline: useful for visual reference of the chance floor.
+    heat("random", "heldout_like_c", "R@10",
+         "random_R10_heldout.png",
+         "Random baseline -- R@10 (held-out, chance floor)",
+         cmap="viridis", vmin=0.0, vmax=0.05)
+
+    # D -- caption-cost FGW
     heat("d", "aggregate", "R@10",
          "d_R10_aggregate.png",
          "Experiment D — R@10 (aggregate, α=0.7)",
@@ -675,20 +681,22 @@ def emit_grid_plots(grid_dir: Path) -> None:
              "Text-only baseline — cluster AMI (same-rows, chance-corrected)",
              cmap="magma", vmin=-0.05, vmax=0.6)
 
-    # ΔR@10: C-direct held-out − D same-rows  (how much real labels add over captions)
-    sub_c = df[(df["experiment"] == "c-direct") & (df["scope"] == "heldout")]
-    sub_d = df[(df["experiment"] == "d") & (df["scope"] == "heldout_like_c")]
-    if not sub_c.empty and not sub_d.empty:
+    # Delta R@10: C-transitive (held-out_like_c) - Random (held-out_like_c)
+    # The "above-chance retrieval signal" carried by the caption-index
+    # composition over the no-information floor.
+    sub_c = df[(df["experiment"] == "c-transitive") & (df["scope"] == "heldout_like_c")]
+    sub_r = df[(df["experiment"] == "random") & (df["scope"] == "heldout_like_c")]
+    if not sub_c.empty and not sub_r.empty:
         pv_c = sub_c.pivot(index="image_encoder",
                            columns="audio_encoder", values="R@10")
-        pv_d = sub_d.pivot(index="image_encoder",
+        pv_r = sub_r.pivot(index="image_encoder",
                            columns="audio_encoder", values="R@10")
-        pv_diff = (pv_c - pv_d).sort_index().sort_index(axis=1)
+        pv_diff = (pv_c - pv_r).sort_index().sort_index(axis=1)
         _heatmap(pv_diff,
-                 "ΔR@10 = C-direct (held-out) − D (same-rows) — paid for by IA labels",
-                 plots_dir / "delta_c_minus_d_R10.png",
+                 "Delta R@10 = C-transitive (held-out) minus Random (held-out)",
+                 plots_dir / "delta_ctrans_minus_random_R10.png",
                  cmap="RdBu_r", vmin=-0.2, vmax=0.2, fmt="+.3f",
-                 cbar_label="ΔR@10")
+                 cbar_label="Delta R@10")
 
     # ΔR@10: D (same-rows) − Text-only (same-rows)  (how much FGW adds over raw captions)
     sub_t = df[(df["experiment"] == "text") & (df["scope"] == "heldout_like_c")]
@@ -1286,19 +1294,17 @@ CAPTION_DIR = RES / "exp_grid" / "plots"
 
 # Recipe key in the grid CSV  ->  human-readable label used in plots.
 RECIPE_LABELS = {
-    "procrustes":   "Procrustes (rigid orthogonal)",
-    "c-direct":     "Ridge-supervised FGW",
-    "c-transitive": "Text-bridged composition",
-    "d":            "FGW with caption cost",
+    "random":       "Random (baseline)",
+    "c-transitive": "Transitive Transport Bridge",
+    "d":            "Caption Distance FGW",
     "unsup":        "GW (intra-modal geometry alone)",
-    "text":         "Raw caption cosine",
+    "text":         "Raw caption cosine (ceiling)",
 }
 
 # Per-recipe scope to read from the grid CSV (matches the conventions used
 # elsewhere in the chapter).
 RECIPE_SCOPE = {
-    "procrustes":   "heldout",
-    "c-direct":     "heldout",
+    "random":       "heldout_like_c",
     "c-transitive": "heldout_like_c",
     "d":            "heldout_like_c",
     "unsup":        "heldout_like_c",

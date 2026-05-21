@@ -9,18 +9,18 @@ Three complementary figures:
     or against the exemplar-identity axis $R@10$. The Pareto front
     per panel is overlaid; recipes are colour-coded.
 
-  tradeoff_structure_vs_semantics.png
-    Focused 2x2 scatter dedicated to the orthogonality claim. For each
-    pairing of a structural axis (AMI, Pearson $r$) against a semantic
-    axis (caption-cosine lift, $R@10$), we annotate the global Pearson
-    correlation and the per-recipe correlation. If recipes that
-    succeed on a structural axis are systematically the same ones
-    that succeed on a semantic axis, those numbers will be large and
-    positive; if the two axes are orthogonal across recipes, they
-    cluster near zero. Markers distinguish text-aligned encoder pairs
-    (CLIP $\times$ CLAP) from text-free ones (DINOv2 / ViT-MAE
-    $\times$ MERT), since the orthogonality story matters most on the
-    text-free pairs.
+  tradeoff/tradeoff__<structural>__vs__<alignment>.png
+    One scatter per (structural X axis, alignment Y axis) combination,
+    saved to its own file under ``results/exp_grid/plots/tradeoff/``.
+    Each scatter has one point per (recipe, encoder pair); a per-recipe
+    regression line and a global + per-recipe Pearson r annotation make
+    the orthogonality claim quantitative rather than visual. Markers
+    distinguish text-aligned encoder pairs (CLIP $\times$ CLAP) from
+    text-free ones (DINOv2 / ViT-MAE $\times$ MERT). Structural X axes
+    are AMI and Pearson $r$; alignment Y axes span the strict-to-coarse
+    spectrum: $R@10$, category-recall@10, routes correct / $K_{cl}$,
+    and caption-cosine lift. Splitting one panel per file makes each
+    relationship easier to read than a single multi-panel figure.
 
   tradeoff_alpha_curves.png
     The FGW $\\alpha$ knob is itself a trade-off lever ($\\alpha = 0$
@@ -51,19 +51,19 @@ RES = ROOT / "results"
 PLOT_DIR = RES / "exp_grid" / "plots"
 
 RECIPE_LABELS = {
-    "procrustes":   "Procrustes (rigid orthogonal)",
-    "c-direct":     "Ridge-supervised FGW",
-    "c-transitive": "Text-bridged composition",
-    "d":            "FGW with caption cost",
+    "random":       "Random (baseline)",
+    "c-transitive": "Transitive Transport Bridge",
+    "d":            "Caption Distance FGW",
     "unsup":        "GW (intra-modal geometry alone)",
+    "text":         "Raw caption cosine (ceiling)",
 }
 
 RECIPE_SCOPE = {
-    "procrustes":   "heldout",
-    "c-direct":     "heldout",
+    "random":       "heldout_like_c",
     "c-transitive": "heldout_like_c",
     "d":            "heldout_like_c",
     "unsup":        "heldout_like_c",
+    "text":         "heldout_like_c",
 }
 
 
@@ -262,136 +262,105 @@ def _pearson_safe(x: np.ndarray, y: np.ndarray) -> float:
     return float(np.corrcoef(x, y)[0, 1])
 
 
-STRUCT_SEM_PANELS = [
-    {"x": "ami",       "y": "cap_cos_lift",
-     "x_label": "structural: AMI",
-     "y_label": "semantic: caption-cosine lift",
-     "title":   "AMI vs caption-cosine lift"},
-    {"x": "ami",       "y": "R@10",
-     "x_label": "structural: AMI",
-     "y_label": "identity: $R@10$",
-     "title":   "AMI vs exemplar identity ($R@10$)"},
-    {"x": "pearson_r", "y": "cap_cos_lift",
-     "x_label": "structural: Pearson $r$",
-     "y_label": "semantic: caption-cosine lift",
-     "title":   "Pearson $r$ vs caption-cosine lift"},
-    {"x": "pearson_r", "y": "R@10",
-     "x_label": "structural: Pearson $r$",
-     "y_label": "identity: $R@10$",
-     "title":   "Pearson $r$ vs exemplar identity ($R@10$)"},
+# Structural X axes (properties the plan preserves).
+STRUCT_AXES = [
+    {"col": "ami",         "label": "structural: AMI",          "slug": "ami"},
+    {"col": "pearson_r",   "label": "structural: Pearson $r$",  "slug": "pearson_r"},
+]
+
+# Y axes spanning the strict-to-coarse alignment-quality spectrum.
+# ``__routes_ratio`` is computed inline as routes_correct / routes_total.
+Y_AXES = [
+    {"col": "R@10",            "label": "identity: $R@10$",
+     "slug": "R10"},
+    {"col": "cat_recall_10",   "label": "class retrieval: cat-recall@10",
+     "slug": "cat_recall_10"},
+    {"col": "__routes_ratio",  "label": "routing: routes correct / $K_{cl}$",
+     "slug": "routes_ratio"},
+    {"col": "cap_cos_lift",    "label": "semantic: caption-cosine lift",
+     "slug": "cap_cos_lift"},
 ]
 
 
-def emit_structure_vs_semantics(
-    grid_csv: Path = RES / "exp_grid" / "sweep.csv",
-    out:      Path = PLOT_DIR / "tradeoff_structure_vs_semantics.png",
+def _add_routes_ratio(df: pd.DataFrame) -> pd.DataFrame:
+    """Append a __routes_ratio column to df, defensive against missing/zero."""
+    if "__routes_ratio" in df.columns:
+        return df
+    if "routes_total" not in df.columns or "routes_correct" not in df.columns:
+        df = df.copy()
+        df["__routes_ratio"] = float("nan")
+        return df
+    total = df["routes_total"].astype(float)
+    correct = df["routes_correct"].astype(float)
+    ratio = np.where((total > 0) & np.isfinite(total),
+                     correct / np.where(total == 0, 1.0, total),
+                     float("nan"))
+    df = df.copy()
+    df["__routes_ratio"] = ratio
+    return df
+
+
+def _emit_single_tradeoff_panel(
+    df_pts: pd.DataFrame,
+    palette: dict,
+    x_col: str, x_label: str,
+    y_col: str, y_label: str,
+    out: Path,
 ) -> None:
-    """Are structural and semantic alignment correlated across recipes?
-
-    One scatter per panel, one point per (recipe, encoder pair).
-    Annotate global and per-recipe Pearson correlation in each panel
-    to make the orthogonality claim quantitative rather than visual."""
-    if not grid_csv.exists():
-        print(f"[struct-vs-sem] skip: {grid_csv} not present")
-        return
-    df = pd.read_csv(grid_csv)
-
-    rows = []
-    for exp, label in RECIPE_LABELS.items():
-        scope = RECIPE_SCOPE[exp]
-        sub = df[(df.experiment == exp) & (df.scope == scope)]
-        for _, r in sub.iterrows():
-            rows.append({
-                "recipe": label,
-                "image_encoder": r["image_encoder"],
-                "audio_encoder": r["audio_encoder"],
-                "family": _encoder_family(r["image_encoder"],
-                                          r["audio_encoder"]),
-                "R@10":         r.get("R@10", float("nan")),
-                "ami":          r.get("ami", float("nan")),
-                "pearson_r":    r.get("pearson_r", float("nan")),
-                "cap_cos_lift": r.get("cap_cos_lift", float("nan")),
-            })
-    if not rows:
-        print("[struct-vs-sem] skip: no cross-modal rows in grid CSV")
-        return
-    df_pts = pd.DataFrame(rows)
-
-    panels = [p for p in STRUCT_SEM_PANELS
-              if not df_pts[p["x"]].isna().all()
-              and not df_pts[p["y"]].isna().all()]
-    if not panels:
-        print("[struct-vs-sem] skip: no panels have both axes populated.")
+    """Render a single (structural X, alignment Y) scatter to its own file."""
+    sub = df_pts.dropna(subset=[x_col, y_col])
+    if sub.empty:
+        print(f"[struct-vs-Y] skip {out.name}: no rows with both axes populated.")
         return
 
-    palette = dict(zip(RECIPE_LABELS.values(),
-                       sns.color_palette("colorblind", n_colors=len(RECIPE_LABELS))))
+    fig, ax = plt.subplots(1, 1, figsize=(7.0, 6.0))
 
-    fig, axes = plt.subplots(2, 2, figsize=(13, 11), squeeze=False)
-    axes_flat = axes.flatten()
+    # Per-recipe scatter, per-family marker.
+    for recipe, color in palette.items():
+        for family, marker in _FAMILY_MARKERS.items():
+            cell = sub[(sub.recipe == recipe) & (sub.family == family)]
+            if cell.empty:
+                continue
+            ax.scatter(cell[x_col], cell[y_col],
+                       color=color, marker=marker, s=72,
+                       edgecolor="white", linewidth=0.7, alpha=0.9)
 
-    for ax, p in zip(axes_flat, panels):
-        sub = df_pts.dropna(subset=[p["x"], p["y"]])
-        if sub.empty:
-            ax.set_axis_off()
-            continue
+    # Per-recipe regression line (no CI, line-only).
+    for recipe, color in palette.items():
+        rec_sub = sub[sub.recipe == recipe].dropna(subset=[x_col, y_col])
+        if len(rec_sub) >= 3:
+            sns.regplot(data=rec_sub, x=x_col, y=y_col, ax=ax,
+                        ci=None, scatter=False,
+                        line_kws={"color": color, "lw": 1.2,
+                                  "alpha": 0.55})
 
-        # Per-recipe scatter with per-family marker. We loop manually
-        # rather than using seaborn because we want hue x style to give
-        # us per-recipe colour AND per-family marker simultaneously.
-        for recipe, color in palette.items():
-            for family, marker in _FAMILY_MARKERS.items():
-                cell = sub[(sub.recipe == recipe) & (sub.family == family)]
-                if cell.empty:
-                    continue
-                ax.scatter(cell[p["x"]], cell[p["y"]],
-                           color=color, marker=marker, s=60,
-                           edgecolor="white", linewidth=0.6, alpha=0.9)
+    # Global + per-recipe Pearson r annotation.
+    global_r = _pearson_safe(sub[x_col].values, sub[y_col].values)
+    annot_lines = [f"global $r$ = {global_r:+.2f}"]
+    for recipe in palette.keys():
+        rec_sub = sub[sub.recipe == recipe]
+        r_val = _pearson_safe(rec_sub[x_col].values,
+                              rec_sub[y_col].values)
+        short = recipe.split("(")[0].split("FGW")[0].strip().rstrip(":")
+        if not short:
+            short = recipe
+        short = short[:24]
+        annot_lines.append(f"  {short}: {r_val:+.2f}"
+                           if np.isfinite(r_val)
+                           else f"  {short}:   n/a")
+    ax.text(0.02, 0.98, "\n".join(annot_lines),
+            transform=ax.transAxes, fontsize=9, va="top", ha="left",
+            family="monospace",
+            bbox=dict(boxstyle="round,pad=0.4", facecolor="white",
+                      edgecolor="lightgrey", alpha=0.9))
 
-        # Per-recipe regression line (no CI, line-only). Computed on the
-        # recipe's own points across all encoder pairs.
-        for recipe, color in palette.items():
-            rec_sub = sub[sub.recipe == recipe].dropna(
-                subset=[p["x"], p["y"]])
-            if len(rec_sub) >= 3:
-                sns.regplot(data=rec_sub, x=p["x"], y=p["y"], ax=ax,
-                            ci=None, scatter=False,
-                            line_kws={"color": color, "lw": 1.1,
-                                      "alpha": 0.55})
+    ax.set_xlabel(x_label, fontsize=11)
+    ax.set_ylabel(y_label, fontsize=11)
+    ax.set_title(f"{x_label.split(': ')[-1]}  vs  {y_label.split(': ')[-1]}",
+                 fontsize=12)
+    sns.despine(ax=ax)
 
-        # Global Pearson r across all points + per-recipe Pearson r.
-        global_r = _pearson_safe(sub[p["x"]].values, sub[p["y"]].values)
-        per_recipe_r = []
-        for recipe in palette.keys():
-            rec_sub = sub[sub.recipe == recipe]
-            r_val = _pearson_safe(rec_sub[p["x"]].values,
-                                  rec_sub[p["y"]].values)
-            per_recipe_r.append((recipe, r_val))
-
-        annot_lines = [f"global $r$ = {global_r:+.2f}"]
-        for recipe, r_val in per_recipe_r:
-            short = recipe.split("(")[0].split("FGW")[0].strip().rstrip(":")
-            if not short:
-                short = recipe
-            short = short[:24]
-            annot_lines.append(f"  {short}: {r_val:+.2f}"
-                               if np.isfinite(r_val)
-                               else f"  {short}:   n/a")
-        ax.text(0.02, 0.98, "\n".join(annot_lines),
-                transform=ax.transAxes, fontsize=7.5, va="top", ha="left",
-                family="monospace",
-                bbox=dict(boxstyle="round,pad=0.35", facecolor="white",
-                          edgecolor="lightgrey", alpha=0.85))
-
-        ax.set_xlabel(p["x_label"])
-        ax.set_ylabel(p["y_label"])
-        ax.set_title(p["title"], fontsize=10)
-        sns.despine(ax=ax)
-
-    for ax in axes_flat[len(panels):]:
-        ax.set_axis_off()
-
-    # Two-block legend: recipe (colour) + encoder family (marker).
+    # Two-block legend below the axis: recipe (colour) + encoder family (marker).
     from matplotlib.lines import Line2D
     recipe_handles = [
         Line2D([], [], color=color, marker="o", linestyle="None",
@@ -405,21 +374,81 @@ def emit_structure_vs_semantics(
     ]
     fig.legend(handles=recipe_handles, title="recipe",
                loc="lower left", bbox_to_anchor=(0.02, -0.02),
-               ncol=4, fontsize=8, title_fontsize=9, frameon=False)
+               ncol=2, fontsize=8, title_fontsize=9, frameon=False)
     fig.legend(handles=family_handles, title="encoder pair family",
                loc="lower right", bbox_to_anchor=(0.98, -0.02),
-               ncol=3, fontsize=8, title_fontsize=9, frameon=False)
+               ncol=1, fontsize=8, title_fontsize=9, frameon=False)
 
-    fig.suptitle(
-        r"Are structural and semantic alignment correlated "
-        r"across recipes and encoder pairs?",
-        fontsize=13, y=1.005,
-    )
-    fig.tight_layout(rect=(0, 0.04, 1, 1))
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
     out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out, dpi=140, bbox_inches="tight")
     plt.close(fig)
-    print(f"[tradeoff] wrote {out}")
+    print(f"[struct-vs-Y] wrote {out}")
+
+
+def emit_structure_vs_semantics(
+    grid_csv: Path = RES / "exp_grid" / "sweep.csv",
+    out_dir:  Path = PLOT_DIR / "tradeoff",
+) -> None:
+    """Are structural and alignment-quality metrics correlated across recipes?
+
+    Emits one scatter per (structural X axis, alignment Y axis) combination
+    to its own file under ``out_dir``. Each scatter has one point per
+    (recipe, encoder pair); per-recipe regression lines and a global +
+    per-recipe Pearson r annotation make the orthogonality claim
+    quantitative rather than visual.
+
+    Y axes span the strict-to-coarse spectrum of alignment quality:
+    identity ($R@10$), class retrieval (cat-recall@10), cluster routing
+    (routes correct / $K_{cl}$), and external semantic agreement
+    (caption-cosine lift). Splitting one panel per file makes each
+    relationship easier to read than the previous 2x2 grid."""
+    if not grid_csv.exists():
+        print(f"[struct-vs-Y] skip: {grid_csv} not present")
+        return
+    df = pd.read_csv(grid_csv)
+    df = _add_routes_ratio(df)
+
+    rows = []
+    for exp, label in RECIPE_LABELS.items():
+        scope = RECIPE_SCOPE[exp]
+        sub = df[(df.experiment == exp) & (df.scope == scope)]
+        for _, r in sub.iterrows():
+            rows.append({
+                "recipe": label,
+                "image_encoder": r["image_encoder"],
+                "audio_encoder": r["audio_encoder"],
+                "family": _encoder_family(r["image_encoder"],
+                                          r["audio_encoder"]),
+                "R@10":            r.get("R@10",            float("nan")),
+                "cat_recall_10":   r.get("cat_recall_10",   float("nan")),
+                "__routes_ratio":  r.get("__routes_ratio",  float("nan")),
+                "ami":             r.get("ami",             float("nan")),
+                "pearson_r":       r.get("pearson_r",       float("nan")),
+                "cap_cos_lift":    r.get("cap_cos_lift",    float("nan")),
+            })
+    if not rows:
+        print("[struct-vs-Y] skip: no cross-modal rows in grid CSV")
+        return
+    df_pts = pd.DataFrame(rows)
+
+    palette = dict(zip(RECIPE_LABELS.values(),
+                       sns.color_palette("colorblind",
+                                         n_colors=len(RECIPE_LABELS))))
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for x_spec in STRUCT_AXES:
+        for y_spec in Y_AXES:
+            x_col, y_col = x_spec["col"], y_spec["col"]
+            if df_pts[x_col].isna().all() or df_pts[y_col].isna().all():
+                continue
+            out = out_dir / f"tradeoff__{x_spec['slug']}__vs__{y_spec['slug']}.png"
+            _emit_single_tradeoff_panel(
+                df_pts, palette,
+                x_col=x_col, x_label=x_spec["label"],
+                y_col=y_col, y_label=y_spec["label"],
+                out=out,
+            )
 
 
 # ----------------------------------------------------------------------------

@@ -177,6 +177,27 @@ def procrustes_recipe(
     return X_proj @ Y.T
 
 
+def random_baseline(n: int, m: int, seed: int = 0) -> np.ndarray:
+    """Uniform random row-stochastic plan -- the "no information" floor.
+
+    Each row is a Dirichlet-like random distribution over targets, so the
+    argmax of each row is essentially uniformly random over the m
+    target rows. Used as a baseline against which every other recipe's
+    above-chance behaviour can be measured.
+
+    Expected metrics under this plan:
+      R@k         ~ k / m
+      AMI / ARI   ~ 0 (cluster partition agreement at chance)
+      Pearson r   ~ 0 (no pairwise-distance preservation)
+      cap_cos_lift ~ 0 (no caption-similarity signal)
+    """
+    rng = np.random.default_rng(seed)
+    T = rng.uniform(size=(n, m))
+    row_sums = T.sum(axis=1, keepdims=True)
+    row_sums = np.where(row_sums > 1e-12, row_sums, 1.0)
+    return T / row_sums
+
+
 def text_only_retrieval(ZV: np.ndarray, ZA: np.ndarray) -> np.ndarray:
     """Naive text-caption retrieval baseline (no OT, no FGW).
 
@@ -289,8 +310,29 @@ def transitive_plan(T_iv: np.ndarray, B: np.ndarray, T_ac: np.ndarray) -> np.nda
     """Compose image->visual-text, text bridge, audio->audio-text plans.
 
     Returns a row-normalised image -> audio plan of shape (n, n).
+    Kept as a utility; the main C-transitive recipe now uses the
+    identity bridge via ``transitive_plan_identity`` below.
     """
     raw = T_iv @ B @ T_ac.T
+    row_sums = raw.sum(axis=1, keepdims=True)
+    row_sums = np.where(row_sums > 1e-12, row_sums, 1.0)
+    return raw / row_sums
+
+
+def transitive_plan_identity(T_iv: np.ndarray, T_ac: np.ndarray) -> np.ndarray:
+    """Compose image->visual-text and audio->audio-text plans through the
+    ground-truth caption-row pairing (identity bridge).
+
+    AVCaps provides paired captions per clip: row k of Z_V and row k of
+    Z_A describe the same underlying clip. The composition therefore
+    routes purely on the shared caption-row index k:
+
+        T = row-normalise( T_iv @ T_ac.T )
+
+    Equivalent to ``transitive_plan(T_iv, I_n, T_ac)`` but skips the
+    identity-matrix multiply.
+    """
+    raw = T_iv @ T_ac.T
     row_sums = raw.sum(axis=1, keepdims=True)
     row_sums = np.where(row_sums > 1e-12, row_sums, 1.0)
     return raw / row_sums

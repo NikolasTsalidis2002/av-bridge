@@ -340,6 +340,36 @@ def cluster_confusion(
     return C, src_lab, tgt_lab
 
 
+def category_recall_at_k(
+    T: np.ndarray,
+    Y_tgt: np.ndarray,
+    gt: np.ndarray,
+    K_cl: int,
+    k: int,
+    seed: int = 42,
+) -> float:
+    """Fraction of each query's top-$k$ retrievals that share the
+    target-side K-means cluster of the query's GT partner.
+
+    A coarse-retrieval softening of $R@k$: ``R@k`` asks "is the exact
+    target row in the top-$k$?", category-recall@k asks "are the top-$k$
+    in the *right neighbourhood* (same target cluster as the GT)?".
+    """
+    if Y_tgt.shape[0] < 2 or T.shape[1] < 1:
+        return float("nan")
+    Kc = int(min(K_cl, Y_tgt.shape[0]))
+    if Kc < 2:
+        return float("nan")
+    tgt = KMeans(Kc, random_state=seed, n_init=10).fit_predict(Y_tgt)
+    k_use = int(min(k, T.shape[1]))
+    if k_use < 1:
+        return float("nan")
+    topk = np.argsort(-T, axis=1)[:, :k_use]
+    gt_cluster = tgt[np.asarray(gt, dtype=int)]
+    hits = (tgt[topk] == gt_cluster[:, None]).mean(axis=1)
+    return float(hits.mean())
+
+
 def evaluate(
     T: np.ndarray,
     X_src: np.ndarray,
@@ -367,12 +397,14 @@ def evaluate(
     pr = pearson_pairwise(T, X_src, Y_tgt)
     agree = cluster_agreement(T, X_src, Y_tgt, K_cl, seed=seed)
     cap = caption_agreement(T, Z_src_cap, Z_tgt_cap, seed=seed)
+    cat10 = category_recall_at_k(T, Y_tgt, gt, K_cl, k=10, seed=seed)
     return {
         "R@1": r1, "R@5": r5, "R@10": r10, "R@20": r20,
         "routes_correct": r_correct, "routes_total": r_total,
         "knn_overlap": kno, "pearson_r": pr,
         **agree,
         **cap,
+        "cat_recall_10": cat10,
     }
 
 
@@ -410,6 +442,7 @@ def evaluate_heldout(
             "pearson_r": float("nan"),
             **_AGREEMENT_NANS,
             **_CAPAGREE_NANS,
+            "cat_recall_10": float("nan"),
         }
 
     # Row-masked recall.
@@ -490,10 +523,16 @@ def evaluate_heldout(
     else:
         cap = dict(_CAPAGREE_NANS)
 
+    # Coarse-retrieval analog of R@10 on the held-out rows. The target
+    # K-means is computed on the *full* target pool (the candidate
+    # set the held-out queries can retrieve into is all of Y_tgt).
+    cat10 = category_recall_at_k(T_h, Y_tgt, gt_h, K_cl, k=10, seed=seed)
+
     return {
         "R@1": r1, "R@5": r5, "R@10": r10, "R@20": r20,
         "routes_correct": r_correct, "routes_total": r_total,
         "knn_overlap": kno, "pearson_r": pr,
         **agree,
         **cap,
+        "cat_recall_10": cat10,
     }
