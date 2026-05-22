@@ -283,7 +283,15 @@ def exp_c_transitive(image_name: str, audio_name: str,
 
     out_dir = RES / f"exp_c{out_suffix}"
     out_dir.mkdir(parents=True, exist_ok=True)
+    plans_dir = out_dir / "plans"
+    plans_dir.mkdir(parents=True, exist_ok=True)
     csv_path = out_dir / "sweep_transitive.csv"
+
+    # Persist the heldout-row subset (rows whose i is in S_compare are the
+    # "anchor union" rows; the remaining 100 are the heldout_like_c slice).
+    # Downstream metric scripts can recover the heldout split without
+    # access to the image / audio embeddings.
+    np.save(out_dir / "heldout_compare_idx.npy", S_compare)
 
     with csv_path.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CSV_COLS)
@@ -317,6 +325,14 @@ def exp_c_transitive(image_name: str, audio_name: str,
                             "scope": "heldout_like_c", **hel})
                 f.flush()
 
+                # Persist every (K, alpha) plan under plans/ so the
+                # core-set metric (and any other per-cell analysis) can
+                # be run after the fact without re-fitting.
+                np.save(
+                    plans_dir / f"T__K{K}__a{alpha:.2f}.npy",
+                    T,
+                )
+
                 # Persist the plan at the canonical reusable point so
                 # downstream tools (qualitative renders, ranks, etc.)
                 # find the same filename they did before the swap.
@@ -325,6 +341,8 @@ def exp_c_transitive(image_name: str, audio_name: str,
                     print(f"    saved plan -> T_transitive.npy")
 
     print(f"  wrote {csv_path}")
+    print(f"  wrote per-cell plans -> {plans_dir}/")
+    print(f"  wrote heldout subset -> {out_dir / 'heldout_compare_idx.npy'}")
 
 
 def exp_d_caption(image_name: str, audio_name: str,
@@ -356,6 +374,8 @@ def exp_d_caption(image_name: str, audio_name: str,
 
     out_dir = RES / f"exp_d{out_suffix}"
     out_dir.mkdir(parents=True, exist_ok=True)
+    plans_dir = out_dir / "plans"
+    plans_dir.mkdir(parents=True, exist_ok=True)
     csv_path = out_dir / "sweep.csv"
 
     # "Same-rows view" partition for comparability with C-transitive's held-out:
@@ -363,6 +383,10 @@ def exp_d_caption(image_name: str, audio_name: str,
     S_a = kmeans_stratified_indices(X, n=REUSABLE_K, n_clusters=min(10, REUSABLE_K), seed=SEED)
     S_b = kmeans_stratified_indices(Y, n=REUSABLE_K, n_clusters=min(10, REUSABLE_K), seed=SEED)
     S_compare = np.unique(np.concatenate([S_a, S_b]))
+
+    # Persist the heldout-row subset so core-set metric can be computed
+    # on either scope without re-running.
+    np.save(out_dir / "heldout_compare_idx.npy", S_compare)
 
     saved_plan = None
     with csv_path.open("w", newline="") as f:
@@ -383,12 +407,19 @@ def exp_d_caption(image_name: str, audio_name: str,
                                        Z_src_cap=ZV, Z_tgt_cap=ZA)
                 w.writerow({"K": 0, "alpha": alpha, "scope": "heldout_like_c", **cmp})
                 saved_plan = T
+
+            # Per-alpha plan save so the core-set metric can be computed
+            # at every alpha cell, not only the canonical one.
+            np.save(plans_dir / f"T__a{alpha:.2f}.npy", T)
+
             f.flush()
 
     if saved_plan is not None:
         np.save(out_dir / "T_caption.npy", saved_plan)
         print(f"  wrote {csv_path}")
         print(f"  wrote {out_dir / 'T_caption.npy'}")
+        print(f"  wrote per-alpha plans -> {plans_dir}/")
+        print(f"  wrote heldout subset -> {out_dir / 'heldout_compare_idx.npy'}")
 
 
 def exp_unsupervised_gw(image_name: str, audio_name: str,
@@ -447,8 +478,10 @@ def exp_unsupervised_gw(image_name: str, audio_name: str,
         w.writerow({"K": 0, "alpha": 1.0, "scope": "heldout_like_c", **cmp})
 
     np.save(out_dir / "T_gw.npy", T)
+    np.save(out_dir / "heldout_compare_idx.npy", S_compare)
     print(f"  wrote {csv_path}")
     print(f"  wrote {out_dir / 'T_gw.npy'}")
+    print(f"  wrote {out_dir / 'heldout_compare_idx.npy'}")
 
 
 def exp_text_only(image_name: str, audio_name: str,
@@ -507,8 +540,10 @@ def exp_text_only(image_name: str, audio_name: str,
         w.writerow({"K": 0, "alpha": float("nan"), "scope": "heldout_like_c", **cmp})
 
     np.save(out_dir / "T_text.npy", T)
+    np.save(out_dir / "heldout_compare_idx.npy", S_compare)
     print(f"  wrote {csv_path}")
     print(f"  wrote {out_dir / 'T_text.npy'}")
+    print(f"  wrote {out_dir / 'heldout_compare_idx.npy'}")
 
 
 def exp_random(image_name: str, audio_name: str,
@@ -563,8 +598,10 @@ def exp_random(image_name: str, audio_name: str,
                     "scope": "heldout_like_c", **hel})
 
     np.save(out_dir / "T_random.npy", T)
+    np.save(out_dir / "heldout_compare_idx.npy", S_compare)
     print(f"  wrote {csv_path}")
     print(f"  wrote {out_dir / 'T_random.npy'}")
+    print(f"  wrote {out_dir / 'heldout_compare_idx.npy'}")
 
 
 def _discover_encoders() -> tuple[list[str], list[str]]:
