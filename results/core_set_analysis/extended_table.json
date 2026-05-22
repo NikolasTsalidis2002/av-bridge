@@ -23,11 +23,11 @@
     "routes_correct": 2,
     "routes_total": 15,
     "nmi": 0.7154148348485944,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.3,
+    "core_mean_size": 53.8,
     "metric_kind": "core_set",
     "plan_path": "results/exp_unsup/T_gw.npy",
-    "missing_reason": "heldout subset index not found: results/exp_unsup/heldout_compare_idx.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW direct (M = caption cos)",
@@ -38,11 +38,11 @@
     "routes_correct": 3,
     "routes_total": 15,
     "nmi": 0.2616349490881679,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.0925,
+    "core_mean_size": 2.45,
     "metric_kind": "core_set",
     "plan_path": "results/exp_d/plans/T__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_d/plans/T__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW direct (M = caption cos)",
@@ -53,11 +53,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.18976771787461705,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.1425,
+    "core_mean_size": 4.5525,
     "metric_kind": "core_set",
     "plan_path": "results/exp_d/plans/T__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_d/plans/T__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW direct (M = caption cos)",
@@ -68,11 +68,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.20223753024280172,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.155,
+    "core_mean_size": 5.735,
     "metric_kind": "core_set",
     "plan_path": "results/exp_d/plans/T__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_d/plans/T__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW direct (M = caption cos)",
@@ -86,7 +86,7 @@
     "core_hit": 0.19,
     "core_mean_size": 8.8,
     "metric_kind": "core_set",
-    "plan_path": "results/exp_d/T_caption.npy",
+    "plan_path": "results/exp_d/plans/T__a0.70.npy",
     "missing_reason": null
   },
   {
@@ -98,11 +98,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.7359608524834746,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.23333333333333334,
+    "core_mean_size": 9.533333333333333,
     "metric_kind": "core_set",
-    "plan_path": "results/exp_d/T_caption.npy",
-    "missing_reason": "heldout subset index not found: results/exp_d/heldout_compare_idx.npy"
+    "plan_path": "results/exp_d/plans/T__a0.70.npy",
+    "missing_reason": null
   },
   {
     "method": "FGW direct (M = caption cos)",
@@ -113,11 +113,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.2703966836625527,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2925,
+    "core_mean_size": 22.72,
     "metric_kind": "core_set",
     "plan_path": "results/exp_d/plans/T__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_d/plans/T__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -128,11 +128,11 @@
     "routes_correct": 2,
     "routes_total": 15,
     "nmi": 0.22820542425130658,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.1525,
+    "core_mean_size": 40.7425,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -143,11 +143,11 @@
     "routes_correct": 3,
     "routes_total": 15,
     "nmi": 0.6651425508240943,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.13333333333333333,
+    "core_mean_size": 44.3,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -158,11 +158,11 @@
     "routes_correct": 2,
     "routes_total": 15,
     "nmi": 0.2328612361238321,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.215,
+    "core_mean_size": 46.345,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -173,11 +173,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.6868525415822161,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.13333333333333333,
+    "core_mean_size": 45.93333333333333,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -188,11 +188,11 @@
     "routes_correct": 2,
     "routes_total": 15,
     "nmi": 0.23847171234216458,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2525,
+    "core_mean_size": 50.7125,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -203,11 +203,11 @@
     "routes_correct": 3,
     "routes_total": 15,
     "nmi": 0.7118288564847591,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2,
+    "core_mean_size": 50.266666666666666,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -218,11 +218,11 @@
     "routes_correct": 2,
     "routes_total": 15,
     "nmi": 0.28927859595206773,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2925,
+    "core_mean_size": 57.465,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -233,11 +233,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.6364672256757811,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.23333333333333334,
+    "core_mean_size": 57.56666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -248,11 +248,11 @@
     "routes_correct": 1,
     "routes_total": 15,
     "nmi": 0.29610078039844623,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.315,
+    "core_mean_size": 66.0325,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -263,11 +263,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.7108262513611738,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.16666666666666666,
+    "core_mean_size": 64.46666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K10__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K10__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -278,11 +278,11 @@
     "routes_correct": 1,
     "routes_total": 15,
     "nmi": 0.17394496565602122,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.1525,
+    "core_mean_size": 28.525,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -293,11 +293,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.6228805021022705,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.13333333333333333,
+    "core_mean_size": 29.666666666666668,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -308,11 +308,11 @@
     "routes_correct": 1,
     "routes_total": 15,
     "nmi": 0.19379244917147095,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.205,
+    "core_mean_size": 35.51,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -323,11 +323,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.5714123599480365,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.13333333333333333,
+    "core_mean_size": 34.833333333333336,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -338,11 +338,11 @@
     "routes_correct": 1,
     "routes_total": 15,
     "nmi": 0.20144355189035218,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.275,
+    "core_mean_size": 41.8075,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -353,11 +353,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.5385981946255199,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.23333333333333334,
+    "core_mean_size": 40.03333333333333,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -368,11 +368,11 @@
     "routes_correct": 2,
     "routes_total": 15,
     "nmi": 0.23871616851111477,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.3,
+    "core_mean_size": 50.755,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -383,11 +383,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.6463003549927239,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.3333333333333333,
+    "core_mean_size": 49.53333333333333,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -398,11 +398,11 @@
     "routes_correct": 1,
     "routes_total": 15,
     "nmi": 0.2748027375653049,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.35,
+    "core_mean_size": 63.625,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -413,11 +413,11 @@
     "routes_correct": 3,
     "routes_total": 15,
     "nmi": 0.6733671776035213,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.23333333333333334,
+    "core_mean_size": 62.3,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K20__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K20__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -428,11 +428,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.17524341490977663,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.1475,
+    "core_mean_size": 18.3175,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -443,11 +443,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.6565640623376533,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.03333333333333333,
+    "core_mean_size": 19.866666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -458,11 +458,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.1723745559120502,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.195,
+    "core_mean_size": 23.7675,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -473,11 +473,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.6072312824956785,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.03333333333333333,
+    "core_mean_size": 23.433333333333334,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -488,11 +488,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.20260602436932673,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.225,
+    "core_mean_size": 29.765,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -503,11 +503,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.6761425410061477,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.03333333333333333,
+    "core_mean_size": 28.8,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -518,11 +518,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.23728103484391092,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.3025,
+    "core_mean_size": 39.555,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -533,11 +533,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.719936479114745,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.1,
+    "core_mean_size": 38.5,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -548,11 +548,11 @@
     "routes_correct": 2,
     "routes_total": 15,
     "nmi": 0.2714193959625105,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.375,
+    "core_mean_size": 59.84,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -563,11 +563,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.6607688107547386,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.26666666666666666,
+    "core_mean_size": 61.36666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K50__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K50__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -578,11 +578,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.1691128544820716,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2225,
+    "core_mean_size": 11.58,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -593,11 +593,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.7094853066536316,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.06666666666666667,
+    "core_mean_size": 14.466666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -608,11 +608,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.18573639498771835,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2725,
+    "core_mean_size": 15.5375,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -623,11 +623,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.6402895111778796,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.1,
+    "core_mean_size": 20.5,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -638,11 +638,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.18975848201643186,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.315,
+    "core_mean_size": 20.33,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -653,11 +653,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.5966355923969534,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.16666666666666666,
+    "core_mean_size": 26.433333333333334,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -668,11 +668,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.20763293075500172,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.3925,
+    "core_mean_size": 29.48,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -683,11 +683,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.6106744971798385,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.26666666666666666,
+    "core_mean_size": 33.733333333333334,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -698,11 +698,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.25097326869232367,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.4375,
+    "core_mean_size": 51.115,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -713,11 +713,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.6766404669576128,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.36666666666666664,
+    "core_mean_size": 55.63333333333333,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K100__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K100__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -728,11 +728,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.18099498251922652,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.33,
+    "core_mean_size": 8.755,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -743,11 +743,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.6115913183718147,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.06666666666666667,
+    "core_mean_size": 9.866666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -758,11 +758,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.1823295472302273,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.34,
+    "core_mean_size": 11.825,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -773,11 +773,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.6239862559062549,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.13333333333333333,
+    "core_mean_size": 13.9,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -788,11 +788,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.18569991147877807,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.37,
+    "core_mean_size": 15.4475,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -803,11 +803,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.6272650907902934,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2,
+    "core_mean_size": 17.433333333333334,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -818,11 +818,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.20595974030220937,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.415,
+    "core_mean_size": 23.655,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -833,11 +833,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.646108435160944,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.26666666666666666,
+    "core_mean_size": 27.766666666666666,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -848,11 +848,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.23736473802562816,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.4475,
+    "core_mean_size": 46.12,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -863,11 +863,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.6578957626372242,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.4,
+    "core_mean_size": 51.46666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K160__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K160__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -878,11 +878,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.1808345252635999,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.38,
+    "core_mean_size": 7.895,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -893,11 +893,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.5910574400702495,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.06666666666666667,
+    "core_mean_size": 9.633333333333333,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -908,11 +908,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.19212709296116423,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.4175,
+    "core_mean_size": 10.53,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -923,11 +923,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.5963299129349772,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.16666666666666666,
+    "core_mean_size": 12.9,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -938,11 +938,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.19287079656939915,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.4575,
+    "core_mean_size": 14.3275,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -953,11 +953,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.612184567997113,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.26666666666666666,
+    "core_mean_size": 16.7,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -968,11 +968,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.200964725089925,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.46,
+    "core_mean_size": 21.88,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -983,11 +983,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.6049166249639083,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.3,
+    "core_mean_size": 26.066666666666666,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.70.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -998,11 +998,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.22433667532214543,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.45,
+    "core_mean_size": 44.59,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1013,11 +1013,11 @@
     "routes_correct": 6,
     "routes_total": 15,
     "nmi": 0.6705145223387966,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.43333333333333335,
+    "core_mean_size": 48.8,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K200__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K200__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1028,11 +1028,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.21219757979920434,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.545,
+    "core_mean_size": 6.1075,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1043,11 +1043,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.7203351245504811,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.2,
+    "core_mean_size": 8.633333333333333,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.00.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1058,11 +1058,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.20517557112213802,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.5675,
+    "core_mean_size": 8.5225,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1073,11 +1073,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.7427629576368945,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.23333333333333334,
+    "core_mean_size": 11.866666666666667,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.30.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1088,11 +1088,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.21409440339281657,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.57,
+    "core_mean_size": 11.4525,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1103,11 +1103,11 @@
     "routes_correct": 7,
     "routes_total": 15,
     "nmi": 0.7401971216216057,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.3,
+    "core_mean_size": 15.633333333333333,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.50.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1121,7 +1121,7 @@
     "core_hit": 0.5675,
     "core_mean_size": 18.0,
     "metric_kind": "core_set",
-    "plan_path": "results/exp_c/T_transitive.npy",
+    "plan_path": "results/exp_c/plans/T__K300__a0.70.npy",
     "missing_reason": null
   },
   {
@@ -1133,11 +1133,11 @@
     "routes_correct": 8,
     "routes_total": 15,
     "nmi": 0.6604673126992661,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.4,
+    "core_mean_size": 22.933333333333334,
     "metric_kind": "core_set",
-    "plan_path": "results/exp_c/T_transitive.npy",
-    "missing_reason": "heldout subset index not found: results/exp_c/heldout_compare_idx.npy"
+    "plan_path": "results/exp_c/plans/T__K300__a0.70.npy",
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1148,11 +1148,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.23232994470873464,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.53,
+    "core_mean_size": 40.2325,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "FGW transitive (identity bridge)",
@@ -1163,161 +1163,11 @@
     "routes_correct": 5,
     "routes_total": 15,
     "nmi": 0.6874622806295284,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.4,
+    "core_mean_size": 45.733333333333334,
     "metric_kind": "core_set",
     "plan_path": "results/exp_c/plans/T__K300__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K300__a0.90.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.0",
-    "scope": "aggregate",
-    "r_at_10": 0.745,
-    "routes_correct": 8,
-    "routes_total": 15,
-    "nmi": 0.2330637043417519,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.00.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.0",
-    "scope": "heldout_like_c",
-    "r_at_10": 0.8333333333333334,
-    "routes_correct": 12,
-    "routes_total": 15,
-    "nmi": 0.7149988928100749,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.00.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.00.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.3",
-    "scope": "aggregate",
-    "r_at_10": 0.7275,
-    "routes_correct": 9,
-    "routes_total": 15,
-    "nmi": 0.2348778603308981,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.30.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.3",
-    "scope": "heldout_like_c",
-    "r_at_10": 0.8333333333333334,
-    "routes_correct": 12,
-    "routes_total": 15,
-    "nmi": 0.7345134096886877,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.30.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.30.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.5",
-    "scope": "aggregate",
-    "r_at_10": 0.6975,
-    "routes_correct": 7,
-    "routes_total": 15,
-    "nmi": 0.2218518432819093,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.50.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.5",
-    "scope": "heldout_like_c",
-    "r_at_10": 0.8,
-    "routes_correct": 11,
-    "routes_total": 15,
-    "nmi": 0.6868437639185931,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.50.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.50.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.7",
-    "scope": "aggregate",
-    "r_at_10": 0.595,
-    "routes_correct": 7,
-    "routes_total": 15,
-    "nmi": 0.23024908117634024,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.70.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.7",
-    "scope": "heldout_like_c",
-    "r_at_10": 0.7,
-    "routes_correct": 10,
-    "routes_total": 15,
-    "nmi": 0.7156246489586376,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.70.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.70.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.9",
-    "scope": "aggregate",
-    "r_at_10": 0.35,
-    "routes_correct": 5,
-    "routes_total": 15,
-    "nmi": 0.2227875248738232,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.90.npy"
-  },
-  {
-    "method": "FGW transitive (identity bridge)",
-    "K": "400",
-    "alpha": "0.9",
-    "scope": "heldout_like_c",
-    "r_at_10": 0.43333333333333335,
-    "routes_correct": 10,
-    "routes_total": 15,
-    "nmi": 0.688765619049152,
-    "core_hit": null,
-    "core_mean_size": null,
-    "metric_kind": "core_set",
-    "plan_path": "results/exp_c/plans/T__K400__a0.90.npy",
-    "missing_reason": "plan file not found: results/exp_c/plans/T__K400__a0.90.npy"
+    "missing_reason": null
   },
   {
     "method": "Random baseline",
@@ -1343,11 +1193,11 @@
     "routes_correct": 4,
     "routes_total": 15,
     "nmi": 0.5865588343019308,
-    "core_hit": null,
-    "core_mean_size": null,
+    "core_hit": 0.23333333333333334,
+    "core_mean_size": 84.63333333333334,
     "metric_kind": "core_set",
     "plan_path": "results/exp_random/T_random.npy",
-    "missing_reason": "heldout subset index not found: results/exp_random/heldout_compare_idx.npy"
+    "missing_reason": null
   },
   {
     "method": "Text baseline (cosine sim, NOT row-stochastic)",

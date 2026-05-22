@@ -108,6 +108,15 @@ python code/plot_transitive_K_sweep.py --alpha 0.7
 python code/plot_transitive_K_sweep.py --alpha 0.5
 python code/plot_transitive_K_sweep.py --alpha 0.3
 
+echo "=== 2f.3 extended core-set metrics table (canonical pair) ==="
+# Reads per-(K, alpha) plans from results/exp_*/plans/ and the
+# heldout_compare_idx from each experiment's directory; both are
+# produced by the patched run_experiments.py in stage 1a.
+python code/extended_metrics_table.py
+
+echo "=== 2f.4 core-set scatter from the extended table ==="
+python code/plot_extended_table.py
+
 echo "=== 2g. qualitative panels (canonical + text-free, both directions) ==="
 python code/qualitative_panel.py --direction image_to_audio
 python code/qualitative_panel.py --direction audio_to_image
