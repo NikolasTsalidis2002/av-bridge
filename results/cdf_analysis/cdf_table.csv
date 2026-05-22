@@ -1,0 +1,81 @@
+method,K,alpha,scope,core_hit,core_mean_size
+Random baseline,0,nan,aggregate,0.210,84.2
+Random baseline,0,nan,heldout_like_c,0.233,84.6
+"GW (unsup, alpha=1.0)",0,1.0,aggregate,0.168,54.2
+"GW (unsup, alpha=1.0)",0,1.0,heldout_like_c,0.300,53.8
+FGW direct (M = caption cos),0,0.0,aggregate,0.092,2.5
+FGW direct (M = caption cos),0,0.3,aggregate,0.142,4.6
+FGW direct (M = caption cos),0,0.5,aggregate,0.155,5.7
+FGW direct (M = caption cos),0,0.7,aggregate,0.190,8.8
+FGW direct (M = caption cos),0,0.7,heldout_like_c,0.233,9.5
+FGW direct (M = caption cos),0,0.9,aggregate,0.292,22.7
+FGW transitive (identity bridge),10,0.0,aggregate,0.152,40.7
+FGW transitive (identity bridge),10,0.0,heldout_like_c,0.133,44.3
+FGW transitive (identity bridge),10,0.3,aggregate,0.215,46.3
+FGW transitive (identity bridge),10,0.3,heldout_like_c,0.133,45.9
+FGW transitive (identity bridge),10,0.5,aggregate,0.253,50.7
+FGW transitive (identity bridge),10,0.5,heldout_like_c,0.200,50.3
+FGW transitive (identity bridge),10,0.7,aggregate,0.292,57.5
+FGW transitive (identity bridge),10,0.7,heldout_like_c,0.233,57.6
+FGW transitive (identity bridge),10,0.9,aggregate,0.315,66.0
+FGW transitive (identity bridge),10,0.9,heldout_like_c,0.167,64.5
+FGW transitive (identity bridge),20,0.0,aggregate,0.152,28.5
+FGW transitive (identity bridge),20,0.0,heldout_like_c,0.133,29.7
+FGW transitive (identity bridge),20,0.3,aggregate,0.205,35.5
+FGW transitive (identity bridge),20,0.3,heldout_like_c,0.133,34.8
+FGW transitive (identity bridge),20,0.5,aggregate,0.275,41.8
+FGW transitive (identity bridge),20,0.5,heldout_like_c,0.233,40.0
+FGW transitive (identity bridge),20,0.7,aggregate,0.300,50.8
+FGW transitive (identity bridge),20,0.7,heldout_like_c,0.333,49.5
+FGW transitive (identity bridge),20,0.9,aggregate,0.350,63.6
+FGW transitive (identity bridge),20,0.9,heldout_like_c,0.233,62.3
+FGW transitive (identity bridge),50,0.0,aggregate,0.147,18.3
+FGW transitive (identity bridge),50,0.0,heldout_like_c,0.033,19.9
+FGW transitive (identity bridge),50,0.3,aggregate,0.195,23.8
+FGW transitive (identity bridge),50,0.3,heldout_like_c,0.033,23.4
+FGW transitive (identity bridge),50,0.5,aggregate,0.225,29.8
+FGW transitive (identity bridge),50,0.5,heldout_like_c,0.033,28.8
+FGW transitive (identity bridge),50,0.7,aggregate,0.302,39.6
+FGW transitive (identity bridge),50,0.7,heldout_like_c,0.100,38.5
+FGW transitive (identity bridge),50,0.9,aggregate,0.375,59.8
+FGW transitive (identity bridge),50,0.9,heldout_like_c,0.267,61.4
+FGW transitive (identity bridge),100,0.0,aggregate,0.223,11.6
+FGW transitive (identity bridge),100,0.0,heldout_like_c,0.067,14.5
+FGW transitive (identity bridge),100,0.3,aggregate,0.273,15.5
+FGW transitive (identity bridge),100,0.3,heldout_like_c,0.100,20.5
+FGW transitive (identity bridge),100,0.5,aggregate,0.315,20.3
+FGW transitive (identity bridge),100,0.5,heldout_like_c,0.167,26.4
+FGW transitive (identity bridge),100,0.7,aggregate,0.393,29.5
+FGW transitive (identity bridge),100,0.7,heldout_like_c,0.267,33.7
+FGW transitive (identity bridge),100,0.9,aggregate,0.438,51.1
+FGW transitive (identity bridge),100,0.9,heldout_like_c,0.367,55.6
+FGW transitive (identity bridge),160,0.0,aggregate,0.330,8.8
+FGW transitive (identity bridge),160,0.0,heldout_like_c,0.067,9.9
+FGW transitive (identity bridge),160,0.3,aggregate,0.340,11.8
+FGW transitive (identity bridge),160,0.3,heldout_like_c,0.133,13.9
+FGW transitive (identity bridge),160,0.5,aggregate,0.370,15.4
+FGW transitive (identity bridge),160,0.5,heldout_like_c,0.200,17.4
+FGW transitive (identity bridge),160,0.7,aggregate,0.415,23.7
+FGW transitive (identity bridge),160,0.7,heldout_like_c,0.267,27.8
+FGW transitive (identity bridge),160,0.9,aggregate,0.448,46.1
+FGW transitive (identity bridge),160,0.9,heldout_like_c,0.400,51.5
+FGW transitive (identity bridge),200,0.0,aggregate,0.380,7.9
+FGW transitive (identity bridge),200,0.0,heldout_like_c,0.067,9.6
+FGW transitive (identity bridge),200,0.3,aggregate,0.417,10.5
+FGW transitive (identity bridge),200,0.3,heldout_like_c,0.167,12.9
+FGW transitive (identity bridge),200,0.5,aggregate,0.458,14.3
+FGW transitive (identity bridge),200,0.5,heldout_like_c,0.267,16.7
+FGW transitive (identity bridge),200,0.7,aggregate,0.460,21.9
+FGW transitive (identity bridge),200,0.7,heldout_like_c,0.300,26.1
+FGW transitive (identity bridge),200,0.9,aggregate,0.450,44.6
+FGW transitive (identity bridge),200,0.9,heldout_like_c,0.433,48.8
+FGW transitive (identity bridge),300,0.0,aggregate,0.545,6.1
+FGW transitive (identity bridge),300,0.0,heldout_like_c,0.200,8.6
+FGW transitive (identity bridge),300,0.3,aggregate,0.568,8.5
+FGW transitive (identity bridge),300,0.3,heldout_like_c,0.233,11.9
+FGW transitive (identity bridge),300,0.5,aggregate,0.570,11.5
+FGW transitive (identity bridge),300,0.5,heldout_like_c,0.300,15.6
+FGW transitive (identity bridge),300,0.7,aggregate,0.568,18.0
+FGW transitive (identity bridge),300,0.7,heldout_like_c,0.400,22.9
+FGW transitive (identity bridge),300,0.9,aggregate,0.530,40.2
+FGW transitive (identity bridge),300,0.9,heldout_like_c,0.400,45.7

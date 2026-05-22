@@ -13,3 +13,4 @@ val_captions.json*
 *tex
 *.md
 !results/core_set_analysis/*.md
+!results/cdf_analysis/*.md
