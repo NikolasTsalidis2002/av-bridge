@@ -23,7 +23,8 @@
 #   PAIRS       : space-separated "img:aud" tokens. Default: canonical
 #                  + text-free.
 #   K_GRID      : comma-separated K values. Default: 10,20,50,100,160,
-#                  200,300,400.
+#                  200,300. (Capped at REUSABLE_K=300 to keep leg anchors
+#                  inside S_compare; K>300 leaks anchors into held-out.)
 #   ALPHA_GRID  : comma-separated alpha values. Default: 0.0,0.3,0.5,
 #                  0.7,0.9.
 #

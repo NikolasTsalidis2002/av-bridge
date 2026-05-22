@@ -51,15 +51,11 @@ PAIRS = {
 # Metrics: (csv_column, display_label, axis_lo, axis_hi_or_None).
 # Special key ``__routes_ratio`` is computed inline as
 # routes_correct / routes_total. Upper bounds are None so the y-axis
-# auto-fits the full range of values across recipes (Text-only ceiling,
-# Pure-GW AMI, etc. can otherwise sit above the previous hard caps and
-# be clipped from the plot).
+# auto-fits the full range of values across recipes.
 METRICS = [
     ("R@10",            "$R@10$",                       0.0, None),
     ("cat_recall_10",   "Cat-recall@10 (class)",        0.0, None),
     ("__routes_ratio",  "Routes (correct / $K_{cl}$)",  0.0, None),
-    ("knn_overlap",     "kNN overlap (local)",          0.0, None),
-    ("ami",             "AMI",                          0.0, None),
     ("pearson_r",       "Pearson $r$",                  0.0, None),
 ]
 
@@ -149,20 +145,32 @@ def render(out_path: Path, pair_keys: list[str],
         suffix = PAIRS[pair_key]["suffix"]
         pair_label = PAIRS[pair_key]["label"]
 
-        df_tr = _load_transitive_curve(suffix, alpha, scope)
-        if not df_tr.empty:
+        df_tr     = _load_transitive_curve(suffix, alpha, scope)
+        df_tr_agg = _load_transitive_curve(suffix, alpha, "aggregate")
+        if not df_tr.empty or not df_tr_agg.empty:
             any_data = True
 
         for col_idx, (col, label, vmin, vmax) in enumerate(METRICS):
             ax = axes[row_idx, col_idx]
 
-            # Transitive curve.
+            # Aggregate (in-sample) curve, drawn first so it sits behind
+            # the held-out line. Includes anchor rows for Transitive's
+            # two legs, so it is the optimistic in-sample reading; the
+            # held-out line is the generalisation reading.
+            if not df_tr_agg.empty:
+                ys_agg = [_metric_from_row(r, col) for _, r in df_tr_agg.iterrows()]
+                xs_agg = df_tr_agg["K"].values
+                ax.plot(xs_agg, ys_agg, marker="o", markersize=4, lw=1.2,
+                        ls="--", color=PALETTE["c-transitive"], alpha=0.4,
+                        label="Transitive (in-sample)")
+
+            # Held-out curve.
             if not df_tr.empty:
                 ys = [_metric_from_row(r, col) for _, r in df_tr.iterrows()]
                 xs = df_tr["K"].values
                 ax.plot(xs, ys, marker="o", lw=1.8,
                         color=PALETTE["c-transitive"],
-                        label="Transitive Transport Bridge")
+                        label="Transitive (held-out)")
 
             # Horizontal reference lines for the other recipes.
             for rec in REFERENCE_RECIPES:
@@ -174,8 +182,8 @@ def render(out_path: Path, pair_keys: list[str],
 
             ax.set_xscale("log")
             ax.set_xlabel("$K$ (paired-anchor budget per leg)", fontsize=8)
-            ax.set_xticks([10, 20, 50, 100, 200, 300, 400])
-            ax.set_xticklabels([str(k) for k in [10, 20, 50, 100, 200, 300, 400]],
+            ax.set_xticks([10, 20, 50, 100, 200, 300])
+            ax.set_xticklabels([str(k) for k in [10, 20, 50, 100, 200, 300]],
                                fontsize=7)
             if col_idx == 0:
                 ax.set_ylabel(f"{pair_label}\n\n{label}", fontsize=9)
@@ -212,8 +220,9 @@ def render(out_path: Path, pair_keys: list[str],
                fontsize=9, frameon=False)
 
     fig.suptitle(
-        rf"Transitive Transport Bridge --- K sweep at $\alpha = {alpha}$, "
-        rf"scope = {scope.replace('_', ' ')}",
+        rf"Transitive Transport Bridge --- K sweep at $\alpha = {alpha}$ "
+        rf"(held-out solid, in-sample dashed; "
+        rf"scope = {scope.replace('_', ' ')})",
         fontsize=13, y=1.005,
     )
     fig.tight_layout(rect=(0, 0.04, 1, 1))

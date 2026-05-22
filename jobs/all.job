@@ -103,9 +103,10 @@ python code/analyse_tradeoff.py
 echo "=== 2f.1 all-recipes full-vs-heldout comparison ==="
 python code/plot_full_vs_heldout.py
 
-echo "=== 2f.2 transitive K-sweep at alpha=0.7 (and alpha=0.5) ==="
+echo "=== 2f.2 transitive K-sweep at alpha=0.7 (and 0.5, 0.3) ==="
 python code/plot_transitive_K_sweep.py --alpha 0.7
 python code/plot_transitive_K_sweep.py --alpha 0.5
+python code/plot_transitive_K_sweep.py --alpha 0.3
 
 echo "=== 2g. qualitative panels (canonical + text-free, both directions) ==="
 python code/qualitative_panel.py --direction image_to_audio

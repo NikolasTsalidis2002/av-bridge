@@ -41,7 +41,7 @@ np.random.seed(SEED)
 torch.manual_seed(SEED)
 
 # Sweep grids set by the plan (rescaled for n=400).
-K_GRID = [10, 20, 50, 100, 160, 200, 300, 400]
+K_GRID = [10, 20, 50, 100, 160, 200, 300]
 ALPHA_GRID = [0.0, 0.3, 0.5, 0.7, 0.9]
 
 # K_cl values per experiment, per the spec.
