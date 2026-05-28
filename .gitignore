@@ -14,3 +14,6 @@ val_captions.json*
 *.md
 !results/core_set_analysis/*.md
 !results/cdf_analysis/*.md
+.DS_Store
+thesis_writing/
+ThesisWriting/
